@@ -32,7 +32,7 @@ transform = Transform( -0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, -
 script = ExtResource( 4 )
 
 [node name="boat" parent="player" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 use_collision = true
 
 [node name="pivot" type="Position3D" parent="player"]
