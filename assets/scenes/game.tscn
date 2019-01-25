@@ -16,8 +16,8 @@
 
 shader = ExtResource( 3 )
 shader_param/TERRAIN_HEIGHT_SCALE = 128.0
-shader_param/TERRAIN_MIN_H = 0.35
-shader_param/TERRAIN_MAX_H = 0.5
+shader_param/TERRAIN_MIN_H = 0.4
+shader_param/TERRAIN_MAX_H = 0.6
 shader_param/GRASS_ROWS = 64.0
 shader_param/GRASS_SPACING = 8.0
 shader_param/GRASS_SCALE_MIN = 1.36
@@ -28,6 +28,9 @@ shader_param/NOISE_MAP = ExtResource( 5 )
 
 [node name="game" type="Spatial"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="world" parent="." instance=ExtResource( 2 )]
 
@@ -53,30 +56,30 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+transform = Transform( -0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, 0, 51.76, 0 )
 script = ExtResource( 9 )
 
 [node name="boat" parent="player" instance=ExtResource( 10 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 41.301, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+use_collision = true
 
 [node name="camera_drone" type="Camera" parent="player"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 64, 27.42 )
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 16, 24 )
 current = true
+fov = 60.0
 far = 1024.0
 
 [node name="HUD" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="counter" type="Label" parent="HUD"]
-margin_top = 20.0
-margin_right = 84.0
-margin_bottom = 34.0
-text = "units on map"
-
 [node name="fps" type="Label" parent="HUD"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 64.0
+margin_bottom = 24.0
 text = "FPS: 666"
 script = ExtResource( 11 )
 
+
+[editable path="world"]

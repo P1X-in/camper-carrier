@@ -9,10 +9,10 @@ uniform float GRASS_UV_FACTOR = 4.;
 varying float color_height;
 uniform sampler2D heightmap;
 uniform sampler2D noisemap;
-uniform float white_line = 0.9;
-uniform float green_line = 0.35;
-uniform float ground_line = 0.33;
-uniform float blue_line = 0.32;
+uniform float white_line = 0.8;
+uniform float green_line = 0.5;
+uniform float ground_line = 0.38;
+uniform float blue_line = 0.4;
 uniform float GOLDEN_ANGLE_RADIAN = 2.39996;
 
 float get_height(vec2 pos) {

@@ -1,10 +1,10 @@
 extends Spatial
 
 export var MAP_SIZE = Vector2(1024, 1024)
-export var MAP_HEIGHT_FACTOR = 64
+export var MAP_HEIGHT_FACTOR = 128
 export var GAME_MODE = 1
-export var BLUE_LINE = 0.2
-export var GREEN_LINE = 0.45
+export var BLUE_LINE = 0.4
+export var GREEN_LINE = 0.5
 
 onready var heightmap_file = preload("res://assets/materials/heightmap.tres")
 onready var units = [
@@ -17,7 +17,6 @@ var counter = 0
 func _ready():
 	var noise = heightmap_file.get_noise()
 	height_map = noise.get_image(MAP_SIZE[0], MAP_SIZE[1])
-	refresh_units_counter()
 	
 	
 func get_height(pos):
@@ -38,10 +37,6 @@ func spawn_unit(id, pos):
 	new_unit.translate(pos)
 	$terrain.add_child(new_unit)
 	counter += 1
-	refresh_units_counter()
-
-func refresh_units_counter():
-	$HUD/counter.set_text('Units on map: ' + str(counter))
 
 func change_map_seed():
 	heightmap_file.get_noise().set_seed(randi()*1024)
