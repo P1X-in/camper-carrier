@@ -7,8 +7,8 @@ export var move_speed_fb = 1.5;
 
 var active_camera = 0
 onready var cameras = [
-	$"camera_drone",
-	#$"camera_satelite",
+	$"pivot/camera_drone",
+	$"pivot/camera_spyglass",
 	$"boat/camera_onboard"
 ]
 const DEADZONE = 0.15;
@@ -58,8 +58,8 @@ func _input(event):
 		quit_game()
 	if Input.is_action_pressed("game_a"):
 		select_a()
-	if Input.is_action_pressed("game_x"):
-		select_x()
+	if Input.is_action_pressed("game_b"):
+		select_b()
 		
 func _physics_process(delta):
 	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):
@@ -113,7 +113,7 @@ func _physics_process(delta):
 func select_a():
 	get_parent().change_map_seed()
 	
-func select_x():
+func select_b():
 	active_camera += 1
 	if active_camera > 2:
 		active_camera = 0
