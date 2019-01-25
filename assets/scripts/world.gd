@@ -6,7 +6,7 @@ export var GAME_MODE = 1
 export var BLUE_LINE = 0.4
 export var GREEN_LINE = 0.5
 
-onready var heightmap_file = preload("res://assets/materials/heightmap.tres")
+onready var heightmap_file = preload("res://assets/materials/worldmap.png")
 onready var units = [
 	#preload('res://tscns/knight.tscn')
 ]
@@ -15,8 +15,7 @@ var height_map
 var counter = 0
 
 func _ready():
-	var noise = heightmap_file.get_noise()
-	height_map = noise.get_image(MAP_SIZE[0], MAP_SIZE[1])
+	height_map = heightmap_file.get_data()
 	
 	
 func get_height(pos):
@@ -39,8 +38,7 @@ func spawn_unit(id, pos):
 	counter += 1
 
 func change_map_seed():
-	heightmap_file.get_noise().set_seed(randi()*1024)
-	height_map = heightmap_file.get_noise().get_image(MAP_SIZE[0], MAP_SIZE[1])
+	pass
 
 func _on_world_tick_timeout():
 	pass
