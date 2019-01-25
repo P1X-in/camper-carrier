@@ -10,13 +10,13 @@ shader_type particles;
 // SETTINGS --------------------------------------------------------------------
 
 // TERRAIN SETTINGS
-uniform float TERRAIN_HEIGHT_SCALE = 64.0;
-uniform float TERRAIN_MIN_H = 0.4;
-uniform float TERRAIN_MAX_H = 0.65;
+uniform float TERRAIN_HEIGHT_SCALE = 128.0;
+uniform float TERRAIN_MIN_H = 0.35;
+uniform float TERRAIN_MAX_H = 0.5;
 
 // VEGETATION SETTINGS
 uniform float GRASS_ROWS = 64;
-uniform float GRASS_SPACING = 12.0;
+uniform float GRASS_SPACING = 8.0;
 uniform float GRASS_SCALE_MIN = 0.5;
 uniform float GRASS_SCALE_MAX = 2.0;
 
