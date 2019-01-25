@@ -114,10 +114,11 @@ func select_a():
 	get_parent().change_map_seed()
 	
 func select_b():
+	cameras[active_camera].hide()
 	active_camera += 1
 	if active_camera > 2:
 		active_camera = 0
-	
+	cameras[active_camera].show()
 	cameras[active_camera].set_current(true)
 	
 func quit_game():
