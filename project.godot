@@ -19,6 +19,19 @@ config/name="Camper Carrier"
 run/main_scene="res://assets/scenes/game.tscn"
 config/icon="res://icon.png"
 
+[input]
+
+game_a={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+game_b={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
 [rendering]
 
 quality/directional_shadow/size=2048

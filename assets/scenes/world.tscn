@@ -6,14 +6,14 @@
 
 [sub_resource type="PlaneMesh" id=1]
 
-size = Vector2( 1024, 1024 )
+size = Vector2( 4096, 4096 )
 subdivide_width = 256
 subdivide_depth = 256
 
 [sub_resource type="ShaderMaterial" id=2]
 
 shader = ExtResource( 1 )
-shader_param/HEIGHTMAP_SIZE = Vector2( 1024, 1024 )
+shader_param/HEIGHTMAP_SIZE = Vector2( 4096, 4096 )
 shader_param/HEIGHT_FACTOR = 128.0
 shader_param/MOUNTAINS_FACTOR = 24.0
 shader_param/RANDOM_UV_FACTOR = 4.0

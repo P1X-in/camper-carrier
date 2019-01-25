@@ -22,7 +22,7 @@ shader_param/GRASS_ROWS = 64.0
 shader_param/GRASS_SPACING = 8.0
 shader_param/GRASS_SCALE_MIN = 1.36
 shader_param/GRASS_SCALE_MAX = 7.83
-shader_param/MAP_SIZE = Vector2( 1024, 1024 )
+shader_param/MAP_SIZE = Vector2( 4096, 4096 )
 shader_param/HEIGHT_MAP = ExtResource( 4 )
 shader_param/NOISE_MAP = ExtResource( 5 )
 
@@ -31,6 +31,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+MAP_SIZE = Vector2( 4096, 4096 )
 
 [node name="world" parent="." instance=ExtResource( 2 )]
 
@@ -50,7 +51,6 @@ environment = ExtResource( 8 )
 transform = Transform( 0.5, -0.496732, -0.709406, 7.16125e-08, -0.819152, 0.573577, -0.866025, -0.286788, -0.409576, 0, 128, 0 )
 light_color = Color( 0.996078, 1, 0.85098, 1 )
 light_energy = 1.5
-shadow_enabled = true
 directional_shadow_split_2 = 0.4
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
