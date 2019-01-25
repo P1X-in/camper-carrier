@@ -28,17 +28,23 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
-transform = Transform( -0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, -59.01, 51.76, -98.94 )
+transform = Transform( -0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, -59.01, 52.99, 22.4392 )
 script = ExtResource( 4 )
 
 [node name="boat" parent="player" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 use_collision = true
 
-[node name="camera_drone" type="Camera" parent="player"]
-transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 16, 24 )
+[node name="cameras" type="Position3D" parent="player"]
+
+[node name="camera_drone" type="Camera" parent="player/cameras"]
+transform = Transform( 1, 1.49012e-08, -2.98023e-08, 0, 0.939693, 0.34202, 0, -0.34202, 0.939692, 0, 16, 24 )
 current = true
 fov = 60.0
+far = 1024.0
+
+[node name="camera_spyglass" type="Camera" parent="player/cameras"]
+fov = 10.0
 far = 1024.0
 
 [node name="HUD" type="Control" parent="."]

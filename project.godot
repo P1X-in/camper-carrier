@@ -38,6 +38,7 @@ quality/directional_shadow/size=2048
 quality/shadow_atlas/size=2048
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
+quality/shading/force_vertex_shading=true
 quality/subsurface_scattering/quality=0
 quality/voxel_cone_tracing/high_quality=false
 environment/default_environment="res://default_env.tres"
