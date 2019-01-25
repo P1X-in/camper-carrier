@@ -9,7 +9,7 @@ var active_camera = 0
 onready var cameras = [
 	$"camera_drone",
 	#$"camera_satelite",
-	#$"boat/camera_onboard"
+	$"boat/camera_onboard"
 ]
 const DEADZONE = 0.15;
 
