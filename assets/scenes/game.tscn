@@ -1,30 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/shaders/grass_particle.shader" type="Shader" id=3]
-[ext_resource path="res://assets/materials/heightmap.tres" type="Texture" id=4]
-[ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=5]
-[ext_resource path="res://assets/meshes/tree.mesh" type="ArrayMesh" id=6]
-[ext_resource path="res://assets/scripts/particle_follow_camera_rig.gd" type="Script" id=7]
-[ext_resource path="res://assets/materials/environment.tres" type="Environment" id=8]
-[ext_resource path="res://assets/scripts/player.gd" type="Script" id=9]
-[ext_resource path="res://assets/meshes/boat.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=11]
-
-[sub_resource type="ShaderMaterial" id=1]
-
-shader = ExtResource( 3 )
-shader_param/TERRAIN_HEIGHT_SCALE = 128.0
-shader_param/TERRAIN_MIN_H = 0.4
-shader_param/TERRAIN_MAX_H = 0.6
-shader_param/GRASS_ROWS = 64.0
-shader_param/GRASS_SPACING = 8.0
-shader_param/GRASS_SCALE_MIN = 1.36
-shader_param/GRASS_SCALE_MAX = 7.83
-shader_param/MAP_SIZE = Vector2( 4096, 4096 )
-shader_param/HEIGHT_MAP = ExtResource( 4 )
-shader_param/NOISE_MAP = ExtResource( 5 )
+[ext_resource path="res://assets/materials/environment.tres" type="Environment" id=3]
+[ext_resource path="res://assets/scripts/player.gd" type="Script" id=4]
+[ext_resource path="res://assets/meshes/boat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=6]
 
 [node name="game" type="Spatial"]
 script = ExtResource( 1 )
@@ -35,17 +16,8 @@ MAP_SIZE = Vector2( 4096, 4096 )
 
 [node name="world" parent="." instance=ExtResource( 2 )]
 
-[node name="trees" type="Particles" parent="world"]
-amount = 4096
-explosiveness = 1.0
-visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
-local_coords = false
-process_material = SubResource( 1 )
-draw_pass_1 = ExtResource( 6 )
-script = ExtResource( 7 )
-
 [node name="environment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 8 )
+environment = ExtResource( 3 )
 
 [node name="sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.5, -0.496732, -0.709406, 7.16125e-08, -0.819152, 0.573577, -0.866025, -0.286788, -0.409576, 0, 128, 0 )
@@ -57,9 +29,9 @@ directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
 transform = Transform( -0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, -59.01, 51.76, -98.94 )
-script = ExtResource( 9 )
+script = ExtResource( 4 )
 
-[node name="boat" parent="player" instance=ExtResource( 10 )]
+[node name="boat" parent="player" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 use_collision = true
 
@@ -79,7 +51,5 @@ margin_top = 10.0
 margin_right = 64.0
 margin_bottom = 24.0
 text = "FPS: 666"
-script = ExtResource( 11 )
+script = ExtResource( 6 )
 
-
-[editable path="world"]
