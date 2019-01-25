@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Camper Carrier"
+run/main_scene="res://assets/scenes/game.tscn"
 config/icon="res://icon.png"
 
 [rendering]

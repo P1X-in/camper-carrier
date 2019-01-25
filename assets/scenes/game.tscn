@@ -1,18 +1,20 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/meshes/boat.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/shaders/grass_particle.shader" type="Shader" id=4]
-[ext_resource path="res://assets/materials/heightmap.tres" type="Texture" id=5]
-[ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=6]
-[ext_resource path="res://assets/meshes/tree.mesh" type="ArrayMesh" id=7]
-[ext_resource path="res://assets/scripts/particle_follow_camera_rig.gd" type="Script" id=8]
-[ext_resource path="res://assets/materials/environment.tres" type="Environment" id=9]
+[ext_resource path="res://assets/shaders/grass_particle.shader" type="Shader" id=3]
+[ext_resource path="res://assets/materials/heightmap.tres" type="Texture" id=4]
+[ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=5]
+[ext_resource path="res://assets/meshes/tree.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/scripts/particle_follow_camera_rig.gd" type="Script" id=7]
+[ext_resource path="res://assets/materials/environment.tres" type="Environment" id=8]
+[ext_resource path="res://assets/scripts/player.gd" type="Script" id=9]
+[ext_resource path="res://assets/meshes/boat.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 
-shader = ExtResource( 4 )
+shader = ExtResource( 3 )
 shader_param/TERRAIN_HEIGHT_SCALE = 128.0
 shader_param/TERRAIN_MIN_H = 0.35
 shader_param/TERRAIN_MAX_H = 0.5
@@ -21,16 +23,13 @@ shader_param/GRASS_SPACING = 8.0
 shader_param/GRASS_SCALE_MIN = 1.36
 shader_param/GRASS_SCALE_MAX = 7.83
 shader_param/MAP_SIZE = Vector2( 1024, 1024 )
-shader_param/HEIGHT_MAP = ExtResource( 5 )
-shader_param/NOISE_MAP = ExtResource( 6 )
+shader_param/HEIGHT_MAP = ExtResource( 4 )
+shader_param/NOISE_MAP = ExtResource( 5 )
 
 [node name="game" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="world" parent="." instance=ExtResource( 2 )]
-
-[node name="boat" parent="world" instance=ExtResource( 3 )]
-transform = Transform( -0.288168, -0.00408298, -1.97913, 0.0603777, 1.99905, -0.0129153, 1.97821, -0.0616085, -0.287908, 0, 41.6305, 0 )
 
 [node name="trees" type="Particles" parent="world"]
 amount = 4096
@@ -38,11 +37,11 @@ explosiveness = 1.0
 visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
 local_coords = false
 process_material = SubResource( 1 )
-draw_pass_1 = ExtResource( 7 )
-script = ExtResource( 8 )
+draw_pass_1 = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="environment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 9 )
+environment = ExtResource( 8 )
 
 [node name="sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.5, -0.496732, -0.709406, 7.16125e-08, -0.819152, 0.573577, -0.866025, -0.286788, -0.409576, 0, 128, 0 )
@@ -52,4 +51,32 @@ shadow_enabled = true
 directional_shadow_split_2 = 0.4
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
+
+[node name="player" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+script = ExtResource( 9 )
+
+[node name="boat" parent="player" instance=ExtResource( 10 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 41.301, 0 )
+
+[node name="camera_drone" type="Camera" parent="player"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 64, 27.42 )
+current = true
+far = 1024.0
+
+[node name="HUD" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="counter" type="Label" parent="HUD"]
+margin_top = 20.0
+margin_right = 84.0
+margin_bottom = 34.0
+text = "units on map"
+
+[node name="fps" type="Label" parent="HUD"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "FPS: 666"
+script = ExtResource( 11 )
 
