@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/meshes/boat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/materials/environment.tres" type="Environment" id=3]
+
+[node name="game" type="Spatial"]
+
+[node name="world" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -36, 0 )
+
+[node name="boat" parent="world" instance=ExtResource( 2 )]
+transform = Transform( -0.288168, -0.00408298, -1.97913, 0.0603777, 1.99905, -0.0129153, 1.97821, -0.0616085, -0.287908, 0, 41.6305, 0 )
+
+[node name="environment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
+[node name="sun" type="DirectionalLight" parent="."]
+transform = Transform( 0.5, -0.496732, -0.709406, 7.16125e-08, -0.819152, 0.573577, -0.866025, -0.286788, -0.409576, 0, 128, 0 )
+directional_shadow_split_2 = 0.4
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 512.0
+
