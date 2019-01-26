@@ -1,37 +1,133 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scenes/tiles/tile_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/blender/MusicPlace1.dae" type="PackedScene" id=2]
 [ext_resource path="res://assets/blender/MusicPlace2.dae" type="PackedScene" id=3]
 [ext_resource path="res://assets/blender/MusicPlace3.dae" type="PackedScene" id=4]
 
+[sub_resource type="Animation" id=1]
+
+resource_name = "disco"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpotLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 9.38, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpotLight4:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 9.38, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpotLight2:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 9.38 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpotLight3:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 9.38, 0.0 ]
+}
+
 [node name="tile_music" index="0" instance=ExtResource( 1 )]
 
 [node name="level1" parent="." index="0"]
+editor/display_folded = true
 building_name = "Boomboox"
 description = "It makes boom noises."
-cost_sausage = 10
 
 [node name="Scene Root" parent="level1" index="0" instance=ExtResource( 2 )]
-transform = Transform( 0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0 )
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+
+[node name="MusicPlace§" parent="level1/Scene Root" index="0"]
+transform = Transform( 0.900007, -0.000524904, -0.435876, -0.000524905, 0.999997, -0.00228809, 0.435875, 0.00228809, 0.900004, 2.11291, 0.0110915, -2.52497 )
 
 [node name="level2" parent="." index="1"]
 editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0449151, -0.000235781, -0.232033 )
 building_name = "Dj Stand"
 description = "Dj plays fancy music like Slawomir or Despacito."
-cost_sausage = 20
-cost_beer = 5
 
 [node name="Scene Root" parent="level2" index="0" instance=ExtResource( 3 )]
-transform = Transform( 0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0 )
+transform = Transform( 0.0298216, -9.36154e-07, 0.00326639, -9.36328e-07, 0.03, 1.71466e-05, -0.0032664, -1.71467e-05, 0.0298216, 0.000497818, 2.61515e-06, -0.0352796 )
 
 [node name="level3" parent="." index="2"]
 editor/display_folded = true
 building_name = "Dance Floor"
 description = "Fancy music, lights everywhere, half naked ladies, horny men."
-cost_sausage = 40
-cost_beer = 10
 
 [node name="Scene Root" parent="level3" index="0" instance=ExtResource( 4 )]
-transform = Transform( 0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0 )
+transform = Transform( 0.0195604, -2.30753e-06, 0.00417009, -2.30751e-06, 0.02, 2.18905e-05, -0.00417009, -2.18905e-05, 0.0195604, -0.0638415, -0.000335172, -0.221646 )
 
+[node name="SpotLight" type="SpotLight" parent="level3" index="1"]
+transform = Transform( 0.999966, 0.00658406, -0.00507678, 0.00658405, -0.254249, 0.967117, 0.00507678, -0.967116, -0.254284, -0.0746151, 0.785096, -0.200465 )
+light_color = Color( 1, 0.937255, 0, 1 )
+light_energy = 7.39099
+spot_range = 1.37581
+spot_attenuation = 0.406126
+spot_angle = 43.0141
+spot_angle_attenuation = 6.27667
+
+[node name="SpotLight4" type="SpotLight" parent="level3" index="2"]
+transform = Transform( 0.999966, 0.00658406, -0.00507678, 0.00658405, -0.254249, 0.967117, 0.00507678, -0.967116, -0.254284, -0.0657874, 0.670342, 0.319868 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 6.3475
+spot_range = 1.37581
+spot_attenuation = 0.406126
+spot_angle = 43.0141
+spot_angle_attenuation = 6.27667
+
+[node name="SpotLight2" type="SpotLight" parent="level3" index="3"]
+transform = Transform( 0.999966, 0.00658406, -0.00507678, 0.00658405, -0.254249, 0.967117, 0.00507678, -0.967116, -0.254283, -0.381135, 0.688706, -0.103394 )
+light_color = Color( 0, 0.929412, 1, 1 )
+light_energy = 1.76299
+spot_range = 1.37581
+spot_attenuation = 0.406126
+spot_angle = 43.0141
+spot_angle_attenuation = 6.27667
+
+[node name="SpotLight3" type="SpotLight" parent="level3" index="4"]
+transform = Transform( 0.999966, 0.00658406, -0.00507678, 0.00658405, -0.254249, 0.967117, 0.00507678, -0.967116, -0.254283, 0.391362, 0.798986, -0.103394 )
+light_color = Color( 1, 0, 0.937255, 1 )
+light_energy = 9.23874
+spot_range = 1.37581
+spot_attenuation = 0.406126
+spot_angle = 43.0141
+spot_angle_attenuation = 6.27667
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="level3" index="5"]
+autoplay = "disco"
+playback_speed = 2.0
+anims/disco = SubResource( 1 )
+
+
+[editable path="level1/Scene Root"]

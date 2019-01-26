@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scenes/tiles/tile_base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/blender/Bin1.dae" type="PackedScene" id=2]
-[ext_resource path="res://assets/blender/Bin2.dae" type="PackedScene" id=3]
-[ext_resource path="res://assets/blender/Bin3.dae" type="PackedScene" id=4]
+[ext_resource path="res://assets/meshes/Bin1.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/blender/Bin1.dae" type="PackedScene" id=3]
+[ext_resource path="res://assets/blender/Bin2.dae" type="PackedScene" id=4]
+[ext_resource path="res://assets/blender/Bin3.dae" type="PackedScene" id=5]
 
 [node name="tile_bin" instance=ExtResource( 1 )]
 
@@ -14,14 +15,23 @@ description = "How untidy"
 cost_sausage = 20
 cost_beer = 20
 
-[node name="Scene Root" parent="level1" index="0" instance=ExtResource( 2 )]
-transform = Transform( 0.0369509, -0.00111838, -0.247252, -0.00111838, 0.249994, -0.00129792, 0.247252, 0.00129792, 0.036945, 0.101037, 0.00851849, -0.12509 )
+[node name="MeshInstance" type="MeshInstance" parent="level1" index="0"]
+transform = Transform( 0.242378, -4.00082e-05, -0.0612596, -4.00092e-05, 0.25, -0.000321576, 0.0612596, 0.000321576, 0.242378, -0.0654085, -0.0216352, -0.0287789 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
 
-[node name="Scene Root2" parent="level1" index="1" instance=ExtResource( 2 )]
-transform = Transform( 0.140811, -0.000573178, 0.206572, -0.000573178, 0.249997, 0.00108438, -0.206572, -0.00108438, 0.140808, -0.0550753, 0.00769899, -0.10617 )
+[node name="MeshInstance2" type="MeshInstance" parent="level1" index="1"]
+transform = Transform( -0.136182, -0.00202723, -0.209643, -0.00202723, 0.249989, -0.0011005, 0.209643, 0.0011005, -0.136193, 0.0454715, -0.0210531, 0.0636558 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
 
-[node name="Scene Root3" parent="level1" index="2" instance=ExtResource( 2 )]
-transform = Transform( -0.327043, -0.00381654, 0.230279, -0.00381654, 0.39998, 0.00120883, -0.230279, -0.00120883, -0.327063, 0.0533667, 0.00826824, -0.00158435 )
+[node name="MeshInstance3" type="MeshInstance" parent="level1" index="2"]
+transform = Transform( -0.0872552, -0.00177039, 0.234272, -0.00177039, 0.249991, 0.00122979, -0.234272, -0.00122979, -0.0872645, -0.0946457, -0.0217886, 0.100157 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
 
 [node name="level2" parent="." index="1"]
 editor/display_folded = true
@@ -30,13 +40,13 @@ description = "I hope these will not overfill too soon..."
 cost_sausage = 30
 cost_beer = 30
 
-[node name="Scene Root4" parent="level2" index="0" instance=ExtResource( 2 )]
+[node name="Scene Root4" parent="level2" index="0" instance=ExtResource( 3 )]
 transform = Transform( -0.225118, -0.00249409, -0.1087, -0.00249409, 0.249987, -0.00057061, 0.1087, 0.000570611, -0.225131, -0.0089643, 0.00794104, 0.168557 )
 
-[node name="Scene Root5" parent="level2" index="1" instance=ExtResource( 2 )]
+[node name="Scene Root5" parent="level2" index="1" instance=ExtResource( 3 )]
 transform = Transform( -0.225118, -0.00249409, -0.1087, -0.00249409, 0.249987, -0.00057061, 0.1087, 0.000570611, -0.225131, -0.0089643, 0.00794104, 0.168557 )
 
-[node name="Scene Root" parent="level2" index="2" instance=ExtResource( 3 )]
+[node name="Scene Root" parent="level2" index="2" instance=ExtResource( 4 )]
 transform = Transform( 0.215959, -0.000178696, -0.125944, -0.000178695, 0.249999, -0.000661128, 0.125943, 0.000661128, 0.215958, -0.0389807, -0.000204638, -0.0196512 )
 
 [node name="level3" parent="." index="2"]
@@ -46,15 +56,24 @@ description = "Must have been a big party"
 cost_sausage = 40
 cost_beer = 40
 
-[node name="Scene Root" parent="level3" index="0" instance=ExtResource( 4 )]
+[node name="Scene Root" parent="level3" index="0" instance=ExtResource( 5 )]
 transform = Transform( 0.196867, -0.000278917, 0.154089, -0.000278917, 0.249999, 0.000808875, -0.154089, -0.000808874, 0.196865, -0.199852, -0.00104908, -0.113244 )
 
-[node name="Scene Root2" parent="level3" index="1" instance=ExtResource( 4 )]
+[node name="Bin3" parent="level3/Scene Root" index="0"]
+transform = Transform( 1, 0, 0, -2.32831e-10, 1, 4.65661e-10, -2.98023e-08, 2.32831e-10, 1, 0.000109673, -0.020926, 0 )
+
+[node name="Scene Root2" parent="level3" index="1" instance=ExtResource( 5 )]
 transform = Transform( 0.171494, -0.00041211, 0.181906, -0.00041211, 0.249998, 0.000954897, -0.181906, -0.000954897, 0.171492, 0.116631, 0.000612251, 0.201222 )
 
-[node name="Scene Root3" parent="level3" index="2" instance=ExtResource( 3 )]
+[node name="Scene Root3" parent="level3" index="2" instance=ExtResource( 4 )]
 transform = Transform( -0.194077, -0.00233114, -0.157571, -0.00233114, 0.249988, -0.000827155, 0.157571, 0.000827155, -0.194089, 0.145772, 0.00076516, -0.225851 )
 
-[node name="Scene Root4" parent="level3" index="3" instance=ExtResource( 2 )]
+[node name="Scene Root4" parent="level3" index="3" instance=ExtResource( 3 )]
 transform = Transform( 0.00205667, -0.00130155, 0.249988, -0.00130155, 0.249993, 0.00131229, -0.249988, -0.00131229, 0.00204979, -0.200419, 0.00693602, 0.231121 )
 
+
+[editable path="level2/Scene Root5"]
+
+[editable path="level2/Scene Root"]
+
+[editable path="level3/Scene Root"]
