@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
@@ -15,8 +15,9 @@
 [ext_resource path="res://assets/scripts/hud.gd" type="Script" id=13]
 [ext_resource path="res://assets/scenes/message_box.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/scripts/fps.gd" type="Script" id=15]
-[ext_resource path="res://assets/images/beer_icon.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/sausage_icon.png" type="Texture" id=17]
+[ext_resource path="res://assets/scripts/resource.gd" type="Script" id=16]
+[ext_resource path="res://assets/images/beer_icon.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/sausage_icon.png" type="Texture" id=18]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -76,6 +77,7 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.01, 50.7293, 22.4392 )
 script = ExtResource( 4 )
 
@@ -212,6 +214,7 @@ __meta__ = {
 }
 
 [node name="camp_management" type="Control" parent="HUD"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -226,6 +229,7 @@ anchor_bottom = 1.0
 [node name="message_box" parent="HUD/camp_management/corner" instance=ExtResource( 14 )]
 
 [node name="left" type="Control" parent="HUD"]
+editor/display_folded = true
 
 [node name="fps" type="Label" parent="HUD/left"]
 margin_left = 10.0
@@ -245,6 +249,7 @@ margin_top = 27.0526
 margin_right = -12.81
 margin_bottom = 44.0526
 text = "000"
+script = ExtResource( 16 )
 
 [node name="sausage" type="Label" parent="HUD/right"]
 margin_left = -180.432
@@ -252,14 +257,15 @@ margin_top = 27.0526
 margin_right = -108.432
 margin_bottom = 44.0526
 text = "000"
+script = ExtResource( 16 )
 
 [node name="beer_sprite" type="Sprite" parent="HUD/right"]
 position = Vector2( -100.216, 33.6371 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="sausage_sprite" type="Sprite" parent="HUD/right"]
 position = Vector2( -219.665, 35.4377 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 

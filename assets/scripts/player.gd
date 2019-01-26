@@ -37,6 +37,9 @@ var axis_value = Vector2()
 var garbage_recharge = 1
 var garbage_charges = 1
 
+var sausage = 10
+var beer = 10
+
 func _ready():
 	move_to = transform.origin
 	world = get_parent()
@@ -44,6 +47,8 @@ func _ready():
 	timer = preload("res://assets/scripts/timers.gd").new(self)
 
 func _process(delta):
+	hud.update_resources_panel(sausage, beer)
+	
 	if angle_x != _angle_x or angle_y != _angle_y:
 		_angle_x += (angle_x - _angle_x) * delta * 10.0
 		_angle_y += (angle_y - _angle_y) * delta * 10.0
@@ -62,6 +67,8 @@ func _process(delta):
 
 		new_origin.y = transform.origin.y
 		transform.origin = new_origin
+		
+	
 
 func _input(event):
 	if Input.is_action_pressed("game_left"):
@@ -170,3 +177,18 @@ func select_pro():
 
 func quit_game():
 	get_tree().quit()
+	
+func check_resources(sausage_amount, beer_amount):
+	if sausage >= sausage_amount and beer >= beer_amount:
+		return true
+	return false
+	
+func add_resources(sausage_amount, beer_amount):
+	sausage = sausage + sausage_amount
+	beer = beer + beer_amount
+	
+func take_resources(sausage_amount, beer_amount):
+	sausage = sausage - sausage_amount
+	beer = beer - beer_amount
+	
+	
