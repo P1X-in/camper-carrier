@@ -92,7 +92,7 @@ func clear_ghost():
 func add_ghost():
     clear_ghost()
     if tiles[cursor.y][cursor.x] == null:
-        building_ghost = buildings[name].instance()
+        building_ghost = buildings[selected_building_name].instance()
         var new_position = Vector3(X_START + cursor.x * X_DIFF, Z_POS, Y_START + cursor.y * Y_DIFF)
         self.add_child(building_ghost)
         building_ghost.transform.origin = new_position
@@ -122,6 +122,7 @@ func select_y():
     _add_tile(selected_building_name, cursor)
 
 func _add_tile(name, position):
+    clear_ghost()
     var new_tile = buildings[name].instance()
     var new_position = Vector3(X_START + position.x * X_DIFF, Z_POS, Y_START + position.y * Y_DIFF)
     self.add_child(new_tile)
