@@ -15,7 +15,7 @@
 [ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=13]
 [ext_resource path="res://assets/scripts/fps.gd" type="Script" id=14]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=5]
 
 render_priority = -1
 flags_transparent = true
@@ -23,10 +23,10 @@ flags_ensure_correct_normals = true
 albedo_texture = ExtResource( 6 )
 uv1_scale = Vector3( 3, 2, 2 )
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="PlaneMesh" id=6]
 
-material = SubResource( 1 )
-size = Vector3( 6, 0.1, 4 )
+material = SubResource( 5 )
+size = Vector2( 5, 3 )
 
 [sub_resource type="SpatialMaterial" id=3]
 
@@ -78,8 +78,8 @@ fov = 90.0
 far = 1024.0
 
 [node name="camp" type="MeshInstance" parent="player/carrier"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787571, -0.941 )
-mesh = SubResource( 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.844, -0.941 )
+mesh = SubResource( 6 )
 material/0 = null
 script = ExtResource( 7 )
 
@@ -128,6 +128,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.129404, 0.84099 )
 visible = false
 
 [node name="level3" parent="player/carrier/camp/tile_camp11" index="2"]
+editor/display_folded = false
 visible = true
 
 [node name="tile_camp14" parent="player/carrier/camp" instance=ExtResource( 8 )]
