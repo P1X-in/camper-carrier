@@ -272,6 +272,7 @@ text = "FPS: 666"
 script = ExtResource( 17 )
 
 [node name="right" type="Control" parent="HUD"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 
@@ -302,6 +303,7 @@ valign = 1
 script = ExtResource( 19 )
 
 [node name="info" type="Control" parent="HUD"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
