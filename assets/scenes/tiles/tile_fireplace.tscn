@@ -25,7 +25,7 @@ normal_texture = ExtResource( 2 )
 material = SubResource( 1 )
 size = Vector2( 1, 1 )
 
-[sub_resource type="SphereMesh" id=4]
+[sub_resource type="SphereMesh" id=3]
 
 material = ExtResource( 4 )
 height = 0.5
@@ -33,7 +33,7 @@ radial_segments = 6
 rings = 2
 is_hemisphere = true
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=4]
 
 material = ExtResource( 4 )
 size = Vector3( 1.2, 0.2, 2 )
@@ -45,41 +45,36 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="level1" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 transform = Transform( 0.0386018, 0, 0.031779, 0, 0.05, 0, -0.031779, 0, 0.0386018, 0.0454079, 0, 0.0856624 )
 
 [node name="OmniLight" type="OmniLight" parent="level1"]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.265806, -2.45068, 0.0201893 )
 light_color = Color( 1, 0.494118, 0, 1 )
 light_energy = 16.0
-shadow_enabled = true
 omni_range = 0.9
 omni_attenuation = 0.392292
 
 [node name="MeshInstance" type="MeshInstance" parent="level1"]
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="level2" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
 visible = false
 
 [node name="MeshInstance2" type="MeshInstance" parent="level2"]
 transform = Transform( 0.632922, 0.000222855, 0.774216, 0.000788001, -1, -0.000356324, 0.774216, 0.000835601, -0.632922, -2.38404, 1.30572, -3.26065 )
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="OmniLight2" type="OmniLight" parent="level2"]
 transform = Transform( 15.4407, 0, 12.7116, 0, 20, 0, -12.7116, 0, 15.4407, -3.51727, 3.54841, -2.72958 )
 light_color = Color( 1, 0.494118, 0, 1 )
 light_energy = 16.0
-shadow_enabled = true
 omni_range = 0.9
 omni_attenuation = 0.392292
 
 [node name="level3" parent="." instance=ExtResource( 6 )]
-editor/display_folded = true
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
 visible = false
 
@@ -87,12 +82,11 @@ visible = false
 transform = Transform( 15.4407, 0, 12.7116, 0, 20, 0, -12.7116, 0, 15.4407, -3.6435, 5.26157, -0.247309 )
 light_color = Color( 1, 0.494118, 0, 1 )
 light_energy = 16.0
-shadow_enabled = true
 omni_range = 0.9
 omni_attenuation = 0.392292
 
 [node name="MeshInstance2" type="MeshInstance" parent="level3"]
 transform = Transform( -0.0240394, 0, 0.999712, 0, 1, 0, -0.999712, 0, -0.0240394, -2.42504, 1.75666, -3.32434 )
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 material/0 = null
 
