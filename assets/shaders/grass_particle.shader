@@ -11,7 +11,7 @@ shader_type particles;
 
 // TERRAIN SETTINGS
 uniform float TERRAIN_HEIGHT_SCALE = 128.0;
-uniform float TERRAIN_MIN_H = 0.4;
+uniform float TERRAIN_MIN_H = 0.5;
 uniform float TERRAIN_MAX_H = 0.6;
 
 // VEGETATION SETTINGS
@@ -71,7 +71,7 @@ void vertex() {
 	pos.z += (EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], GRASS_SPACING));
 
 	float ran = fake_random(pos.xz);
-	
+
 	pos.x += ran * GRASS_SPACING;
 	pos.z += ran * GRASS_SPACING; // apply noise and spacing
 	pos.y = get_height(pos.xz); // apply height
@@ -79,22 +79,22 @@ void vertex() {
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * MAP_SIZE;
 	feat_pos /= MAP_SIZE; // center
-	
+
 	// remove particle if
 	if (pos.y < TERRAIN_MIN_H || pos.y > TERRAIN_MAX_H ) { // don't fit any terrain mask or is underwater
 		pos.y = -100000.0;
 	}
-	
+
 	pos.y *= TERRAIN_HEIGHT_SCALE;
-	
+
 	// calculate random scaling but within min/max
 	float scale = mix(GRASS_SCALE_MIN, GRASS_SCALE_MAX, ran);
 
 	// do the final transformation
 	TRANSFORM = enterTheMatrix(
 		vec3(pos.x, pos.y, pos.z), // set position
-		vec3(1.0, 0.0, 1.0), // lock Y axis
-		ran * 320.0, // rotate 0-360 (over Y)
+		vec3(1.0, 0.9, 1.0), // lock Y axis
+		ran * 1.8, // rotate 0-360 (over Y)
 		scale); // SCALE
 }
 
