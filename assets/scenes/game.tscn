@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
@@ -8,9 +8,10 @@
 [ext_resource path="res://assets/sprites/grass_field.png" type="Texture" id=6]
 [ext_resource path="res://assets/scripts/camp.gd" type="Script" id=7]
 [ext_resource path="res://assets/meshes/tree.mesh" type="ArrayMesh" id=8]
-[ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=9]
-[ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=10]
-[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=11]
+[ext_resource path="res://assets/scenes/cursor.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=10]
+[ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=11]
+[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=12]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -30,7 +31,7 @@ size = Vector2( 5, 3 )
 
 flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 10 )
+albedo_texture = ExtResource( 11 )
 
 [sub_resource type="PlaneMesh" id=4]
 
@@ -93,6 +94,7 @@ size = 7.0
 far = 1024.0
 
 [node name="trees" type="Position3D" parent="player/carrier/camp"]
+editor/display_folded = true
 
 [node name="tree" type="MeshInstance" parent="player/carrier/camp/trees"]
 transform = Transform( 0.29995, 0.005467, 2.17781e-12, -0.005467, 0.29995, 2.3897e-10, 2.1787e-12, -2.3897e-10, 0.3, -2.42537, 0.0168304, 0.460754 )
@@ -166,9 +168,11 @@ mesh = ExtResource( 8 )
 material/0 = null
 material/1 = null
 
+[node name="cursor" parent="player/carrier/camp" instance=ExtResource( 9 )]
+
 [node name="pivot" type="Position3D" parent="player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="camera_drone" type="Camera" parent="player/pivot"]
 transform = Transform( 1, 1.49012e-08, -2.98023e-08, 0, 0.939693, 0.34202, 0, -0.34202, 0.939692, 0, 16, 24 )
@@ -198,5 +202,5 @@ margin_top = 10.0
 margin_right = 64.0
 margin_bottom = 24.0
 text = "FPS: 666"
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 
