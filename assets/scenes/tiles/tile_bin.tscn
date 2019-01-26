@@ -21,19 +21,5 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Scene Root" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0801058, 0, -0.140425 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.146108, -1.19209e-07, 0.0253751 )
 
-[node name="Bin1" parent="Scene Root" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.323627, -2.38419e-07, 0.0415103 )
-
-[node name="Scene Root2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.12689, 0, -0.215404, 0, 0.25, 0, 0.215404, 0, 0.12689, 0.19357, 0, -0.140425 )
-
-[node name="Scene Root3" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.249186, 0, -0.020153, 0, 0.25, 0, 0.020153, 0, -0.249186, 0.19357, 0, 0.280415 )
-
-[node name="Scene Root4" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.163547, 0, 0.189083, 0, 0.25, 0, -0.189083, 0, 0.163547, 0.203856, 1.19209e-07, 0.0553368 )
-
-
-[editable path="Scene Root"]

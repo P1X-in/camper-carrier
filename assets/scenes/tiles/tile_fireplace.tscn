@@ -67,7 +67,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Scene Root" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+transform = Transform( 0.0617628, 0, 0.0508464, 0, 0.08, 0, -0.0508464, 0, 0.0617628, 0.0454079, 0, 0.0856624 )
 
 [node name="OmniLight" type="OmniLight" parent="Scene Root"]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.265806, -2.45068, 0.0201893 )
@@ -79,7 +79,6 @@ omni_attenuation = 0.392292
 
 [node name="Particles" type="Particles" parent="Scene Root"]
 transform = Transform( 0.999643, -0.0267307, 0, -0.0267307, -0.999643, 8.74228e-08, -2.33688e-09, -8.73915e-08, -1, 0, 0.215116, 0 )
-amount = 16
 lifetime = 0.5
 preprocess = 1.0
 process_material = SubResource( 7 )
