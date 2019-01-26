@@ -101,7 +101,7 @@ func add_ghost():
         building_ghost.transform.basis = building_ghost.transform.basis.scaled(Vector3(0.5, 0.5, 0.5))
 
         if player.hud != null and player.hud.camp_hud != null:
-            player.hud.camp_hud.show_building_card(new_position)
+            player.hud.camp_hud.show_building_card(building_ghost)
     else:
         player.hud.camp_hud.show_upgrade_card(tiles[cursor.y][cursor.x], levels[cursor.y][cursor.x])
 
@@ -138,6 +138,9 @@ func _add_tile(name, position):
     tiles[position.y][position.x] = new_tile
     levels[position.y][position.x] = 1
 
+    if player.hud != null and player.hud.camp_hud != null:
+        player.hud.camp_hud.show_upgrade_card(new_tile, 1)
+
 func _upgrade(position):
     var old_level = levels[position.y][position.x]
     var new_level = old_level + 1
@@ -149,6 +152,7 @@ func _upgrade(position):
     tile.get_node("level" + str(old_level)).hide()
     tile.get_node("level" + str(new_level)).show()
     levels[position.y][position.x] = new_level
+    player.hud.camp_hud.show_upgrade_card(tile, new_level)
 
 func _next_template():
     var names = buildings.keys()
