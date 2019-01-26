@@ -2,9 +2,9 @@ extends Control
 
 onready var title_node = $"corner/message_box/title"
 onready var description_node = $"corner/message_box/message"
-onready var button_node = $"corner/message_box/title"
-onready var sausage_node = $"corner/message_box/title"
-onready var beer_node = $"corner/message_box/title"
+onready var button_node = $"corner/message_box/b"
+onready var sausage_node = $"corner/message_box/sausage"
+onready var beer_node = $"corner/message_box/beer"
 
 
 func show_building_card(tile):
@@ -48,4 +48,28 @@ func show_upgrade_card(tile, current_level):
     self._fill_card(title, description, button_icon, button_label, sausage, beer)
 
 func _fill_card(title, description, button_icon, button_label, sausage, beer):
-    return
+    title_node.set_text(title)
+    description_node.set_text(description)
+    if button_icon != null:
+        button_node.show()
+        button_node.set_frame(button_icon)
+    else:
+        button_node.hide()
+
+    if button_label != null:
+        button_node.get_node('label').show()
+        button_node.get_node('label').set_text(button_label)
+    else:
+        button_node.get_node('label').hide()
+
+    if sausage != null:
+        sausage_node.show()
+        sausage_node.get_node('label').set_text(str(sausage))
+    else:
+        sausage_node.hide()
+
+    if beer != null:
+        beer_node.show()
+        beer_node.get_node('label').set_text(str(beer))
+    else:
+        beer_node.hide()

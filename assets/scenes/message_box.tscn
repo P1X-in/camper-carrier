@@ -62,13 +62,11 @@ margin_bottom = 16.0
 text = "DECLINE"
 valign = 1
 
-[node name="susage" type="Sprite" parent="."]
-editor/display_folded = true
-visible = false
+[node name="sausage" type="Sprite" parent="."]
 position = Vector2( 30.9511, 84.7084 )
 texture = ExtResource( 3 )
 
-[node name="label2" type="Label" parent="susage"]
+[node name="label" type="Label" parent="sausage"]
 margin_left = 22.0
 margin_top = -16.0
 margin_right = 46.0
@@ -76,13 +74,11 @@ margin_bottom = 16.0
 text = "123"
 valign = 1
 
-[node name="susage2" type="Sprite" parent="."]
-editor/display_folded = true
-visible = false
-position = Vector2( 30.9511, 84.7084 )
+[node name="beer" type="Sprite" parent="."]
+position = Vector2( 105.951, 84.7084 )
 texture = ExtResource( 4 )
 
-[node name="label2" type="Label" parent="susage2"]
+[node name="label" type="Label" parent="beer"]
 margin_left = 22.0
 margin_top = -16.0
 margin_right = 46.0

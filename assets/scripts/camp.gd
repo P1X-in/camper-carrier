@@ -100,6 +100,11 @@ func add_ghost():
         building_ghost.transform.origin = new_position
         building_ghost.transform.basis = building_ghost.transform.basis.scaled(Vector3(0.5, 0.5, 0.5))
 
+        if player.hud != null and player.hud.camp_hud != null:
+            player.hud.camp_hud.show_building_card(new_position)
+    else:
+        player.hud.camp_hud.show_upgrade_card(tiles[cursor.y][cursor.x], levels[cursor.y][cursor.x])
+
 func _input(event):
     if player.active_camera == 3:
         if Input.is_action_pressed("game_x"):

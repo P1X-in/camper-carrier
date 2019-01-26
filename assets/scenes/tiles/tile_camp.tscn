@@ -10,6 +10,9 @@
 
 [node name="level1" parent="." index="0"]
 editor/display_folded = true
+building_name = "Tents"
+description = "Simple camping tents"
+cost_sausage = 10
 
 [node name="Scene Root" parent="level1" index="0" instance=ExtResource( 2 )]
 transform = Transform( 0.0642596, -3.01337e-05, -0.0277616, -3.01338e-05, 0.0699998, -0.000145732, 0.0277616, 0.000145732, 0.0642594, 0.0637189, 0.000334546, 0.177666 )
@@ -22,12 +25,18 @@ transform = Transform( 0.00333638, -0.000349944, 0.0699196, -0.000349944, 0.0699
 
 [node name="level2" parent="." index="1"]
 editor/display_folded = true
+building_name = "Camper"
+description = "A bit old, but still nice."
+cost_sausage = 20
 
 [node name="Scene Root" parent="level2" index="0" instance=ExtResource( 3 )]
 transform = Transform( 0.0614877, -0.000202167, 0.0788621, -0.000202167, 0.0999989, 0.000413979, -0.078862, -0.000413979, 0.0614866, -0.00530589, -2.78652e-05, 0.114967 )
 
 [node name="level3" parent="." index="2"]
 editor/display_folded = true
+building_name = "Cottage"
+description = "A cottage by the lake - your home away from home"
+cost_sausage = 30
 
 [node name="Scene Root" parent="level3" index="0" instance=ExtResource( 4 )]
 transform = Transform( -0.0686859, -0.0008855, 0.0726737, -0.0008855, 0.0999954, 0.000381494, -0.0726737, -0.000381494, -0.0686905, 0.0665616, 0.00034941, 0.182168 )
