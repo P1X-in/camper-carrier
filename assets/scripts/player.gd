@@ -11,6 +11,8 @@ onready var cameras = [
 	$"pivot/camera_spyglass",
 	$"boat/camera_onboard"
 ]
+onready var pivot_point = $"pivot"
+
 const DEADZONE = 0.15
 
 var angle_x = 0
@@ -21,7 +23,6 @@ var _angle_y = 250
 
 var move_to
 var w = 0
-var axis_value
 
 var axis_value = Vector2()
 
@@ -66,42 +67,20 @@ func _input(event):
 func _physics_process(delta):
 	axis_value.x = Input.get_joy_axis(0, JOY_ANALOG_LX)
 	axis_value.y = Input.get_joy_axis(0, JOY_ANALOG_LY)
-		axis_value = Input.get_joy_axis(0, axis)
-		var axis_abs = abs(axis_value)
-		if axis_abs > DEADZONE:
-			# ROTATE LEFT - RIGHT
-			if axis == JOY_ANALOG_LX:
-				angle_y -= rotate_speed * axis_value
 
-			# ROTATE ..THE OTEHR WAY :P
-			##
-			#if axis == JOY_ANALOG_RY:
-			#	if axis_value > 0:
-			#		if angle_x > -25:
-			#			angle_x -= rotate_speed * axis_abs
-			#	else:
-			#		if angle_x < 25:
-			#			angle_x += rotate_speed * axis_abs
+	var current_axis = axis_value
+	if active_camera != 2:
+		current_axis = axis_value.rotated(deg2rad(-pivot_point.angle_y))
 
-			# MOVE LEFT - RIGHT
-			#if axis == JOY_ANALOG_LX:
-			#	if axis_value < 0:
-			#		var left_right = transform.basis.x
-			#		left_right.y = 0.0
-			#		left_right = left_right.normalized()
-			#		move_to -= left_right * move_speed_lr * axis_abs;
-			#	else:
-			#		var left_right = transform.basis.x
-			#		left_right.y = 0.0
-			#		left_right = left_right.normalized()
-			#		move_to += left_right * move_speed_lr * axis_abs;
+	if abs(current_axis.x) > DEADZONE:
+		angle_y -= rotate_speed * current_axis.x
+		pivot_point.angle_y += rotate_speed * current_axis.x
 
-			# MOVE FRONT - BACK
-			if axis == JOY_ANALOG_LY:
-				var front_back = transform.basis.z
-				front_back.y = 0.0
-				front_back = front_back.normalized()
-				move_to += front_back * move_speed_fb * axis_value;
+	if abs(current_axis.y) > DEADZONE:
+		var front_back = transform.basis.z
+		front_back.y = 0.0
+		front_back = front_back.normalized()
+		move_to += front_back * move_speed_fb * current_axis.y
 
 
 
