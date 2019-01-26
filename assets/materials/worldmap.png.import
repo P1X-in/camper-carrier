@@ -2,27 +2,26 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/worldmap.png-5ca6b162074e95b5f0f5ab8598a2f159.s3tc.stex"
-path.etc2="res://.import/worldmap.png-5ca6b162074e95b5f0f5ab8598a2f159.etc2.stex"
+path="res://.import/worldmap.png-5ca6b162074e95b5f0f5ab8598a2f159.stex"
 
 [deps]
 
 source_file="res://assets/materials/worldmap.png"
-dest_files=[ "res://.import/worldmap.png-5ca6b162074e95b5f0f5ab8598a2f159.s3tc.stex", "res://.import/worldmap.png-5ca6b162074e95b5f0f5ab8598a2f159.etc2.stex" ]
+dest_files=[ "res://.import/worldmap.png-5ca6b162074e95b5f0f5ab8598a2f159.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
-flags/filter=true
-flags/mipmaps=true
+flags/repeat=1
+flags/filter=false
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
