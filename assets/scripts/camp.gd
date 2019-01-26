@@ -25,6 +25,11 @@ var buildings = {
     "fireplace" : preload("res://assets/scenes/tiles/tile_fireplace.tscn"),
 }
 
+var selected_building_template = 1
+var selected_building_name = "camp"
+
+var building_ghost = null
+
 
 func _ready():
     player = get_parent().get_parent()
@@ -83,6 +88,10 @@ func _input(event):
             select_x()
         if Input.is_action_pressed("game_y"):
             select_y()
+        if Input.is_action_pressed("shoulder_left"):
+            _next_template()
+        if Input.is_action_pressed("shoulder_right"):
+            _prev_template()
 
 func select_x():
     if tiles[cursor.y][cursor.x] == null:
@@ -94,7 +103,7 @@ func select_y():
     if tiles[cursor.y][cursor.x] != null:
         return
 
-    _add_tile('camp', cursor)
+    _add_tile(selected_building_name, cursor)
 
 func _add_tile(name, position):
     var new_tile = buildings[name].instance()
@@ -116,3 +125,24 @@ func _upgrade(position):
     tile.get_node("level" + str(old_level)).hide()
     tile.get_node("level" + str(new_level)).show()
     levels[position.y][position.x] = new_level
+
+func _next_template():
+    var names = buildings.keys()
+
+    selected_building_template += 1
+
+    if selected_building_template >= names.size():
+        selected_building_template = 0
+
+    selected_building_name = names[selected_building_template]
+
+
+func _prev_template():
+    var names = buildings.keys()
+
+    selected_building_template -= 1
+
+    if selected_building_template < 0:
+        selected_building_template = names.size() - 1
+
+    selected_building_name = names[selected_building_template]
