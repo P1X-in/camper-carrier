@@ -1,38 +1,55 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/materials/wood.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/wood_noise.tres" type="Texture" id=1]
 [ext_resource path="res://assets/materials/softbody.material" type="Material" id=2]
+
+[sub_resource type="SpatialMaterial" id=13]
+
+albedo_color = Color( 0.270588, 0.247059, 0.00392157, 1 )
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.0
+metallic_texture = ExtResource( 1 )
+roughness_texture = ExtResource( 1 )
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource( 1 )
+rim_enabled = true
+rim = 0.5
+rim_tint = 0.8
+rim_texture = ExtResource( 1 )
+uv1_scale = Vector3( 32, 4, 4 )
 
 [sub_resource type="CapsuleMesh" id=1]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 radial_segments = 16
 rings = 4
 
 [sub_resource type="CapsuleMesh" id=2]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 radial_segments = 16
 rings = 4
 
 [sub_resource type="CubeMesh" id=3]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 size = Vector3( 2, 0.74, 3.91 )
 
 [sub_resource type="CubeMesh" id=4]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 size = Vector3( 2.35, 0.79, 3.71 )
 
 [sub_resource type="CubeMesh" id=5]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 size = Vector3( 0.88, 0.32, 0.75 )
 
 [sub_resource type="CylinderMesh" id=6]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 top_radius = 0.05
 bottom_radius = 0.1
 radial_segments = 8
@@ -40,7 +57,7 @@ rings = 2
 
 [sub_resource type="CylinderMesh" id=7]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 top_radius = 0.05
 bottom_radius = 0.05
 height = 1.6
@@ -49,7 +66,7 @@ rings = 2
 
 [sub_resource type="CylinderMesh" id=8]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 top_radius = 0.05
 bottom_radius = 0.05
 height = 1.0
@@ -72,7 +89,7 @@ subdivide_depth = 16
 
 [sub_resource type="CubeMesh" id=11]
 
-material = ExtResource( 1 )
+material = SubResource( 13 )
 size = Vector3( 0.2, 0.6, 0.4 )
 
 [sub_resource type="Animation" id=12]

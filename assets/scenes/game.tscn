@@ -5,31 +5,32 @@
 [ext_resource path="res://assets/materials/environment.tres" type="Environment" id=3]
 [ext_resource path="res://assets/scripts/player.gd" type="Script" id=4]
 [ext_resource path="res://assets/meshes/letniskowiec.mesh" type="ArrayMesh" id=5]
-[ext_resource path="res://assets/materials/grass.material" type="Material" id=6]
-[ext_resource path="res://assets/materials/steel.material" type="Material" id=7]
+[ext_resource path="res://assets/sprites/grass_field.png" type="Texture" id=6]
+[ext_resource path="res://assets/scenes/tiles/tile_camp.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=8]
 [ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=9]
 [ext_resource path="res://assets/scripts/fps.gd" type="Script" id=10]
 
-[sub_resource type="CubeMesh" id=3]
-
-material = ExtResource( 6 )
-size = Vector3( 4.5, 0.25, 2.5 )
-
-[sub_resource type="CubeMesh" id=4]
-
-material = ExtResource( 7 )
-size = Vector3( 1, 0.25, 1 )
-
 [sub_resource type="SpatialMaterial" id=1]
+
+flags_transparent = true
+albedo_texture = ExtResource( 6 )
+uv1_scale = Vector3( 3, 2, 2 )
+
+[sub_resource type="CubeMesh" id=2]
+
+material = SubResource( 1 )
+size = Vector3( 5, 0.25, 3 )
+
+[sub_resource type="SpatialMaterial" id=3]
 
 flags_transparent = true
 flags_unshaded = true
 albedo_texture = ExtResource( 9 )
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="PlaneMesh" id=4]
 
-material = SubResource( 1 )
+material = SubResource( 3 )
 size = Vector2( 0.5, 0.5 )
 
 [node name="game" type="Spatial"]
@@ -70,17 +71,59 @@ visible = false
 fov = 90.0
 far = 1024.0
 
-[node name="camp" type="CSGMesh" parent="player/carrier"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.859474, -0.940912 )
-mesh = SubResource( 3 )
+[node name="camp" type="MeshInstance" parent="player/carrier"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.709999, -0.941 )
+mesh = SubResource( 2 )
+material/0 = null
 
 [node name="camera_camp" type="Camera" parent="player/carrier/camp"]
 transform = Transform( 0.5, 0, 0, 0, 0.129409, 0.482963, 0, -0.482963, 0.129409, 0, 3.59, 0.8 )
 visible = false
 
-[node name="CSGMesh" type="CSGMesh" parent="player/carrier/camp"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
-mesh = SubResource( 4 )
+[node name="tile_camp" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.1, -0.905188 )
+
+[node name="tile_camp6" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.1, -0.0270729 )
+
+[node name="tile_camp14" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.1, 0.84099 )
+
+[node name="tile_camp2" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.1, -0.905188 )
+
+[node name="tile_camp8" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.1, -0.0270729 )
+
+[node name="tile_camp11" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.1, 0.84099 )
+
+[node name="tile_camp3" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.1, -0.905188 )
+
+[node name="tile_camp7" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.1, -0.0270729 )
+
+[node name="tile_camp12" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.1, 0.84099 )
+
+[node name="tile_camp4" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.1, -0.905188 )
+
+[node name="tile_camp10" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.1, -0.0270729 )
+
+[node name="tile_camp15" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.1, 0.84099 )
+
+[node name="tile_camp5" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.1, -0.905188 )
+
+[node name="tile_camp9" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.1, -0.0270729 )
+
+[node name="tile_camp13" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.1, 0.84099 )
 
 [node name="pivot" type="Position3D" parent="player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -101,7 +144,7 @@ far = 1024.0
 
 [node name="vidgete" type="MeshInstance" parent="player/pivot/camera_spyglass"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5 )
-mesh = SubResource( 2 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="HUD" type="Control" parent="."]

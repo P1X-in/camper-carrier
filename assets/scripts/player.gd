@@ -9,7 +9,8 @@ var active_camera = 0
 onready var cameras = [
 	$"pivot/camera_drone",
 	$"pivot/camera_spyglass",
-	$"carrier/camera_onboard"
+	$"carrier/camera_onboard",
+	$"carrier/camp/camera_camp"
 ]
 onready var pivot_point = $"pivot"
 
@@ -101,7 +102,7 @@ func select_a():
 func select_b():
 	cameras[active_camera].hide()
 	active_camera += 1
-	if active_camera > 2:
+	if active_camera > cameras.size() -1:
 		active_camera = 0
 	cameras[active_camera].show()
 	cameras[active_camera].set_current(true)

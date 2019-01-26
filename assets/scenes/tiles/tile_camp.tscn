@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/materials/stone.material" type="Material" id=1]
+[ext_resource path="res://assets/blender/Camp1.dae" type="PackedScene" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+material = ExtResource( 1 )
+size = Vector3( 0.8, 0.1, 0.8 )
+
+[node name="tile_camp" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32193, 0.1, -0.522818 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Scene Root" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.0150052, 0.000832399, 0.047688, 0, 0.0499924, -0.000872622, -0.0476953, -0.000261878, -0.015003, -0.213481, 0.0482684, -0.223032 )
+
+[node name="Scene Root2" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.0470291, -0.000296312, -0.0169757, 0, 0.0499924, -0.000872619, 0.0169783, -0.00082077, -0.047022, -0.174436, 0.0427916, 0.201253 )
+
+[node name="Scene Root4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0338789, -0.00064177, -0.036767, 0, 0.0499924, -0.000872622, 0.0367725, 0.000591269, 0.0338737, 0.286089, 0.0443306, 0.284124 )
+
+[node name="Scene Root3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.00600685, 0.0008663, 0.0496303, 0, 0.0499924, -0.00087262, -0.0496379, 0.000104834, 0.00600594, 0.0324863, 0.0443306, -0.216554 )
+
+[node name="Scene Root5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.00600685, 0.0008663, 0.0496303, 0, 0.0499924, -0.00087262, -0.0496379, 0.000104834, 0.00600594, 0.210773, 0.0443306, -0.194803 )
+
