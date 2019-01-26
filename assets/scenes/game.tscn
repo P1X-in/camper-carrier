@@ -59,7 +59,7 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.01, 52.99, 22.4392 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.01, 50.7293, 22.4392 )
 script = ExtResource( 4 )
 
 [node name="carrier" type="MeshInstance" parent="player"]

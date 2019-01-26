@@ -1,6 +1,6 @@
 extends Position3D
 
-export var move_speed = 5.0
+export var move_speed = 10.0
 
 var world
 var direction = Vector3(0.0, 0.0, 0.0)

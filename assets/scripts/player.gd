@@ -123,13 +123,22 @@ func select_b():
 	cameras[active_camera].set_current(true)
 
 func fire_garbage():
-	if self.garbage_charges < 1:
+	if self.garbage_charges < 1 or active_camera == 3:
 		return
 
-	var direction = Vector2(0.0, -1.0).rotated(deg2rad(-pivot_point.angle_y - angle_y))
+	var direction = Vector2(0.0, -1.0)
+	var elevation = 2
+
+	if active_camera == 0 or active_camera == 1:
+		direction = direction.rotated(deg2rad(-pivot_point.angle_y - angle_y))
+	if active_camera == 1:
+		elevation = 15
+	if active_camera == 2:
+		direction = direction.rotated(deg2rad(-angle_y))
+
 	var new_garbage = projectile_template.instance()
 	new_garbage.direction = Vector3(direction.x, 0.0, direction.y)
-	new_garbage.transform.origin = Vector3(self.transform.origin.x, self.transform.origin.y + 2, self.transform.origin.z)
+	new_garbage.transform.origin = Vector3(self.transform.origin.x, self.transform.origin.y + elevation, self.transform.origin.z)
 	world.add_child(new_garbage)
 
 	garbage_charges -= 1
