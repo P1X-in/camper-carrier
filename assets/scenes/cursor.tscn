@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/meshes/Bin.mesh" type="ArrayMesh" id=1]
+[sub_resource type="SpatialMaterial" id=1]
 
-[sub_resource type="Animation" id=1]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.12549 )
+metallic = 1.0
 
-resource_name = "rotate"
+[sub_resource type="CylinderMesh" id=2]
+
+material = SubResource( 1 )
+top_radius = 0.8
+bottom_radius = 0.8
+height = 0.1
+radial_segments = 6
+rings = 2
+
+[sub_resource type="Animation" id=3]
+
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -20,13 +32,47 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
 }
 
-[node name="cursor" type="MeshInstance"]
-transform = Transform( -0.35407, 0, -0.353036, 0, 0.5, 0, 0.353036, 0, -0.35407, 0, 0.340855, 0 )
-mesh = ExtResource( 1 )
-material/0 = null
-material/1 = null
+[sub_resource type="SpatialMaterial" id=6]
+
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.12549 )
+metallic = 1.0
+
+[sub_resource type="CylinderMesh" id=4]
+
+material = SubResource( 6 )
+top_radius = 0.7
+bottom_radius = 0.7
+height = 0.4
+radial_segments = 6
+
+[sub_resource type="SpatialMaterial" id=7]
+
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.501961 )
+metallic = 1.0
+
+[sub_resource type="CylinderMesh" id=5]
+
+material = SubResource( 7 )
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.05
+radial_segments = 6
+
+[node name="cursor" type="CSGMesh"]
+transform = Transform( -0.338019, 0, -0.368433, 0, 0.5, 0, 0.368433, 0, -0.338019, 0, 0.340855, 0 )
+mesh = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "rotate"
-anims/rotate = SubResource( 1 )
+anims/rotate = SubResource( 3 )
+
+[node name="CSGMesh" type="CSGMesh" parent="."]
+operation = 2
+mesh = SubResource( 4 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0544164, 0 )
+mesh = SubResource( 5 )
 
