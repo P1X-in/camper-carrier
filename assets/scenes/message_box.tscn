@@ -86,29 +86,3 @@ margin_bottom = 16.0
 text = "123"
 valign = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_left = 378.0
-margin_top = 64.0
-margin_right = 568.0
-margin_bottom = 112.0
-texture = ExtResource( 1 )
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="Label" type="Label" parent="NinePatchRect"]
-anchor_right = 1.0
-margin_bottom = 17.0
-text = "Hint"
-align = 1
-valign = 1
-
-[node name="Label2" type="Label" parent="NinePatchRect"]
-anchor_right = 1.0
-margin_top = 15.0
-margin_bottom = 43.0
-text = "LB / RB to change building"
-align = 1
-valign = 1
-

@@ -88,7 +88,7 @@ func _input(event):
         move_to += front_back * move_speed
     if Input.is_key_pressed(KEY_ESCAPE):
         quit_game()
-    if active_camera != 3:
+    if active_camera != 3 and active_camera != 4:
         if Input.is_action_pressed("game_a"):
             select_a()
         if Input.is_action_pressed("fire_garbage"):
@@ -106,7 +106,7 @@ func _physics_process(delta):
 
     var current_axis = axis_value
 
-    if active_camera == 3 || active_camera == 4:
+    if active_camera == 3 or active_camera == 4:
         return
 
     if active_camera < 2:
@@ -127,7 +127,8 @@ func _physics_process(delta):
 
 
 func select_a():
-    get_parent().change_map_seed()
+    print(transform.origin)
+
 
 func select_b():
     cameras[active_camera].hide()
