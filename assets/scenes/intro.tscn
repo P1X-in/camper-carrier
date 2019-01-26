@@ -43,7 +43,7 @@ theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 541.201, 332.381 )
+position = Vector2( 468.119, 332.381 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
@@ -61,7 +61,7 @@ texture = ExtResource( 4 )
 texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="Control"]
-modulate = Color( 1, 1, 1, 0.292923 )
+modulate = Color( 1, 1, 1, 0.00517725 )
 margin_left = -110.0
 margin_top = 180.0
 margin_right = 74.0
