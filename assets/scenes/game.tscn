@@ -45,7 +45,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.01, 52.99, 22.4392 )
 script = ExtResource( 4 )
 
 [node name="carrier" type="MeshInstance" parent="player"]
-transform = Transform( -1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0, 0 )
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.92551, 0, 0 )
 mesh = ExtResource( 5 )
 material/0 = null
 material/1 = null
@@ -59,7 +59,7 @@ fov = 90.0
 far = 1024.0
 
 [node name="pivot" type="Position3D" parent="player"]
-transform = Transform( -0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, 0, 0, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="camera_drone" type="Camera" parent="player/pivot"]
