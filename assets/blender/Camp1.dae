@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.80.39 commit date:2018-12-20, commit time:16:35, hash:9ebd309e2b96</authoring_tool>
+    </contributor>
+    <created>2019-01-26T13:08:28</created>
+    <modified>2019-01-26T13:08:28</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="Tent_cloth-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color sid="diffuse">0.418224 0.214303 0.08862939 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0 0 0 1</color>
+            </specular>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 0</color>
+            </transparent>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Ropes-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color sid="diffuse">0.6202337 0.580117 0.2035509 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0 0 0 1</color>
+            </specular>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 0</color>
+            </transparent>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Wood-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color sid="diffuse">0.06645302 0.01421106 0.005987412 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0 0 0 1</color>
+            </specular>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 0</color>
+            </transparent>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="Tent_cloth-material" name="Tent cloth">
+      <instance_effect url="#Tent_cloth-effect"/>
+    </material>
+    <material id="Ropes-material" name="Ropes">
+      <instance_effect url="#Ropes-effect"/>
+    </material>
+    <material id="Wood-material" name="Wood">
+      <instance_effect url="#Wood-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Plane_006-mesh" name="Plane.006">
+      <mesh>
+        <source id="Plane_006-mesh-positions">
+          <float_array id="Plane_006-mesh-positions-array" count="150">-1.317523 1.103606 0.1565619 -1.317523 0.06164836 1.732384 -1.317523 -0.9803094 0.1565619 1.299868 -0.9803094 0.1565619 1.299868 0.06164836 1.732384 1.299868 1.103606 0.1565619 1.057094 1.103606 0.1565619 -1.059137 -0.9620395 -0.08381783 1.057094 0.06164836 1.732384 -1.059137 0.06164836 1.732384 -1.059137 -0.9803094 0.1565619 -1.093501 0.2247765 -0.08381783 -1.093501 0.06164836 1.732384 -1.093501 1.103606 0.1565619 1.057094 0.2247765 -0.08381783 -1.059137 -0.08455789 -0.08381783 1.091458 -0.9803094 0.1565619 1.091458 0.06164836 1.732384 1.091458 -0.08455789 -0.08381783 1.091458 -0.9620395 -0.08381783 1.057094 1.093798 -0.08381783 -1.093501 1.093798 -0.08381783 1.208877 0.08801698 -0.08825093 1.208877 0.08801698 1.961947 1.235216 0.06887996 -0.08825093 1.235216 0.06887996 1.961947 1.225156 0.03791564 -0.08825093 1.225156 0.03791564 1.961947 1.192598 0.03791564 -0.08825093 1.192598 0.03791564 1.961947 1.182537 0.06887996 -0.08825093 1.182537 0.06887996 1.961947 -1.233729 0.08801525 -0.08825093 -1.233729 0.08801525 1.961947 -1.207389 0.06887829 -0.08825093 -1.207389 0.06887829 1.961947 -1.21745 0.03791397 -0.08825093 -1.21745 0.03791397 1.961947 -1.250007 0.03791397 -0.08825093 -1.250007 0.03791397 1.961947 -1.260068 0.06887829 -0.08825093 -1.260068 0.06887829 1.961947 1.187159 0.03526806 1.920193 2.959213 0.03526806 -0.2018421 1.187159 0.07974392 1.920193 2.959213 0.07974392 -0.2018421 -2.982353 0.03526782 -0.2018423 -1.210299 0.0352683 1.920193 -2.982353 0.07974374 -0.2018423 -1.210299 0.07974416 1.920193</float_array>
+          <technique_common>
+            <accessor source="#Plane_006-mesh-positions-array" count="50" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_006-mesh-normals">
+          <float_array id="Plane_006-mesh-normals-array" count="114">0 -0.8341431 0.5515482 0 0.8341431 0.5515481 1 -1.45791e-7 0 1 0 0 1 1.43452e-7 0 0 0.9971243 0.07578521 0 0.9991687 -0.0407688 0.587782 0.8090193 0 0.9510559 -0.3090192 0 0 -1 0 -1.73809e-7 0 1 -0.9510559 -0.3090191 0 -0.5877853 0.8090171 0 1.90312e-7 0 -1 0.5877855 0.8090169 0 0.9510559 -0.3090192 0 0 -1 0 0 0 1 -0.951058 -0.3090127 0 0 0 -1 0.7675642 0 0.640972 -0.7675642 0 0.640972 0 -0.8341431 0.5515481 0 0.8341431 0.5515482 0 0.9971241 0.07578617 0 0.9991686 -0.04076969 0.5877854 0.8090169 0 0.9510579 -0.3090127 0 0 -1 0 7.39048e-6 0 1 -7.39051e-6 0 1 2.85473e-7 0 -1 0.587782 0.8090195 0 7.39047e-6 0 1 -4.56759e-6 0 1 -0.5877887 0.8090146 0 0.7675643 0 0.6409721 -0.7675642 0 0.6409721</float_array>
+          <technique_common>
+            <accessor source="#Plane_006-mesh-normals-array" count="38" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_006-mesh-map-0">
+          <float_array id="Plane_006-mesh-map-0-array" count="312">1 0.25 0 0.5 0 0.25 1 0.5 0 0.75 0 0.5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0.8 0.5 1 0.5 0.8 1 0.6 0.5 0.8 0.5 0.6 1 0.4 0.5 0.6 0.5 0.25 0.49 0.1089315 0.0558359 0.3910685 0.0558359 0.4 1 0.2 0.5 0.4 0.5 0.2 1 0 0.5 0.2 0.5 0.9782536 0.324164 0.8910685 0.0558359 0.6089316 0.0558359 1 1 0.8 0.5 1 0.5 0.8 1 0.6 0.5 0.8 0.5 0.6 1 0.4 0.5 0.6 0.5 0.02174645 0.3241641 0.1089315 0.0558359 0.3910685 0.0558359 0.4 1 0.2 0.5 0.4 0.5 0.2 1 0 0.5 0.2 0.5 0.8910685 0.0558359 0.6089316 0.0558359 0.5217465 0.3241641 1 0 0 1 0 0 1 0 0 1 0 0 1 0.25 1 0.5 0 0.5 1 0.5 1 0.75 0 0.75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0.8 1 0.8 0.5 0.8 1 0.6 1 0.6 0.5 0.6 1 0.4 1 0.4 0.5 0.3910685 0.0558359 0.4782536 0.324164 0.25 0.49 0.25 0.49 0.02174645 0.3241641 0.1089315 0.0558359 0.4 1 0.2 1 0.2 0.5 0.2 1 0 1 0 0.5 0.5217465 0.3241641 0.75 0.49 0.6089316 0.0558359 0.75 0.49 0.9782536 0.324164 0.6089316 0.0558359 1 1 0.8 1 0.8 0.5 0.8 1 0.6 1 0.6 0.5 0.6 1 0.4 1 0.4 0.5 0.3910685 0.0558359 0.4782536 0.324164 0.25 0.49 0.25 0.49 0.02174645 0.3241641 0.3910685 0.0558359 0.4 1 0.2 1 0.2 0.5 0.2 1 0 1 0 0.5 0.5217465 0.3241641 0.75 0.49 0.9782536 0.324164 0.9782536 0.324164 0.8910685 0.0558359 0.5217465 0.3241641 1 0 1 1 0 1 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#Plane_006-mesh-map-0-array" count="156" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane_006-mesh-vertices">
+          <input semantic="POSITION" source="#Plane_006-mesh-positions"/>
+        </vertices>
+        <polylist material="Tent_cloth-material" count="16">
+          <input semantic="VERTEX" source="#Plane_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_006-mesh-map-0" offset="2" set="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>3 0 0 1 0 1 2 0 2 4 1 3 0 1 4 1 1 5 14 2 6 6 2 7 8 2 8 11 3 9 13 3 10 12 3 11 16 3 12 18 3 13 17 3 14 10 4 15 15 4 16 9 4 17 10 5 18 19 5 19 7 5 20 21 6 21 6 6 22 20 6 23 3 22 72 4 22 73 1 22 74 4 23 75 5 23 76 0 23 77 14 3 78 20 3 79 6 3 80 11 3 81 21 3 82 13 3 83 16 3 84 19 3 85 18 3 86 10 3 87 7 3 88 15 3 89 10 24 90 16 24 91 19 24 92 21 25 93 13 25 94 6 25 95</p>
+        </polylist>
+        <polylist material="Ropes-material" count="4">
+          <input semantic="VERTEX" source="#Plane_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_006-mesh-map-0" offset="2" set="1"/>
+          <vcount>3 3 3 3 </vcount>
+          <p>43 20 66 44 20 67 42 20 68 47 21 69 48 21 70 46 21 71 43 36 150 45 36 151 44 36 152 47 37 153 49 37 154 48 37 155</p>
+        </polylist>
+        <polylist material="Wood-material" count="32">
+          <input semantic="VERTEX" source="#Plane_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_006-mesh-map-0" offset="2" set="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>23 7 24 24 7 25 22 7 26 25 8 27 26 8 28 24 8 29 27 9 30 28 9 31 26 9 32 23 10 33 29 10 34 27 10 35 29 11 36 30 11 37 28 11 38 31 12 39 22 12 40 30 12 41 24 13 42 26 13 43 28 13 44 33 14 45 34 14 46 32 14 47 35 15 48 36 15 49 34 15 50 37 16 51 38 16 52 36 16 53 41 17 54 39 17 55 37 17 56 39 18 57 40 18 58 38 18 59 41 12 60 32 12 61 40 12 62 36 19 63 38 19 64 40 19 65 23 26 96 25 26 97 24 26 98 25 27 99 27 27 100 26 27 101 27 28 102 29 28 103 28 28 104 27 29 105 25 29 106 23 29 107 23 30 108 31 30 109 29 30 110 29 11 111 31 11 112 30 11 113 31 12 114 23 12 115 22 12 116 30 19 117 22 19 118 28 19 119 22 31 120 24 31 121 28 31 122 33 32 123 35 32 124 34 32 125 35 15 126 37 15 127 36 15 128 37 16 129 39 16 130 38 16 131 37 33 132 35 33 133 33 33 134 33 34 135 41 34 136 37 34 137 39 11 138 41 11 139 40 11 140 41 35 141 33 35 142 32 35 143 40 19 144 32 19 145 34 19 146 34 19 147 36 19 148 40 19 149</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Camp1" name="Camp1" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Plane_006-mesh" name="Camp1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Tent_cloth-material" target="#Tent_cloth-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="Ropes-material" target="#Ropes-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="Wood-material" target="#Wood-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

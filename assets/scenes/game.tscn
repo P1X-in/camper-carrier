@@ -1,19 +1,31 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/materials/environment.tres" type="Environment" id=3]
 [ext_resource path="res://assets/scripts/player.gd" type="Script" id=4]
 [ext_resource path="res://assets/meshes/letniskowiec.mesh" type="ArrayMesh" id=5]
-[ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=6]
-[ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=7]
-[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=8]
+[ext_resource path="res://assets/materials/grass.material" type="Material" id=6]
+[ext_resource path="res://assets/materials/steel.material" type="Material" id=7]
+[ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=8]
+[ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=9]
+[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=10]
+
+[sub_resource type="CubeMesh" id=3]
+
+material = ExtResource( 6 )
+size = Vector3( 4.5, 0.25, 2.5 )
+
+[sub_resource type="CubeMesh" id=4]
+
+material = ExtResource( 7 )
+size = Vector3( 1, 0.25, 1 )
 
 [sub_resource type="SpatialMaterial" id=1]
 
 flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 7 )
+albedo_texture = ExtResource( 9 )
 
 [sub_resource type="PlaneMesh" id=2]
 
@@ -58,9 +70,21 @@ visible = false
 fov = 90.0
 far = 1024.0
 
+[node name="camp" type="CSGMesh" parent="player/carrier"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.859474, -0.940912 )
+mesh = SubResource( 3 )
+
+[node name="camera_camp" type="Camera" parent="player/carrier/camp"]
+transform = Transform( 0.5, 0, 0, 0, 0.129409, 0.482963, 0, -0.482963, 0.129409, 0, 3.59, 0.8 )
+visible = false
+
+[node name="CSGMesh" type="CSGMesh" parent="player/carrier/camp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+mesh = SubResource( 4 )
+
 [node name="pivot" type="Position3D" parent="player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="camera_drone" type="Camera" parent="player/pivot"]
 transform = Transform( 1, 1.49012e-08, -2.98023e-08, 0, 0.939693, 0.34202, 0, -0.34202, 0.939692, 0, 16, 24 )
@@ -90,5 +114,5 @@ margin_top = 10.0
 margin_right = 64.0
 margin_bottom = 24.0
 text = "FPS: 666"
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 
