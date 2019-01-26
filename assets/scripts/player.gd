@@ -11,7 +11,8 @@ onready var cameras = [
 	$"pivot/camera_drone",
 	$"pivot/camera_spyglass",
 	$"carrier/camera_onboard",
-	$"carrier/camp/camera_camp"
+	$"carrier/camp/camera_camp",
+	$"carrier/camp/camera_camp2"
 ]
 onready var pivot_point = $"pivot"
 
@@ -85,6 +86,10 @@ func _input(event):
 			fire_garbage()
 	if Input.is_action_pressed("game_b"):
 		select_b()
+	if Input.is_action_pressed("game_pro"):
+		select_pro()
+	if Input.is_action_pressed("fire_garbage"):
+		fire_garbage()
 
 func _physics_process(delta):
 	axis_value.x = Input.get_joy_axis(0, JOY_ANALOG_LX)
@@ -149,6 +154,9 @@ func fire_garbage():
 
 func add_garbage():
 	garbage_charges += 1
+
+func select_pro():
+	get_parent().get_node("sun").shadow_enabled = true
 
 func quit_game():
 	get_tree().quit()
