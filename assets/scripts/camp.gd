@@ -2,20 +2,39 @@ extends MeshInstance
 
 const STEP_THRESHOLD = 0.5
 
+const X_START = -1.794
+const Y_START = -0.905
+const Z_POS = 0.14
+const X_DIFF = 0.922
+const Y_DIFF = 0.895
+
 var player
 
 var tiles = []
-var tiles_flat = []
 var grid_size = Vector2(4, 2)
-var cursor = Vector2(0, 0)
+var cursor = Vector2(2, 1)
+onready var cursor_node = $"cursor"
 var axis_value = Vector2(0, 0)
 var need_reset = false
+
+
+var buildings = {
+    "bin" : preload("res://assets/scenes/tiles/tile_bin.tscn"),
+    "camp" : preload("res://assets/scenes/tiles/tile_camp.tscn"),
+    "fireplace" : preload("res://assets/scenes/tiles/tile_fireplace.tscn"),
+}
+
 
 func _ready():
     player = get_parent().get_parent()
 
     for i in range(0, 3):
         tiles.append([null, null, null, null, null])
+
+    update_cursor_position()
+    _add_tile('bin', Vector2(2, 1))
+    _add_tile('camp', Vector2(0, 1))
+    _add_tile('camp', Vector2(4, 2))
 
 
 func _physics_process(delta):
@@ -38,6 +57,7 @@ func _physics_process(delta):
             cursor.x -= 1
             if cursor.x < 0:
                 cursor.x = 0
+        update_cursor_position()
 
     if abs(axis_value.y) > STEP_THRESHOLD and not need_reset:
         need_reset = true
@@ -49,6 +69,11 @@ func _physics_process(delta):
             cursor.y -= 1
             if cursor.y < 0:
                 cursor.y = 0
+        update_cursor_position()
+
+func update_cursor_position():
+    var position = Vector3(X_START + cursor.x * X_DIFF, 0.341, Y_START + cursor.y * Y_DIFF)
+    cursor_node.transform.origin = position
 
 func _input(event):
     if player.active_camera == 3:
@@ -61,4 +86,15 @@ func select_x():
     return
 
 func select_y():
-    return
+    if tiles[cursor.y][cursor.x] != null:
+        return
+
+    _add_tile('camp', cursor)
+
+func _add_tile(name, position):
+    var new_tile = buildings[name].instance()
+    var new_position = Vector3(X_START + position.x * X_DIFF, Z_POS, Y_START + position.y * Y_DIFF)
+    self.add_child(new_tile)
+    new_tile.transform.origin = new_position
+
+    tiles[position.y][position.x] = new_tile

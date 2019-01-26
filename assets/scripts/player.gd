@@ -15,6 +15,7 @@ onready var cameras = [
 	$"carrier/camp/camera_camp2"
 ]
 onready var pivot_point = $"pivot"
+onready var camp = $"carrier/camp"
 
 var projectile_template
 var timer
@@ -127,6 +128,11 @@ func select_b():
 		active_camera = 0
 	cameras[active_camera].show()
 	cameras[active_camera].set_current(true)
+
+	if active_camera == 3:
+		camp.cursor_node.show()
+	else:
+		camp.cursor_node.hide()
 
 func fire_garbage():
 	if self.garbage_charges < 1 or active_camera == 3:
