@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
@@ -12,10 +12,11 @@
 [ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=10]
 [ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=11]
 [ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://assets/sprites/panel_48x48x9.png" type="Texture" id=13]
-[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=14]
-[ext_resource path="res://assets/images/beer_icon.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/sausage_icon.png" type="Texture" id=16]
+[ext_resource path="res://assets/scripts/hud.gd" type="Script" id=13]
+[ext_resource path="res://assets/sprites/panel_48x48x9.png" type="Texture" id=14]
+[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=15]
+[ext_resource path="res://assets/images/beer_icon.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/sausage_icon.png" type="Texture" id=17]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -205,11 +206,13 @@ material/0 = null
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 6 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="camp_management" type="Control" parent="HUD"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -226,7 +229,7 @@ margin_left = 24.0
 margin_top = -137.0
 margin_right = 379.0
 margin_bottom = -22.0
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -258,7 +261,7 @@ margin_top = 10.0
 margin_right = 74.0
 margin_bottom = 27.0
 text = "FPS: 666"
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 
 [node name="right" type="Control" parent="HUD"]
 anchor_left = 1.0
@@ -281,10 +284,10 @@ text = "000"
 [node name="beer_sprite" type="Sprite" parent="HUD/right"]
 position = Vector2( -100.216, 33.6371 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="sausage_sprite" type="Sprite" parent="HUD/right"]
 position = Vector2( -219.665, 35.4377 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
