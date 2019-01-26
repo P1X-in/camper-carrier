@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/sprites/panel_48x48x9.png" type="Texture" id=1]
-[ext_resource path="res://assets/sprites/button_x.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/sausage_icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/beer_icon.png" type="Texture" id=4]
 
 [node name="message_box" type="NinePatchRect"]
 margin_left = 24.0
@@ -34,27 +35,57 @@ autowrap = true
 [node name="a" type="Sprite" parent="."]
 position = Vector2( 122.983, 87.3504 )
 texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
 
 [node name="label" type="Label" parent="a"]
-margin_left = 18.0
+margin_left = 22.0
 margin_top = -16.0
-margin_right = 100.0
+margin_right = 104.0
 margin_bottom = 16.0
 text = "ACCEPT"
 valign = 1
 
 [node name="b" type="Sprite" parent="."]
 position = Vector2( 252.983, 87.3504 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 vframes = 2
 hframes = 2
 frame = 1
 
 [node name="label" type="Label" parent="b"]
-margin_left = 18.0
+margin_left = 22.0
 margin_top = -16.0
-margin_right = 100.0
+margin_right = 104.0
 margin_bottom = 16.0
 text = "DECLINE"
+valign = 1
+
+[node name="susage" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 30.9511, 84.7084 )
+texture = ExtResource( 3 )
+
+[node name="label2" type="Label" parent="susage"]
+margin_left = 22.0
+margin_top = -16.0
+margin_right = 46.0
+margin_bottom = 16.0
+text = "123"
+valign = 1
+
+[node name="susage2" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 30.9511, 84.7084 )
+texture = ExtResource( 4 )
+
+[node name="label2" type="Label" parent="susage2"]
+margin_left = 22.0
+margin_top = -16.0
+margin_right = 46.0
+margin_bottom = 16.0
+text = "123"
 valign = 1
 

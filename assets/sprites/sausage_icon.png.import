@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sausage_icon.png-44c7bf9f0b7bf2d855eadec0efbc147e.stex"
+path="res://.import/sausage_icon.png-1c1495826a32285ed5c63658f9781c27.stex"
 
 [deps]
 
-source_file="res://assets/images/sausage_icon.png"
-dest_files=[ "res://.import/sausage_icon.png-44c7bf9f0b7bf2d855eadec0efbc147e.stex" ]
+source_file="res://assets/sprites/sausage_icon.png"
+dest_files=[ "res://.import/sausage_icon.png-1c1495826a32285ed5c63658f9781c27.stex" ]
 
 [params]
 

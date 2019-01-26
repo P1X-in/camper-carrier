@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button_x.png-ce058bd8a5d562881667e329a8e7a902.stex"
+path="res://.import/beer_icon.png-a8c17faa60b70a8e8ef539342f334105.stex"
 
 [deps]
 
-source_file="res://assets/sprites/button_x.png"
-dest_files=[ "res://.import/button_x.png-ce058bd8a5d562881667e329a8e7a902.stex" ]
+source_file="res://assets/sprites/beer_icon.png"
+dest_files=[ "res://.import/beer_icon.png-a8c17faa60b70a8e8ef539342f334105.stex" ]
 
 [params]
 
