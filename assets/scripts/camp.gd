@@ -139,6 +139,10 @@ func _add_tile(name, position):
     tiles[position.y][position.x] = new_tile
     levels[position.y][position.x] = 1
 
+    new_tile.get_level(1).show()
+    new_tile.get_level(2).hide()
+    new_tile.get_level(3).hide()
+
     if player.hud != null and player.hud.camp_hud != null:
         player.hud.camp_hud.show_upgrade_card(new_tile, 1)
 

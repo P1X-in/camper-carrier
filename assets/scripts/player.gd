@@ -23,10 +23,7 @@ var timer
 
 const DEADZONE = 0.15
 
-var angle_x = 0
 var angle_y = 0
-
-var _angle_x = 0
 var _angle_y = 0
 
 var move_to
@@ -50,12 +47,10 @@ func _ready():
 func _process(delta):
     hud.update_resources_panel(sausage, beer)
 
-    if angle_x != _angle_x or angle_y != _angle_y:
-        _angle_x += (angle_x - _angle_x) * delta * 10.0
+    if angle_y != _angle_y:
         _angle_y += (angle_y - _angle_y) * delta * 10.0
 
         var basis = Basis(Vector3(0.0, 1.0, 0.0), deg2rad(_angle_y))
-        basis *= Basis(Vector3(1.0, 0.0, 0.0), deg2rad(_angle_x))
         transform.basis = basis
 
     if move_to != transform.origin:

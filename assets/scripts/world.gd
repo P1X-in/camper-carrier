@@ -6,15 +6,15 @@ export var GAME_MODE = 1
 export var SHALLOWS_LINE = 0.39
 export var BLUE_LINE = 0.4
 export var GREEN_LINE = 0.5
-export var BOT_LIMIT = 4
+export var BOT_LIMIT = 10
 export var BOT_SPAWN_DELAY = 5
 
 onready var heightmap_file = preload("res://assets/materials/worldmap.png")
 onready var units = [
     preload('res://assets/scenes/bot_boat1.tscn'),
-	preload('res://assets/scenes/bot_boat2.tscn'),
-	preload('res://assets/scenes/bot_boat3.tscn'),
-	preload('res://assets/scenes/bot_boat4.tscn')
+    preload('res://assets/scenes/bot_boat2.tscn'),
+    preload('res://assets/scenes/bot_boat3.tscn'),
+    preload('res://assets/scenes/bot_boat4.tscn')
 ]
 
 var height_map

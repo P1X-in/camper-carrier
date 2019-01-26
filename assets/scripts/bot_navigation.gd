@@ -83,3 +83,11 @@ func add_pair(x, y):
         navigation[y_key].append(x)
     else:
         navigation[y_key] = [x]
+
+func get_points(current, previous):
+    var possible_destinations = navigation[get_key(current)]
+
+    if previous != null:
+        possible_destinations.erase(previous)
+
+    return possible_destinations
