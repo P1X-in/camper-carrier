@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/sprites/tile.png" type="Texture" id=1]
+[ext_resource path="res://assets/blender/Bin1.dae" type="PackedScene" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+metallic_specular = 0.18
+
+[sub_resource type="PlaneMesh" id=2]
+
+material = SubResource( 1 )
+size = Vector2( 1, 1 )
+
+[node name="tile_bin" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32193, 0.1, -0.522818 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Scene Root" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0801058, 0, -0.140425 )
+
+[node name="Bin1" parent="Scene Root" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.323627, -2.38419e-07, 0.0415103 )
+
+[node name="Scene Root2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.12689, 0, -0.215404, 0, 0.25, 0, 0.215404, 0, 0.12689, 0.19357, 0, -0.140425 )
+
+[node name="Scene Root3" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.249186, 0, -0.020153, 0, 0.25, 0, 0.020153, 0, -0.249186, 0.19357, 0, 0.280415 )
+
+[node name="Scene Root4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.163547, 0, 0.189083, 0, 0.25, 0, -0.189083, 0, 0.163547, 0.203856, 1.19209e-07, 0.0553368 )
+
+
+[editable path="Scene Root"]

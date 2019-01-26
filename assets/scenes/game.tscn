@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
@@ -7,26 +7,31 @@
 [ext_resource path="res://assets/meshes/letniskowiec.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://assets/sprites/grass_field.png" type="Texture" id=6]
 [ext_resource path="res://assets/scenes/tiles/tile_camp.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=8]
-[ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=9]
-[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=10]
+[ext_resource path="res://assets/scenes/tiles/tile_bin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/meshes/tree.mesh" type="ArrayMesh" id=9]
+[ext_resource path="res://assets/scenes/tiles/tile_fireplace.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=11]
+[ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=12]
+[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=13]
 
 [sub_resource type="SpatialMaterial" id=1]
 
+render_priority = -1
 flags_transparent = true
+flags_ensure_correct_normals = true
 albedo_texture = ExtResource( 6 )
 uv1_scale = Vector3( 3, 2, 2 )
 
 [sub_resource type="CubeMesh" id=2]
 
 material = SubResource( 1 )
-size = Vector3( 5, 0.25, 3 )
+size = Vector3( 6, 0.1, 4 )
 
 [sub_resource type="SpatialMaterial" id=3]
 
 flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 9 )
+albedo_texture = ExtResource( 12 )
 
 [sub_resource type="PlaneMesh" id=4]
 
@@ -66,13 +71,13 @@ material/2 = null
 material/3 = null
 
 [node name="camera_onboard" type="Camera" parent="player/carrier"]
-transform = Transform( -0.237516, 0.362786, -0.901095, 0, 0.927641, 0.373474, 0.971384, 0.0887061, -0.22033, 0.13, 1.88, -2.15 )
+transform = Transform( -0.484046, -0.315013, 0.816374, 0, 0.932954, 0.359997, -0.875043, 0.174255, -0.451593, 0.41, 1.83, -2.37 )
 visible = false
 fov = 90.0
 far = 1024.0
 
 [node name="camp" type="MeshInstance" parent="player/carrier"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.709999, -0.941 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787571, -0.941 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -80,54 +85,129 @@ material/0 = null
 transform = Transform( 0.5, 0, 0, 0, 0.129409, 0.482963, 0, -0.482963, 0.129409, 0, 3.59, 0.8 )
 visible = false
 
-[node name="tile_camp" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.1, -0.905188 )
-
-[node name="tile_camp6" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.1, -0.0270729 )
-
-[node name="tile_camp14" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.1, 0.84099 )
+[node name="tile_camp1" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.129404, -0.905188 )
 
 [node name="tile_camp2" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.1, -0.905188 )
-
-[node name="tile_camp8" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.1, -0.0270729 )
-
-[node name="tile_camp11" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.1, 0.84099 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.129404, -0.905188 )
 
 [node name="tile_camp3" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.1, -0.905188 )
-
-[node name="tile_camp7" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.1, -0.0270729 )
-
-[node name="tile_camp12" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.1, 0.84099 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.129404, -0.905188 )
 
 [node name="tile_camp4" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.1, -0.905188 )
-
-[node name="tile_camp10" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.1, -0.0270729 )
-
-[node name="tile_camp15" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.1, 0.84099 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.129404, -0.905188 )
 
 [node name="tile_camp5" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.1, -0.905188 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.129404, -0.905188 )
+
+[node name="tile_camp6" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.129404, -0.0270729 )
+
+[node name="tile_bin" parent="player/carrier/camp" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410213, 0.140308, -0.040493 )
+
+[node name="tile_camp8" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.129404, -0.0270729 )
 
 [node name="tile_camp9" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.1, -0.0270729 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.129404, -0.0270729 )
+
+[node name="tile_camp10" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.129404, -0.0270729 )
+
+[node name="tile_camp11" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.129404, 0.84099 )
+
+[node name="tile_camp12" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.129404, 0.84099 )
+
+[node name="tile_camp14" parent="player/carrier/camp" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.129404, 0.84099 )
 
 [node name="tile_camp13" parent="player/carrier/camp" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.1, 0.84099 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.129404, 0.84099 )
+
+[node name="trees" type="Position3D" parent="player/carrier/camp"]
+editor/display_folded = true
+
+[node name="tree" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.29995, 0.005467, 2.17781e-12, -0.005467, 0.29995, 2.3897e-10, 2.1787e-12, -2.3897e-10, 0.3, -2.42537, 0.121025, 0.460754 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree2" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.2, 1.3446e-09, -1.04022e-10, -1.3446e-09, 0.19762, -0.0307609, -1.04022e-10, 0.0307609, 0.19762, -2.61543, 0.121025, 0.769176 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree12" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.173353, 0.0230116, 0.0985569, -1.3446e-09, 0.29643, -0.0307609, -0.0997437, 0.0399937, 0.17129, -2.42015, 0.121025, 1.09491 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree3" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.43603, 0.121025, -0.250441 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree4" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.2, 7.45278e-10, -3.18252e-11, -7.45278e-10, 0.199272, -0.01705, -3.18252e-11, 0.01705, 0.199272, -0.404301, 0.121025, -0.440712 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree5" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.404301, 0.121025, -0.440712 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree6" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.770964, 0.121025, -1.37288 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree7" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.199353, 0.0160762, 2.82885e-11, -0.0160762, 0.199353, 7.02715e-10, 2.82876e-11, -7.02715e-10, 0.2, 0.603477, 0.121025, 1.56227 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree11" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.0122398, 0.000987042, -0.199623, -0.0160762, 0.199353, 7.02715e-10, 0.198977, 0.0160459, 0.0122795, 0.386853, 0.0770149, 1.41108 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree9" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.247555, 0.129572, 1.56285 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree10" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.3, -1.38381e-09, -7.32188e-11, 1.38381e-09, 0.298325, 0.0316578, -7.32188e-11, -0.0316578, 0.298325, -0.282763, 0.0724964, 1.66718 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tree8" type="MeshInstance" parent="player/carrier/camp/trees"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.54222, 0.121025, 0.295298 )
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="tile_fireplace" parent="player/carrier/camp" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00855, 0.125912, 0.878365 )
 
 [node name="pivot" type="Position3D" parent="player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-script = ExtResource( 8 )
+script = ExtResource( 11 )
 
 [node name="camera_drone" type="Camera" parent="player/pivot"]
 transform = Transform( 1, 1.49012e-08, -2.98023e-08, 0, 0.939693, 0.34202, 0, -0.34202, 0.939692, 0, 16, 24 )
@@ -157,5 +237,5 @@ margin_top = 10.0
 margin_right = 64.0
 margin_bottom = 24.0
 text = "FPS: 666"
-script = ExtResource( 10 )
+script = ExtResource( 13 )
 
