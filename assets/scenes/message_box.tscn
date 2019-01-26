@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/button_a.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/button_b.png" type="Texture" id=3]
 
-[node name="Panel" type="NinePatchRect"]
+[node name="message_box" type="NinePatchRect"]
 margin_left = 24.0
 margin_top = -137.0
 margin_right = 379.0
@@ -15,14 +15,14 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="Label" type="Label" parent="."]
+[node name="title" type="Label" parent="."]
 anchor_right = 1.0
 margin_bottom = 17.0
-text = "Selected building"
+text = "Title of the box"
 align = 1
 valign = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="message" type="Label" parent="."]
 anchor_right = 1.0
 margin_left = 31.0
 margin_top = 23.0
@@ -35,7 +35,7 @@ autowrap = true
 position = Vector2( 142.983, 87.3504 )
 texture = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="a"]
+[node name="label" type="Label" parent="a"]
 margin_left = 24.5348
 margin_top = -11.0
 margin_right = 106.535
@@ -46,7 +46,7 @@ text = "ACCEPT"
 position = Vector2( 262.983, 87.3504 )
 texture = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="b"]
+[node name="label" type="Label" parent="b"]
 margin_left = 24.5348
 margin_top = -11.0
 margin_right = 106.535

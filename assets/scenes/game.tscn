@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=11]
 [ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://assets/scripts/hud.gd" type="Script" id=13]
-[ext_resource path="res://assets/sprites/panel_48x48x9.png" type="Texture" id=14]
+[ext_resource path="res://assets/scenes/message_box.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/scripts/fps.gd" type="Script" id=15]
 [ext_resource path="res://assets/images/beer_icon.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/sausage_icon.png" type="Texture" id=17]
@@ -219,39 +219,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Control" type="Control" parent="HUD/camp_management"]
-editor/display_folded = true
+[node name="corner" type="Control" parent="HUD/camp_management"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 
-[node name="Panel" type="NinePatchRect" parent="HUD/camp_management/Control"]
-margin_left = 24.0
-margin_top = -137.0
-margin_right = 379.0
-margin_bottom = -22.0
-texture = ExtResource( 14 )
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="Label" type="Label" parent="HUD/camp_management/Control/Panel"]
-anchor_right = 1.0
-margin_bottom = 17.0
-text = "Selected building"
-align = 1
-valign = 1
-
-[node name="Label2" type="Label" parent="HUD/camp_management/Control/Panel"]
-anchor_right = 1.0
-margin_left = 31.0
-margin_top = 23.0
-margin_right = -22.0
-margin_bottom = 100.0
-text = "Name - this is the building for this an that.. Lorem ipsum dolor sid amed.
-
-Cost: 10/2"
-autowrap = true
+[node name="message_box" parent="HUD/camp_management/corner" instance=ExtResource( 14 )]
 
 [node name="left" type="Control" parent="HUD"]
 
