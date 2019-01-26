@@ -11,6 +11,7 @@ const Y_DIFF = 0.895
 var player
 
 var tiles = []
+var levels = []
 var grid_size = Vector2(4, 2)
 var cursor = Vector2(2, 1)
 onready var cursor_node = $"cursor"
@@ -30,6 +31,7 @@ func _ready():
 
     for i in range(0, 3):
         tiles.append([null, null, null, null, null])
+        levels.append([0, 0, 0, 0, 0])
 
     update_cursor_position()
     _add_tile('bin', Vector2(2, 1))
@@ -83,7 +85,10 @@ func _input(event):
             select_y()
 
 func select_x():
-    return
+    if tiles[cursor.y][cursor.x] == null:
+        return
+
+    _upgrade(cursor)
 
 func select_y():
     if tiles[cursor.y][cursor.x] != null:
@@ -98,3 +103,16 @@ func _add_tile(name, position):
     new_tile.transform.origin = new_position
 
     tiles[position.y][position.x] = new_tile
+    levels[position.y][position.x] = 1
+
+func _upgrade(position):
+    var old_level = levels[position.y][position.x]
+    var new_level = old_level + 1
+
+    if new_level > 3:
+        return
+
+    var tile = tiles[position.y][position.x]
+    tile.get_node("level" + str(old_level)).hide()
+    tile.get_node("level" + str(new_level)).show()
+    levels[position.y][position.x] = new_level
