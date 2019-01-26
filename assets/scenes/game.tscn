@@ -53,9 +53,9 @@ material/2 = null
 material/3 = null
 
 [node name="camera_onboard" type="Camera" parent="player/carrier"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, 0 )
+transform = Transform( -0.237516, 0.362786, -0.901095, 0, 0.927641, 0.373474, 0.971384, 0.0887061, -0.22033, 0.13, 1.88, -2.15 )
 visible = false
-fov = 75.0
+fov = 90.0
 far = 1024.0
 
 [node name="pivot" type="Position3D" parent="player"]
