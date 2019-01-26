@@ -22,12 +22,14 @@ var _angle_x = 0
 var _angle_y = 250
 
 var move_to
+var world
 var w = 0
 
 var axis_value = Vector2()
 
 func _ready():
 	move_to = transform.origin
+	world = get_parent()
 
 func _process(delta):
 	if angle_x != _angle_x or angle_y != _angle_y:
@@ -39,8 +41,16 @@ func _process(delta):
 		transform.basis = basis
 
 	if move_to != transform.origin:
-		move_to.y = get_parent().get_height(transform.origin)
-		transform.origin += (move_to - transform.origin) * delta * 10.0
+		transform.origin.y = world.get_height(transform.origin)
+		var new_origin = transform.origin
+		move_to.y = world.get_height(move_to)
+		new_origin += (move_to - new_origin) * delta * 10.0
+		new_origin.y = world.get_height(new_origin)
+		if new_origin.y > transform.origin.y:
+			move_to = transform.origin
+		else:
+			new_origin.y = transform.origin.y
+			transform.origin = new_origin
 
 func _input(event):
 	if Input.is_action_pressed("game_left"):
