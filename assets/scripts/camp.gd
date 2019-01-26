@@ -25,6 +25,7 @@ var buildings = {
     "fireplace" : preload("res://assets/scenes/tiles/tile_fireplace.tscn"),
     "beer" : preload("res://assets/scenes/tiles/tile_beer.tscn"),
     "music" : preload("res://assets/scenes/tiles/tile_music.tscn"),
+    "toilet" : preload("res://assets/scenes/tiles/tile_toilet.tscn"),
 }
 
 var selected_building_template = 1

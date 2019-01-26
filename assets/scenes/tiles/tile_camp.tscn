@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/blender/Camp3.dae" type="PackedScene" id=4]
 [ext_resource path="res://assets/scenes/tree.tscn" type="PackedScene" id=5]
 
-[node name="tile_base" index="0" instance=ExtResource( 1 )]
+[node name="tile_base" instance=ExtResource( 1 )]
 
 [node name="level1" parent="." index="0"]
 editor/display_folded = true

@@ -5,12 +5,13 @@
 [ext_resource path="res://assets/blender/MusicPlace2.dae" type="PackedScene" id=3]
 [ext_resource path="res://assets/blender/MusicPlace3.dae" type="PackedScene" id=4]
 
-[node name="tile_music" index="0" instance=ExtResource( 1 )]
+[node name="tile_music" instance=ExtResource( 1 )]
 
 [node name="level1" parent="." index="0"]
 editor/display_folded = true
 building_name = "Boomboox"
 description = "It makes boom noises."
+cost_sausage = 10
 
 [node name="Scene Root" parent="level1" index="0" instance=ExtResource( 2 )]
 transform = Transform( 0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0 )
@@ -20,6 +21,8 @@ visible = false
 editor/display_folded = true
 building_name = "Dj Stand"
 description = "Dj plays fancy music like Slawomir or Despacito."
+cost_sausage = 20
+cost_beer = 5
 
 [node name="Scene Root" parent="level2" index="0" instance=ExtResource( 3 )]
 transform = Transform( 0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0 )
@@ -28,6 +31,8 @@ transform = Transform( 0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0 )
 editor/display_folded = true
 building_name = "Dance Floor"
 description = "Fancy music, lights everywhere, half naked ladies, horny men."
+cost_sausage = 40
+cost_beer = 10
 
 [node name="Scene Root" parent="level3" index="0" instance=ExtResource( 4 )]
 transform = Transform( 0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0 )

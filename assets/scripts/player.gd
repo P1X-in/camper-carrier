@@ -8,11 +8,11 @@ export var reverse_speed_multiplier = 0.4
 
 var active_camera = 0
 onready var cameras = [
-	$"pivot/camera_drone",
-	$"pivot/camera_spyglass",
-	$"carrier/camera_onboard",
-	$"carrier/camp/camera_camp",
-	$"camera_satellite"
+    $"pivot/camera_drone",
+    $"pivot/camera_spyglass",
+    $"carrier/camera_onboard",
+    $"carrier/camp/camera_camp",
+    $"camera_satellite"
 ]
 onready var pivot_point = $"pivot"
 onready var camp = $"carrier/camp"
@@ -38,8 +38,8 @@ var axis_value = Vector2()
 var garbage_recharge = 1
 var garbage_charges = 1
 
-var sausage = 10
-var beer = 10
+var sausage = 100
+var beer = 100
 
 func _ready():
     move_to = transform.origin
