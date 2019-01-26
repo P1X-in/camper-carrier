@@ -9,7 +9,7 @@ var active_camera = 0
 onready var cameras = [
 	$"pivot/camera_drone",
 	$"pivot/camera_spyglass",
-	$"boat/camera_onboard"
+	$"carrier/camera_onboard"
 ]
 onready var pivot_point = $"pivot"
 
