@@ -130,8 +130,10 @@ func select_b():
 
 	if active_camera == 3:
 		camp.cursor_node.show()
+		camp.add_ghost()
 	else:
 		camp.cursor_node.hide()
+		camp.clear_ghost()
 
 func fire_garbage():
 	if self.garbage_charges < 1 or active_camera == 3:

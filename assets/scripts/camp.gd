@@ -82,6 +82,22 @@ func update_cursor_position():
     var position = Vector3(X_START + cursor.x * X_DIFF, 0.341, Y_START + cursor.y * Y_DIFF)
     cursor_node.transform.origin = position
 
+    add_ghost()
+
+func clear_ghost():
+    if building_ghost != null:
+        building_ghost.queue_free()
+        building_ghost = null
+
+func add_ghost():
+    clear_ghost()
+    if tiles[cursor.y][cursor.x] == null:
+        building_ghost = buildings[name].instance()
+        var new_position = Vector3(X_START + cursor.x * X_DIFF, Z_POS, Y_START + cursor.y * Y_DIFF)
+        self.add_child(building_ghost)
+        building_ghost.transform.origin = new_position
+        building_ghost.transform.basis = building_ghost.transform.basis.scaled(Vector3(0.5, 0.5, 0.5))
+
 func _input(event):
     if player.active_camera == 3:
         if Input.is_action_pressed("game_x"):
@@ -135,6 +151,7 @@ func _next_template():
         selected_building_template = 0
 
     selected_building_name = names[selected_building_template]
+    add_ghost()
 
 
 func _prev_template():
@@ -146,3 +163,4 @@ func _prev_template():
         selected_building_template = names.size() - 1
 
     selected_building_name = names[selected_building_template]
+    add_ghost()
