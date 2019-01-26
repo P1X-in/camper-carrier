@@ -2,8 +2,8 @@ extends Control
 
 onready var building_panel = $"camp_management"
 
-onready var beer_label = $"right/beer"
-onready var sausage_label = $"right/sausage"
+onready var beer_label = $"right/beer/label"
+onready var sausage_label = $"right/sausage/label"
 
 func show_camp_hud():
     building_panel.show()
