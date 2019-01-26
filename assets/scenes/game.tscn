@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
@@ -13,12 +13,13 @@
 [ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=11]
 [ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://assets/scripts/hud.gd" type="Script" id=13]
-[ext_resource path="res://assets/scenes/message_box.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=15]
-[ext_resource path="res://assets/sprites/beer_icon.png" type="Texture" id=16]
-[ext_resource path="res://assets/scripts/resource.gd" type="Script" id=17]
-[ext_resource path="res://assets/sprites/sausage_icon.png" type="Texture" id=18]
-[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=19]
+[ext_resource path="res://assets/scripts/camp_management_hud.gd" type="Script" id=14]
+[ext_resource path="res://assets/scenes/message_box.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=16]
+[ext_resource path="res://assets/sprites/beer_icon.png" type="Texture" id=17]
+[ext_resource path="res://assets/scripts/resource.gd" type="Script" id=18]
+[ext_resource path="res://assets/sprites/sausage_icon.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=20]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -219,6 +220,7 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -227,7 +229,7 @@ __meta__ = {
 anchor_top = 1.0
 anchor_bottom = 1.0
 
-[node name="message_box" parent="HUD/camp_management/corner" instance=ExtResource( 14 )]
+[node name="message_box" parent="HUD/camp_management/corner" instance=ExtResource( 15 )]
 
 [node name="left" type="Control" parent="HUD"]
 editor/display_folded = true
@@ -238,7 +240,7 @@ margin_top = 10.0
 margin_right = 74.0
 margin_bottom = 27.0
 text = "FPS: 666"
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 
 [node name="right" type="Control" parent="HUD"]
 anchor_left = 1.0
@@ -246,7 +248,7 @@ anchor_right = 1.0
 
 [node name="beer" type="Sprite" parent="HUD/right"]
 position = Vector2( -100.216, 33.6371 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="label" type="Label" parent="HUD/right/beer"]
 margin_left = 22.0
@@ -255,11 +257,11 @@ margin_right = 72.002
 margin_bottom = 16.0
 text = "000"
 valign = 1
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 
 [node name="sausage" type="Sprite" parent="HUD/right"]
 position = Vector2( -219.665, 35.4377 )
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 
 [node name="label" type="Label" parent="HUD/right/sausage"]
 margin_left = 22.0
@@ -268,7 +270,7 @@ margin_right = 94.0
 margin_bottom = 16.0
 text = "000"
 valign = 1
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 
 [node name="info" type="Control" parent="HUD"]
 anchor_left = 1.0
@@ -278,7 +280,7 @@ anchor_bottom = 1.0
 
 [node name="b" type="Sprite" parent="HUD/info"]
 position = Vector2( -180, -30 )
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 vframes = 2
 hframes = 2
 frame = 3

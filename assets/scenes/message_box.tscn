@@ -33,6 +33,7 @@ text = "Name - this is the building for this an that.. Lorem ipsum dolor sid ame
 autowrap = true
 
 [node name="a" type="Sprite" parent="."]
+visible = false
 position = Vector2( 122.983, 87.3504 )
 texture = ExtResource( 2 )
 vframes = 2
