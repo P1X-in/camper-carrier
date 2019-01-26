@@ -204,6 +204,7 @@ material/1 = null
 
 [node name="tile_fireplace" parent="player/carrier/camp" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00855, 0.125912, 0.878365 )
+visible = false
 
 [node name="pivot" type="Position3D" parent="player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )

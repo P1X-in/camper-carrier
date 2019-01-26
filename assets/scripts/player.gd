@@ -91,7 +91,10 @@ func _physics_process(delta):
 
 	var current_axis = axis_value
 
-	if active_camera != 2:
+	if active_camera == 3:
+		return
+
+	if active_camera < 2:
 		current_axis = current_axis.rotated(deg2rad(-pivot_point.angle_y))
 
 	if abs(current_axis.x) > DEADZONE:
