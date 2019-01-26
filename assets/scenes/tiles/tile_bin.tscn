@@ -1,71 +1,49 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/sprites/tile.png" type="Texture" id=1]
+[ext_resource path="res://assets/scenes/tiles/tile_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/blender/Bin1.dae" type="PackedScene" id=2]
 [ext_resource path="res://assets/blender/Bin2.dae" type="PackedScene" id=3]
 [ext_resource path="res://assets/blender/Bin3.dae" type="PackedScene" id=4]
 
-[sub_resource type="SpatialMaterial" id=1]
+[node name="tile_bin" index="0" instance=ExtResource( 1 )]
 
-flags_transparent = true
-albedo_texture = ExtResource( 1 )
-metallic_specular = 0.18
-
-[sub_resource type="PlaneMesh" id=2]
-
-material = SubResource( 1 )
-size = Vector2( 1, 1 )
-
-[node name="tile_bin" type="MeshInstance"]
-transform = Transform( 0.999986, 0.00524933, 0, -0.00524933, 0.999986, 0, 0, 0, 1, -1.32193, 0.1, -0.522818 )
-cast_shadow = 0
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="level1" type="Spatial" parent="."]
-editor/display_folded = true
-
-[node name="Scene Root" parent="level1" instance=ExtResource( 2 )]
-transform = Transform( 0.0567752, 0, -0.274183, 0, 0.28, 0, 0.274183, 0, 0.0567752, 0.172946, -1.19209e-07, -0.0770686 )
-
-[node name="Scene Root2" parent="level1" instance=ExtResource( 2 )]
-transform = Transform( -0.193099, 0, -0.158785, 0, 0.25, 0, 0.158785, 0, -0.193099, 0.10957, -1.19209e-07, 0.188979 )
-
-[node name="Scene Root3" parent="level1" instance=ExtResource( 2 )]
-transform = Transform( -0.168151, 0, 0.156924, 0, 0.23, 0, -0.156924, 0, -0.168151, -0.273897, -0.0461318, 0.0051859 )
-
-[node name="Scene Root4" parent="level1" instance=ExtResource( 2 )]
-transform = Transform( 0.21937, 0, 0.119903, 0, 0.25, 0, -0.119903, 0, 0.21937, -0.138106, -1.19209e-07, -0.125767 )
-
-[node name="level2" type="Spatial" parent="."]
+[node name="level1" parent="." index="0"]
 editor/display_folded = true
 visible = false
 
-[node name="Scene Root5" parent="level2" instance=ExtResource( 2 )]
-transform = Transform( -0.221598, 0, 0.115734, 0, 0.25, 0, -0.115734, 0, -0.221598, -0.138106, -1.19209e-07, 0.222135 )
+[node name="Scene Root" parent="level1" index="0" instance=ExtResource( 2 )]
+transform = Transform( 0.0369509, -0.00111838, -0.247252, -0.00111838, 0.249994, -0.00129792, 0.247252, 0.00129792, 0.036945, 0.101037, 0.00851849, -0.12509 )
 
-[node name="Scene Root6" parent="level2" instance=ExtResource( 2 )]
-transform = Transform( 0.1758, 0, -0.177748, 5.82077e-11, 0.25, -5.82077e-11, 0.177748, 0, 0.1758, 0.162145, 5.45904e-05, -0.123242 )
+[node name="Scene Root2" parent="level1" index="1" instance=ExtResource( 2 )]
+transform = Transform( 0.140811, -0.000573178, 0.206572, -0.000573178, 0.249997, 0.00108438, -0.206572, -0.00108438, 0.140808, -0.0550753, 0.00769899, -0.10617 )
 
-[node name="Scene Root" parent="level2" instance=ExtResource( 3 )]
-transform = Transform( 0.151158, 0, 0.130963, 0, 0.2, 0, -0.130963, 0, 0.151158, 0.0822499, 0, -0.0306242 )
+[node name="Scene Root3" parent="level1" index="2" instance=ExtResource( 2 )]
+transform = Transform( -0.327043, -0.00381654, 0.230279, -0.00381654, 0.39998, 0.00120883, -0.230279, -0.00120883, -0.327063, 0.0533667, 0.00826824, -0.00158435 )
 
-[node name="Scene Root2" parent="level2" instance=ExtResource( 3 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.225709, 0, 0 )
-
-[node name="level3" type="Spatial" parent="."]
+[node name="level2" parent="." index="1"]
 editor/display_folded = true
-visible = false
 
-[node name="Scene Root3" parent="level3" instance=ExtResource( 3 )]
-transform = Transform( -0.198731, -0.00176126, 0.0224234, -0.00183671, 0.199991, -0.000569767, -0.0224174, -0.00077208, -0.198738, -0.257714, -0.00178461, 0.0809232 )
+[node name="Scene Root4" parent="level2" index="0" instance=ExtResource( 2 )]
+transform = Transform( -0.225118, -0.00249409, -0.1087, -0.00249409, 0.249987, -0.00057061, 0.1087, 0.000570611, -0.225131, -0.0089643, 0.00794104, 0.168557 )
 
-[node name="Scene Root7" parent="level3" instance=ExtResource( 2 )]
-transform = Transform( 0.208372, -0.00194626, 0.13812, 0.00225708, 0.24999, 0.000117514, -0.138116, 0.00114905, 0.208381, -0.253911, -0.000608027, -0.169579 )
+[node name="Scene Root5" parent="level2" index="1" instance=ExtResource( 2 )]
+transform = Transform( -0.225118, -0.00249409, -0.1087, -0.00249409, 0.249987, -0.00057061, 0.1087, 0.000570611, -0.225131, -0.0089643, 0.00794104, 0.168557 )
 
-[node name="Scene Root" parent="level3" instance=ExtResource( 4 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0716187, 0.000375941, -0.117429 )
+[node name="Scene Root" parent="level2" index="2" instance=ExtResource( 3 )]
+transform = Transform( 0.215959, -0.000178696, -0.125944, -0.000178695, 0.249999, -0.000661128, 0.125943, 0.000661128, 0.215958, -0.0389807, -0.000204638, -0.0196512 )
 
-[node name="Scene Root2" parent="level3" instance=ExtResource( 4 )]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0737805, 0.000387289, 0.213913 )
+[node name="level3" parent="." index="2"]
+editor/display_folded = true
+
+[node name="Scene Root" parent="level3" index="0" instance=ExtResource( 4 )]
+transform = Transform( 0.196867, -0.000278917, 0.154089, -0.000278917, 0.249999, 0.000808875, -0.154089, -0.000808874, 0.196865, -0.199852, -0.00104908, -0.113244 )
+
+[node name="Scene Root2" parent="level3" index="1" instance=ExtResource( 4 )]
+transform = Transform( 0.171494, -0.00041211, 0.181906, -0.00041211, 0.249998, 0.000954897, -0.181906, -0.000954897, 0.171492, 0.116631, 0.000612251, 0.201222 )
+
+[node name="Scene Root3" parent="level3" index="2" instance=ExtResource( 3 )]
+transform = Transform( -0.194077, -0.00233114, -0.157571, -0.00233114, 0.249988, -0.000827155, 0.157571, 0.000827155, -0.194089, 0.145772, 0.00076516, -0.225851 )
+
+[node name="Scene Root4" parent="level3" index="3" instance=ExtResource( 2 )]
+transform = Transform( 0.00205667, -0.00130155, 0.249988, -0.00130155, 0.249993, 0.00131229, -0.249988, -0.00131229, 0.00204979, -0.200419, 0.00693602, 0.231121 )
 

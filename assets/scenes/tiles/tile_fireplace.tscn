@@ -1,92 +1,57 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/sprites/tile3.png" type="Texture" id=1]
-[ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=2]
-[ext_resource path="res://assets/blender/Fireplace1.dae" type="PackedScene" id=3]
-[ext_resource path="res://assets/materials/fireplace.material" type="Material" id=4]
-[ext_resource path="res://assets/blender/Fireplace2.dae" type="PackedScene" id=5]
-[ext_resource path="res://assets/blender/Fireplace3.dae" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/tiles/tile_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/blender/Fireplace1.dae" type="PackedScene" id=2]
+[ext_resource path="res://assets/materials/fireplace.material" type="Material" id=3]
+[ext_resource path="res://assets/blender/Fireplace2.dae" type="PackedScene" id=4]
+[ext_resource path="res://assets/blender/Fireplace3.dae" type="PackedScene" id=5]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SphereMesh" id=1]
 
-flags_transparent = true
-flags_ensure_correct_normals = true
-albedo_texture = ExtResource( 1 )
-metallic = 0.35
-metallic_specular = 0.0
-roughness = 0.71
-roughness_texture = ExtResource( 2 )
-normal_enabled = true
-normal_scale = 1.26
-normal_texture = ExtResource( 2 )
-
-[sub_resource type="PlaneMesh" id=2]
-
-material = SubResource( 1 )
-size = Vector2( 1, 1 )
-
-[sub_resource type="SphereMesh" id=3]
-
-material = ExtResource( 4 )
-height = 0.5
-radial_segments = 6
+material = ExtResource( 3 )
+radius = 0.05
+height = 0.05
+radial_segments = 7
 rings = 2
 is_hemisphere = true
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="SphereMesh" id=2]
 
-material = ExtResource( 4 )
-size = Vector3( 1.2, 0.2, 2 )
+material = ExtResource( 3 )
+radius = 0.09
+height = 0.05
+radial_segments = 7
+rings = 2
+is_hemisphere = true
 
-[node name="tile_fireplace" type="MeshInstance"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32193, 0.1, -0.522818 )
-cast_shadow = 0
+[node name="tile_fireplace" index="0" instance=ExtResource( 1 )]
+
+[node name="Scene Root" parent="level1" index="0" instance=ExtResource( 2 )]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="level1" index="1"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="level2" parent="." index="1"]
+editor/display_folded = true
+
+[node name="Scene Root" parent="level2" index="0" instance=ExtResource( 4 )]
+transform = Transform( 0.0707517, -4.85484e-05, -0.037339, -4.85484e-05, 0.0799998, -0.000196008, 0.037339, 0.000196008, 0.0707514, 0.032535, 0.00017076, 0.0417809 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="level2/Scene Root" index="2"]
+transform = Transform( -10, 8.75443e-07, 0, -8.75443e-07, -10, 0, 0, 0, 10, -2.57775, 1.30671, -3.06333 )
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="level1" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.0386018, 0, 0.031779, 0, 0.05, 0, -0.031779, 0, 0.0386018, 0.0454079, 0, 0.0856624 )
+[node name="level3" parent="." index="2"]
+editor/display_folded = true
 
-[node name="OmniLight" type="OmniLight" parent="level1"]
-transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.265806, -2.45068, 0.0201893 )
-light_color = Color( 1, 0.494118, 0, 1 )
-light_energy = 16.0
-omni_range = 0.9
-omni_attenuation = 0.392292
-
-[node name="MeshInstance" type="MeshInstance" parent="level1"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="level2" parent="." instance=ExtResource( 5 )]
+[node name="Scene Root" parent="level3" index="0" instance=ExtResource( 5 )]
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
-visible = false
 
-[node name="MeshInstance2" type="MeshInstance" parent="level2"]
-transform = Transform( 0.632922, 0.000222855, 0.774216, 0.000788001, -1, -0.000356324, 0.774216, 0.000835601, -0.632922, -2.38404, 1.30572, -3.26065 )
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="OmniLight2" type="OmniLight" parent="level2"]
-transform = Transform( 15.4407, 0, 12.7116, 0, 20, 0, -12.7116, 0, 15.4407, -3.51727, 3.54841, -2.72958 )
-light_color = Color( 1, 0.494118, 0, 1 )
-light_energy = 16.0
-omni_range = 0.9
-omni_attenuation = 0.392292
-
-[node name="level3" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
-visible = false
-
-[node name="OmniLight2" type="OmniLight" parent="level3"]
-transform = Transform( 15.4407, 0, 12.7116, 0, 20, 0, -12.7116, 0, 15.4407, -3.6435, 5.26157, -0.247309 )
-light_color = Color( 1, 0.494118, 0, 1 )
-light_energy = 16.0
-omni_range = 0.9
-omni_attenuation = 0.392292
-
-[node name="MeshInstance2" type="MeshInstance" parent="level3"]
-transform = Transform( -0.0240394, 0, 0.999712, 0, 1, 0, -0.999712, 0, -0.0240394, -2.42504, 1.75666, -3.32434 )
-mesh = SubResource( 4 )
+[node name="MeshInstance3" type="MeshInstance" parent="level3/Scene Root" index="2"]
+transform = Transform( -14.1503, 0.00971093, -7.4678, 0.00970829, -16, -0.0392015, -7.4678, -0.0392009, 14.1503, -2.3545, 1.8221, -3.25358 )
+mesh = SubResource( 2 )
 material/0 = null
 
