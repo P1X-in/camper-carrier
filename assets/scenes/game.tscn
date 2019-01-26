@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/materials/environment.tres" type="Environment" id=3]
 [ext_resource path="res://assets/scripts/player.gd" type="Script" id=4]
-[ext_resource path="res://assets/meshes/boat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/meshes/letniskowiec.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=6]
 [ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=7]
 [ext_resource path="res://assets/scripts/fps.gd" type="Script" id=8]
@@ -41,14 +41,19 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
-transform = Transform( -0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, -59.01, 52.99, 22.4392 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.01, 52.99, 22.4392 )
 script = ExtResource( 4 )
 
-[node name="boat" parent="player" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
-use_collision = true
+[node name="carrier" type="MeshInstance" parent="player"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+mesh = ExtResource( 5 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
 
 [node name="pivot" type="Position3D" parent="player"]
+transform = Transform( -0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="camera_drone" type="Camera" parent="player/pivot"]
