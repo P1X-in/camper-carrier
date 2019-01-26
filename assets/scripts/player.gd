@@ -16,10 +16,10 @@ onready var pivot_point = $"pivot"
 const DEADZONE = 0.15
 
 var angle_x = 0
-var angle_y = 250
+var angle_y = 0
 
 var _angle_x = 0
-var _angle_y = 250
+var _angle_y = 0
 
 var move_to
 var world

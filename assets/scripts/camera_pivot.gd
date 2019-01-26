@@ -5,7 +5,7 @@ export var return_speed = 1.0
 
 const DEADZONE = 0.25
 
-var angle_y = 180
+var angle_y = 0
 var _angle_y = 180
 
 var axis_value
