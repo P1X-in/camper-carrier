@@ -26,6 +26,7 @@ var world
 var w = 0
 
 var axis_value = Vector2()
+var cumulative = 0
 
 func _ready():
 	move_to = transform.origin
@@ -41,16 +42,15 @@ func _process(delta):
 		transform.basis = basis
 
 	if move_to != transform.origin:
-		transform.origin.y = world.get_height(transform.origin)
 		var new_origin = transform.origin
-		move_to.y = world.get_height(move_to)
-		new_origin += (move_to - new_origin) * delta * 10.0
-		new_origin.y = world.get_height(new_origin)
-		if new_origin.y > transform.origin.y:
-			move_to = transform.origin
-		else:
-			new_origin.y = transform.origin.y
-			transform.origin = new_origin
+		move_to.y = 0.0
+		new_origin = transform.origin + (move_to - transform.origin) * delta * 10.0
+		if world.get_height(new_origin, true) > world.SHALLOWS_LINE * world.MAP_HEIGHT_FACTOR:
+			new_origin = transform.origin
+			move_to = new_origin
+
+		new_origin.y = transform.origin.y
+		transform.origin = new_origin
 
 func _input(event):
 	if Input.is_action_pressed("game_left"):
@@ -79,8 +79,9 @@ func _physics_process(delta):
 	axis_value.y = Input.get_joy_axis(0, JOY_ANALOG_LY)
 
 	var current_axis = axis_value
+
 	if active_camera != 2:
-		current_axis = axis_value.rotated(deg2rad(-pivot_point.angle_y))
+		current_axis = current_axis.rotated(deg2rad(-pivot_point.angle_y))
 
 	if abs(current_axis.x) > DEADZONE:
 		angle_y -= rotate_speed * current_axis.x
