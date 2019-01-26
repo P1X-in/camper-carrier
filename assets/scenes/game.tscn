@@ -72,7 +72,6 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.01, 50.7293, 22.4392 )
 script = ExtResource( 4 )
 
@@ -99,13 +98,6 @@ script = ExtResource( 7 )
 [node name="camera_camp" type="Camera" parent="player/carrier/camp"]
 transform = Transform( 0.5, 0, 0, 0, 0.129409, 0.482963, 0, -0.482963, 0.129409, 0, 3.59, 0.8 )
 visible = false
-
-[node name="camera_camp2" type="Camera" parent="player/carrier/camp"]
-transform = Transform( 0.5, 0, 0, 0, 0.129409, 0.482963, 0, -0.482963, 0.129409, 0, 4, 1 )
-visible = false
-projection = 1
-size = 7.0
-far = 1024.0
 
 [node name="trees" type="Position3D" parent="player/carrier/camp"]
 editor/display_folded = true

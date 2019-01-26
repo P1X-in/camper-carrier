@@ -11,8 +11,7 @@ onready var cameras = [
 	$"pivot/camera_drone",
 	$"pivot/camera_spyglass",
 	$"carrier/camera_onboard",
-	$"carrier/camp/camera_camp",
-	$"carrier/camp/camera_camp2"
+	$"carrier/camp/camera_camp"
 ]
 onready var pivot_point = $"pivot"
 onready var camp = $"carrier/camp"
