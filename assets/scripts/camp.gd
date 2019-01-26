@@ -23,6 +23,8 @@ var buildings = {
     "bin" : preload("res://assets/scenes/tiles/tile_bin.tscn"),
     "camp" : preload("res://assets/scenes/tiles/tile_camp.tscn"),
     "fireplace" : preload("res://assets/scenes/tiles/tile_fireplace.tscn"),
+    "beer" : preload("res://assets/scenes/tiles/tile_beer.tscn"),
+    "music" : preload("res://assets/scenes/tiles/tile_music.tscn"),
 }
 
 var selected_building_template = 1
