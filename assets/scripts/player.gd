@@ -8,10 +8,11 @@ export var reverse_speed_multiplier = 0.4
 
 var active_camera = 0
 onready var cameras = [
-    $"pivot/camera_drone",
-    $"pivot/camera_spyglass",
-    $"carrier/camera_onboard",
-    $"carrier/camp/camera_camp"
+	$"pivot/camera_drone",
+	$"pivot/camera_spyglass",
+	$"carrier/camera_onboard",
+	$"carrier/camp/camera_camp",
+	$"camera_satellite"
 ]
 onready var pivot_point = $"pivot"
 onready var camp = $"carrier/camp"
@@ -48,7 +49,7 @@ func _ready():
 
 func _process(delta):
     hud.update_resources_panel(sausage, beer)
-    
+
     if angle_x != _angle_x or angle_y != _angle_y:
         _angle_x += (angle_x - _angle_x) * delta * 10.0
         _angle_y += (angle_y - _angle_y) * delta * 10.0
@@ -67,8 +68,8 @@ func _process(delta):
 
         new_origin.y = transform.origin.y
         transform.origin = new_origin
-        
-    
+
+
 
 func _input(event):
     if Input.is_action_pressed("game_left"):
@@ -105,8 +106,8 @@ func _physics_process(delta):
 
     var current_axis = axis_value
 
-    if active_camera == 3:
-        return
+	if active_camera == 3 || active_camera == 4:
+		return
 
     if active_camera < 2:
         current_axis = current_axis.rotated(deg2rad(-pivot_point.angle_y))
@@ -177,18 +178,18 @@ func select_pro():
 
 func quit_game():
     get_tree().quit()
-    
+
 func check_resources(sausage_amount, beer_amount):
     if sausage >= sausage_amount and beer >= beer_amount:
         return true
     return false
-    
+
 func add_resources(sausage_amount, beer_amount):
     sausage = sausage + sausage_amount
     beer = beer + beer_amount
-    
+
 func take_resources(sausage_amount, beer_amount):
     sausage = sausage - sausage_amount
     beer = beer - beer_amount
-    
-    
+
+

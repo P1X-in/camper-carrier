@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
@@ -11,15 +11,16 @@
 [ext_resource path="res://assets/scenes/cursor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=10]
 [ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=11]
-[ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://assets/scripts/hud.gd" type="Script" id=13]
-[ext_resource path="res://assets/scripts/camp_management_hud.gd" type="Script" id=14]
-[ext_resource path="res://assets/scenes/message_box.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=16]
-[ext_resource path="res://assets/sprites/beer_icon.png" type="Texture" id=17]
-[ext_resource path="res://assets/scripts/resource.gd" type="Script" id=18]
-[ext_resource path="res://assets/sprites/sausage_icon.png" type="Texture" id=19]
-[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/compass.png" type="Texture" id=12]
+[ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/scripts/hud.gd" type="Script" id=14]
+[ext_resource path="res://assets/scripts/camp_management_hud.gd" type="Script" id=15]
+[ext_resource path="res://assets/scenes/message_box.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/scripts/fps.gd" type="Script" id=17]
+[ext_resource path="res://assets/sprites/beer_icon.png" type="Texture" id=18]
+[ext_resource path="res://assets/scripts/resource.gd" type="Script" id=19]
+[ext_resource path="res://assets/sprites/sausage_icon.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=21]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -46,13 +47,29 @@ albedo_texture = ExtResource( 11 )
 material = SubResource( 3 )
 size = Vector2( 0.5, 0.5 )
 
+[sub_resource type="Gradient" id=7]
+
+colors = PoolColorArray( 0.0293974, 0.116152, 0.129754, 1, 1, 0.832954, 0.488281, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+
+gradient = SubResource( 7 )
+
+[sub_resource type="Environment" id=9]
+
+tonemap_mode = 3
+adjustment_enabled = true
+adjustment_contrast = 0.89
+adjustment_saturation = 0.2
+adjustment_color_correction = SubResource( 8 )
+
 [sub_resource type="DynamicFont" id=5]
 
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 12 )
+font_data = ExtResource( 13 )
 
 [sub_resource type="Theme" id=6]
 
@@ -79,7 +96,6 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.01, 50.7293, 22.4392 )
 script = ExtResource( 4 )
 
@@ -185,6 +201,7 @@ material/1 = null
 [node name="cursor" parent="player/carrier/camp" instance=ExtResource( 9 )]
 
 [node name="pivot" type="Position3D" parent="player"]
+editor/display_folded = true
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 10 )
 
@@ -206,11 +223,23 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -
 mesh = SubResource( 4 )
 material/0 = null
 
+[node name="camera_satellite" type="Camera" parent="player"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2048, 64 )
+visible = false
+environment = SubResource( 9 )
+fov = 50.0
+far = 4096.0
+
+[node name="compass" type="Sprite3D" parent="player/camera_satellite"]
+transform = Transform( 0.963444, -0.267911, 0, 0.267911, 0.963444, 0, 0, 0, 1, -4, -2.05, -7.91 )
+modulate = Color( 1, 1, 1, 0.501961 )
+texture = ExtResource( 12 )
+
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 6 )
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -220,7 +249,7 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -229,7 +258,7 @@ __meta__ = {
 anchor_top = 1.0
 anchor_bottom = 1.0
 
-[node name="message_box" parent="HUD/camp_management/corner" instance=ExtResource( 15 )]
+[node name="message_box" parent="HUD/camp_management/corner" instance=ExtResource( 16 )]
 
 [node name="left" type="Control" parent="HUD"]
 editor/display_folded = true
@@ -240,7 +269,7 @@ margin_top = 10.0
 margin_right = 74.0
 margin_bottom = 27.0
 text = "FPS: 666"
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="right" type="Control" parent="HUD"]
 anchor_left = 1.0
@@ -248,7 +277,7 @@ anchor_right = 1.0
 
 [node name="beer" type="Sprite" parent="HUD/right"]
 position = Vector2( -100.216, 33.6371 )
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 
 [node name="label" type="Label" parent="HUD/right/beer"]
 margin_left = 22.0
@@ -257,11 +286,11 @@ margin_right = 72.002
 margin_bottom = 16.0
 text = "000"
 valign = 1
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 
 [node name="sausage" type="Sprite" parent="HUD/right"]
 position = Vector2( -219.665, 35.4377 )
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 
 [node name="label" type="Label" parent="HUD/right/sausage"]
 margin_left = 22.0
@@ -270,7 +299,7 @@ margin_right = 94.0
 margin_bottom = 16.0
 text = "000"
 valign = 1
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 
 [node name="info" type="Control" parent="HUD"]
 anchor_left = 1.0
@@ -280,7 +309,7 @@ anchor_bottom = 1.0
 
 [node name="b" type="Sprite" parent="HUD/info"]
 position = Vector2( -180, -30 )
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 vframes = 2
 hframes = 2
 frame = 3
