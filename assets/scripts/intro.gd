@@ -11,3 +11,5 @@ func _ready():
 func _input(event):
 	if Input.is_action_pressed("ui_accept"):
 		get_tree().change_scene("assets/scenes/game.tscn")
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()
