@@ -1,9 +1,10 @@
 extends Position3D
 
-export var rotate_speed = 1.0
+export var rotate_speed = 0.5
 export var move_speed = 1.0
 export var move_speed_lr = 0.5
-export var move_speed_fb = 1.5
+export var move_speed_fb = 0.5
+export var reverse_speed_multiplier = 0.4
 
 var active_camera = 0
 onready var cameras = [
@@ -13,6 +14,9 @@ onready var cameras = [
 	$"carrier/camp/camera_camp"
 ]
 onready var pivot_point = $"pivot"
+
+var projectile_template
+var timer
 
 const DEADZONE = 0.15
 
@@ -27,11 +31,15 @@ var world
 var w = 0
 
 var axis_value = Vector2()
-var cumulative = 0
+
+var garbage_recharge = 1
+var garbage_charges = 1
 
 func _ready():
 	move_to = transform.origin
 	world = get_parent()
+	projectile_template = preload("res://assets/scenes/projectile.tscn")
+	timer = preload("res://assets/scripts/timers.gd").new(self)
 
 func _process(delta):
 	if angle_x != _angle_x or angle_y != _angle_y:
@@ -74,6 +82,8 @@ func _input(event):
 		select_a()
 	if Input.is_action_pressed("game_b"):
 		select_b()
+	if Input.is_action_pressed("fire_garbage"):
+		fire_garbage()
 
 func _physics_process(delta):
 	axis_value.x = Input.get_joy_axis(0, JOY_ANALOG_LX)
@@ -89,6 +99,8 @@ func _physics_process(delta):
 		pivot_point.angle_y += rotate_speed * current_axis.x
 
 	if abs(current_axis.y) > DEADZONE:
+		if current_axis.y > 0:
+			current_axis.y *= reverse_speed_multiplier
 		var front_back = transform.basis.z
 		front_back.y = 0.0
 		front_back = front_back.normalized()
@@ -106,6 +118,24 @@ func select_b():
 		active_camera = 0
 	cameras[active_camera].show()
 	cameras[active_camera].set_current(true)
+
+func fire_garbage():
+	if self.garbage_charges < 1:
+		return
+
+	var direction = Vector2(0.0, -1.0).rotated(deg2rad(-pivot_point.angle_y - angle_y))
+	var new_garbage = projectile_template.instance()
+	new_garbage.direction = Vector3(direction.x, 0.0, direction.y)
+	new_garbage.transform.origin = Vector3(self.transform.origin.x, self.transform.origin.y + 2, self.transform.origin.z)
+	world.add_child(new_garbage)
+
+	garbage_charges -= 1
+	self.timer.set_timeout(garbage_recharge, self, "add_garbage")
+
+	return new_garbage
+
+func add_garbage():
+	garbage_charges += 1
 
 func quit_game():
 	get_tree().quit()
