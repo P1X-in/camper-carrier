@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
@@ -11,8 +11,10 @@
 [ext_resource path="res://assets/scenes/cursor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=10]
 [ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=11]
-[ext_resource path="res://assets/materials/main.theme" type="Theme" id=12]
+[ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://assets/scripts/fps.gd" type="Script" id=13]
+[ext_resource path="res://assets/images/beer_icon.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/sausage_icon.png" type="Texture" id=15]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -39,6 +41,18 @@ albedo_texture = ExtResource( 11 )
 material = SubResource( 3 )
 size = Vector2( 0.5, 0.5 )
 
+[sub_resource type="DynamicFont" id=5]
+
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="Theme" id=6]
+
+default_font = SubResource( 5 )
+
 [node name="game" type="Spatial"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -60,7 +74,6 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
 
 [node name="player" type="Position3D" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.01, 50.7293, 22.4392 )
 script = ExtResource( 4 )
 
@@ -190,7 +203,7 @@ material/0 = null
 [node name="HUD" type="Control" parent="."]
 margin_right = 92.0
 margin_bottom = 41.0
-theme = ExtResource( 12 )
+theme = SubResource( 6 )
 
 [node name="fps" type="Label" parent="HUD"]
 margin_left = 10.0
@@ -199,4 +212,28 @@ margin_right = 64.0
 margin_bottom = 24.0
 text = "FPS: 666"
 script = ExtResource( 13 )
+
+[node name="beer" type="Label" parent="HUD"]
+margin_left = 967.188
+margin_top = 27.0526
+margin_right = 1017.19
+margin_bottom = 44.0526
+text = "000"
+
+[node name="sausage" type="Label" parent="HUD"]
+margin_left = 849.568
+margin_top = 27.0526
+margin_right = 921.568
+margin_bottom = 44.0526
+text = "000"
+
+[node name="beer_sprite" type="Sprite" parent="HUD"]
+position = Vector2( 929.784, 33.6371 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 14 )
+
+[node name="sausage_sprite" type="Sprite" parent="HUD"]
+position = Vector2( 810.335, 35.4377 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 15 )
 
