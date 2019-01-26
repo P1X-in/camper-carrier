@@ -23,6 +23,8 @@ var move_to
 var w = 0
 var axis_value
 
+var axis_value = Vector2()
+
 func _ready():
 	move_to = transform.origin
 
@@ -62,7 +64,8 @@ func _input(event):
 		select_b()
 
 func _physics_process(delta):
-	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):
+	axis_value.x = Input.get_joy_axis(0, JOY_ANALOG_LX)
+	axis_value.y = Input.get_joy_axis(0, JOY_ANALOG_LY)
 		axis_value = Input.get_joy_axis(0, axis)
 		var axis_abs = abs(axis_value)
 		if axis_abs > DEADZONE:
