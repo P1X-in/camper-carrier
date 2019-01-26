@@ -54,7 +54,7 @@ environment = ExtResource( 3 )
 [node name="sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.5, -0.496732, -0.709406, 7.16125e-08, -0.819152, 0.573577, -0.866025, -0.286788, -0.409576, 0, 128, 0 )
 light_color = Color( 0.996078, 1, 0.85098, 1 )
-light_energy = 1.5
+light_energy = 2.0
 directional_shadow_split_2 = 0.4
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 512.0
@@ -87,6 +87,13 @@ script = ExtResource( 7 )
 transform = Transform( 0.5, 0, 0, 0, 0.129409, 0.482963, 0, -0.482963, 0.129409, 0, 3.59, 0.8 )
 visible = false
 
+[node name="camera_camp2" type="Camera" parent="player/carrier/camp"]
+transform = Transform( 0.5, 0, 0, 0, 0.129409, 0.482963, 0, -0.482963, 0.129409, 0, 4, 1 )
+visible = false
+projection = 1
+size = 7.0
+far = 1024.0
+
 [node name="tile_camp1" parent="player/carrier/camp" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.129404, -0.905188 )
 
@@ -114,17 +121,23 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.129404, -0.027072
 [node name="tile_camp9" parent="player/carrier/camp" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.129404, -0.0270729 )
 
-[node name="tile_camp10" parent="player/carrier/camp" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936184, 0.129404, -0.0270729 )
-
 [node name="tile_camp11" parent="player/carrier/camp" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872473, 0.129404, 0.84099 )
 
-[node name="tile_camp12" parent="player/carrier/camp" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485029, 0.129404, 0.84099 )
+[node name="level1" parent="player/carrier/camp/tile_camp11" index="0"]
+visible = false
+
+[node name="level3" parent="player/carrier/camp/tile_camp11" index="2"]
+visible = true
 
 [node name="tile_camp14" parent="player/carrier/camp" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79378, 0.129404, 0.84099 )
+
+[node name="level1" parent="player/carrier/camp/tile_camp14" index="0"]
+visible = false
+
+[node name="level2" parent="player/carrier/camp/tile_camp14" index="1"]
+visible = true
 
 [node name="tile_camp13" parent="player/carrier/camp" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83632, 0.129404, 0.84099 )
@@ -208,6 +221,27 @@ material/1 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00855, 0.125912, 0.878365 )
 visible = false
 
+[node name="tile_fireplace2" parent="player/carrier/camp" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0232973, 0.1, 0.909996 )
+
+[node name="tile_fireplace3" parent="player/carrier/camp" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04099, 0.1, 0.909996 )
+
+[node name="level1" parent="player/carrier/camp/tile_fireplace3" index="0"]
+visible = false
+
+[node name="level2" parent="player/carrier/camp/tile_fireplace3" index="1"]
+visible = true
+
+[node name="tile_fireplace4" parent="player/carrier/camp" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04099, 0.1, 0.0168476 )
+
+[node name="level1" parent="player/carrier/camp/tile_fireplace4" index="0"]
+visible = false
+
+[node name="level3" parent="player/carrier/camp/tile_fireplace4" index="2"]
+visible = true
+
 [node name="pivot" type="Position3D" parent="player"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 12 )
@@ -242,3 +276,11 @@ margin_bottom = 24.0
 text = "FPS: 666"
 script = ExtResource( 14 )
 
+
+[editable path="player/carrier/camp/tile_camp11"]
+
+[editable path="player/carrier/camp/tile_camp14"]
+
+[editable path="player/carrier/camp/tile_fireplace3"]
+
+[editable path="player/carrier/camp/tile_fireplace4"]
