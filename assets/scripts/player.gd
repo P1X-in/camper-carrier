@@ -78,12 +78,13 @@ func _input(event):
 		move_to += front_back * move_speed
 	if Input.is_key_pressed(KEY_ESCAPE):
 		quit_game()
-	if Input.is_action_pressed("game_a"):
-		select_a()
+	if active_camera != 3:
+		if Input.is_action_pressed("game_a"):
+			select_a()
+		if Input.is_action_pressed("fire_garbage"):
+			fire_garbage()
 	if Input.is_action_pressed("game_b"):
 		select_b()
-	if Input.is_action_pressed("fire_garbage"):
-		fire_garbage()
 
 func _physics_process(delta):
 	axis_value.x = Input.get_joy_axis(0, JOY_ANALOG_LX)

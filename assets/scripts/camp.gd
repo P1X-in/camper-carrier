@@ -50,3 +50,15 @@ func _physics_process(delta):
             if cursor.y < 0:
                 cursor.y = 0
 
+func _input(event):
+    if player.active_camera == 3:
+        if Input.is_action_pressed("game_x"):
+            select_x()
+        if Input.is_action_pressed("game_y"):
+            select_y()
+
+func select_x():
+    return
+
+func select_y():
+    return
