@@ -33,7 +33,7 @@ shader_param/noisemap = ExtResource( 3 )
 
 shader = ExtResource( 4 )
 shader_param/TERRAIN_HEIGHT_SCALE = 128.0
-shader_param/TERRAIN_MIN_H = 0.4
+shader_param/TERRAIN_MIN_H = 0.44
 shader_param/TERRAIN_MAX_H = 0.6
 shader_param/GRASS_ROWS = 64.0
 shader_param/GRASS_SPACING = 8.0
