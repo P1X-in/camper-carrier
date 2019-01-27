@@ -23,6 +23,7 @@ config/icon="res://assets/sprites/icon.png"
 
 [display]
 
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
