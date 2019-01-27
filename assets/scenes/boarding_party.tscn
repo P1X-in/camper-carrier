@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/projectile.gd" type="Script" id=1]
+[ext_resource path="res://assets/meshes/boat.tscn" type="PackedScene" id=2]
+
+[node name="boarding_party" type="Position3D"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+script = ExtResource( 1 )
+move_speed = 5.0
+boarding_party = true
+
+[node name="boat" parent="." instance=ExtResource( 2 )]
+

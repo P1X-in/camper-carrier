@@ -111,10 +111,15 @@ func hit_by_garbage():
     if current_hp == 0:
         destroyed()
 
-func destroyed():
+func hit_by_party():
+    current_hp = 0
+    $hit.emitting = true
+    destroyed(5)
+
+func destroyed(multiplier=1):
     world.counter -= 1
     world.spawned_ships.erase(get_instance_id())
-    world.player.add_resources(loot_sausage, loot_beer)
+    world.player.add_resources(loot_sausage * multiplier, loot_beer * multiplier)
     queue_free()
 
 func shoot():

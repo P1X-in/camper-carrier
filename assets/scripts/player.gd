@@ -61,6 +61,7 @@ var boarding_party_recharge = 120
 var boarding_party_recharge_min = 10
 var boarding_party_cost = 50
 var boarding_party_cost_min = 0
+var boarding_party_template
 
 var sausage = 300
 var beer = 200
@@ -69,6 +70,7 @@ func _ready():
     move_to = transform.origin
     world = get_parent()
     projectile_template = preload("res://assets/scenes/projectile.tscn")
+    boarding_party_template = preload("res://assets/scenes/boarding_party.tscn")
     timer = preload("res://assets/scripts/timers.gd").new(self)
 
 func _process(delta):
@@ -115,6 +117,8 @@ func _input(event):
             select_a()
         if Input.is_action_pressed("fire_garbage"):
             fire_garbage()
+        if Input.is_action_pressed("fire_party"):
+            fire_boarding_party()
     if Input.is_action_pressed("game_b"):
         select_b()
     if Input.is_action_pressed("game_pro"):
@@ -225,3 +229,38 @@ func take_resources(sausage_amount, beer_amount):
 func hit_by_garbage():
     $hit.emitting = true
     return
+
+func fire_boarding_party():
+    if not boarding_party or active_camera == 3:
+        return
+
+    if not check_resources(0, boarding_party_cost):
+        return
+
+    take_resources(0, boarding_party_cost)
+
+    boarding_party = false
+
+    var direction = Vector2(0.0, -1.0)
+    var elevation = 0
+    var angle
+
+    if active_camera == 0 or active_camera == 1:
+        angle = deg2rad(-pivot_point.angle_y - angle_y)
+    if active_camera == 2:
+        angle = deg2rad(-angle_y)
+    direction = direction.rotated(angle)
+
+    var new_party = boarding_party_template.instance()
+    new_party.direction = Vector3(direction.x, 0.0, direction.y)
+    new_party.transform.origin = Vector3(self.transform.origin.x, self.transform.origin.y + elevation, self.transform.origin.z)
+    world.add_child(new_party)
+    self.timer.set_timeout(boarding_party_recharge, self, "boarding_party_returns")
+
+    var basis = Basis(Vector3(0.0, 1.0, 0.0), -angle)
+    new_party.transform.basis = basis
+
+    return new_party
+
+func boarding_party_returns():
+    boarding_party = true
