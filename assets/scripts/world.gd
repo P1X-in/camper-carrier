@@ -11,7 +11,10 @@ export var BOT_SPAWN_DELAY = 5
 
 onready var heightmap_file = preload("res://assets/materials/worldmap.png")
 onready var units = [
-    preload('res://assets/scenes/bot_boat.tscn')
+    preload('res://assets/scenes/bot_boat1.tscn'),
+	preload('res://assets/scenes/bot_boat2.tscn'),
+	preload('res://assets/scenes/bot_boat3.tscn'),
+	preload('res://assets/scenes/bot_boat4.tscn')
 ]
 
 var height_map
