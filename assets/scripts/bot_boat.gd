@@ -5,7 +5,7 @@ var navigation = preload("res://assets/scripts/bot_navigation.gd").new()
 export var rotate_speed = 2.0
 export var move_speed = 0.4
 
-const ANGLE_THRESHOLD = 0.5
+const ANGLE_THRESHOLD = 0.1
 const TARGET_PROXIMITY = 10.0
 
 var current_target = Vector2(0, 0)
@@ -16,6 +16,7 @@ var world
 var angle_y = 0
 var _angle_y = 0
 var move_to
+
 
 func select_random_start():
     var index = randi() % navigation.pairs.size()
@@ -78,3 +79,4 @@ func _physics_process(delta):
             angle_y += rotate_speed
         else:
             angle_y -= rotate_speed
+
