@@ -18,6 +18,8 @@ onready var cursor_node = $"cursor"
 var axis_value = Vector2(0, 0)
 var need_reset = false
 
+var current_cost = null
+onready var player_node = $"../../../player"
 
 var buildings = {
     "bin" : preload("res://assets/scenes/tiles/tile_bin.tscn"),
@@ -120,18 +122,28 @@ func _input(event):
 func select_x():
     if tiles[cursor.y][cursor.x] == null:
         return
-
+        
     _upgrade(cursor)
 
 func select_y():
     if tiles[cursor.y][cursor.x] != null:
         return
-
     _add_tile(selected_building_name, cursor)
 
 func _add_tile(name, position):
     clear_ghost()
     var new_tile = buildings[name].instance()
+    
+    # TODO - clean this part
+    var level = new_tile.get_basic()
+    var sausage = level.cost_sausage
+    var beer = level.cost_beer
+    
+    if not player_node.check_resources(level.cost_sausage, level.cost_beer):
+        return;
+    else:
+        player_node.take_resources(level.cost_sausage, level.cost_beer)
+        
     var new_position = Vector3(X_START + position.x * X_DIFF, Z_POS, Y_START + position.y * Y_DIFF)
     self.add_child(new_tile)
     new_tile.transform.origin = new_position
@@ -154,6 +166,13 @@ func _upgrade(position):
         return
 
     var tile = tiles[position.y][position.x]
+    
+    var tile_level = tile.get_level(new_level)
+    if not player_node.check_resources(tile_level.cost_sausage, tile_level.cost_beer):
+        return;
+    else:
+        player_node.take_resources(tile_level.cost_sausage, tile_level.cost_beer)
+        
     tile.get_node("level" + str(old_level)).hide()
     tile.get_node("level" + str(new_level)).show()
     levels[position.y][position.x] = new_level

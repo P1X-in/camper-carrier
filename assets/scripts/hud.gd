@@ -11,6 +11,6 @@ func show_camp_hud():
 func hide_camp_hud():
     camp_hud.hide()
 
-func update_resources_panel(beer, sausage):
+func update_resources_panel(sausage, beer):
     beer_label.set_value(beer)
     sausage_label.set_value(sausage)

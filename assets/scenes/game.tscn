@@ -254,7 +254,6 @@ __meta__ = {
 }
 
 [node name="camp_management" type="Control" parent="HUD"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -281,7 +280,6 @@ text = "FPS: 666"
 script = ExtResource( 18 )
 
 [node name="right" type="Control" parent="HUD"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 

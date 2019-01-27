@@ -5,7 +5,9 @@ onready var description_node = $"corner/message_box/message"
 onready var button_node = $"corner/message_box/b"
 onready var sausage_node = $"corner/message_box/sausage"
 onready var beer_node = $"corner/message_box/beer"
+onready var action_node = $"corner/message_box/b"
 
+onready var player_node = $"../../player"
 
 func show_building_card(tile):
     var level = tile.get_basic()
@@ -73,3 +75,17 @@ func _fill_card(title, description, button_icon, button_label, sausage, beer):
         beer_node.get_node('label').set_text(str(beer))
     else:
         beer_node.hide()
+        
+    if is_possible(sausage, beer):
+        action_node.show()
+    else:
+        action_node.hide()
+        
+func node_color(node, sausage, beer):
+    if player_node.check_resources(sausage, beer):
+        node.get_node('label').add_color_override("font_color", Color(1,1,1))
+    else:
+        node.get_node('label').add_color_override("font_color", Color(1,0,0))
+        
+func is_possible(sausage, beer):
+    return sausage != null and beer != null and player_node.check_resources(sausage, beer)
