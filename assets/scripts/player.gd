@@ -34,7 +34,33 @@ var w = 0
 var axis_value = Vector2()
 
 var garbage_recharge = 1
-var garbage_charges = 1
+var garbage_charges = 0
+var garbage_stagger = 0.1
+var garbage_stagger_timer = 2.0
+
+var hp = 4
+var current_hp = 4
+
+var smokescreen_enabled = false
+var smokescreen = false
+var smokescreen_recharge = 300
+var smokescreen_recharge_min = 10
+var smokescreen_cost = 100
+var smokescreen_cost_min = 10
+
+var noisemaker_enabled = false
+var noisemaker = false
+var noisemaker_recharge = 300
+var noisemaker_recharge_min = 10
+var noisemaker_cost = 80
+var noisemaker_cost_min = 5
+
+var boarding_party_enabled = false
+var boarding_party = false
+var boarding_party_recharge = 120
+var boarding_party_recharge_min = 10
+var boarding_party_cost = 50
+var boarding_party_cost_min = 0
 
 var sausage = 300
 var beer = 200
@@ -120,6 +146,8 @@ func _physics_process(delta):
         front_back = front_back.normalized()
         move_to += front_back * move_speed_fb * current_axis.y
 
+    garbage_stagger_timer += delta
+
 
 
 func select_a():
@@ -146,6 +174,11 @@ func select_b():
 func fire_garbage():
     if self.garbage_charges < 1 or active_camera == 3:
         return
+
+    if garbage_stagger_timer < garbage_stagger:
+        return
+
+    garbage_stagger_timer = 0.0
 
     var direction = Vector2(0.0, -1.0)
     var elevation = 2

@@ -58,11 +58,11 @@ tracks/3/keys = {
 "values": [ 9.38, 0.0 ]
 }
 
-[node name="tile_music" instance=ExtResource( 1 )]
+[node name="tile_music" index="0" instance=ExtResource( 1 )]
 
 [node name="level1" parent="." index="0"]
 editor/display_folded = true
-building_name = "Boomboox"
+building_name = "Boombox"
 description = "It makes boom noises."
 cost_sausage = 10
 

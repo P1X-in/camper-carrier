@@ -19,7 +19,6 @@ var axis_value = Vector2(0, 0)
 var need_reset = false
 
 var current_cost = null
-onready var player_node = $"../../../player"
 
 var buildings = {
     "bin" : preload("res://assets/scenes/tiles/tile_bin.tscn"),
@@ -122,7 +121,7 @@ func _input(event):
 func select_x():
     if tiles[cursor.y][cursor.x] == null:
         return
-        
+
     _upgrade(cursor)
 
 func select_y():
@@ -133,17 +132,17 @@ func select_y():
 func _add_tile(name, position):
     clear_ghost()
     var new_tile = buildings[name].instance()
-    
+
     # TODO - clean this part
     var level = new_tile.get_basic()
     var sausage = level.cost_sausage
     var beer = level.cost_beer
-    
-    if not player_node.check_resources(level.cost_sausage, level.cost_beer):
+
+    if not player.check_resources(level.cost_sausage, level.cost_beer):
         return;
     else:
-        player_node.take_resources(level.cost_sausage, level.cost_beer)
-        
+        player.take_resources(level.cost_sausage, level.cost_beer)
+
     var new_position = Vector3(X_START + position.x * X_DIFF, Z_POS, Y_START + position.y * Y_DIFF)
     self.add_child(new_tile)
     new_tile.transform.origin = new_position
@@ -154,6 +153,8 @@ func _add_tile(name, position):
     new_tile.get_level(1).show()
     new_tile.get_level(2).hide()
     new_tile.get_level(3).hide()
+
+    apply_building_effect(new_tile.get_basic().building_name)
 
     if player.hud != null and player.hud.camp_hud != null:
         player.hud.camp_hud.show_upgrade_card(new_tile, 1)
@@ -166,17 +167,18 @@ func _upgrade(position):
         return
 
     var tile = tiles[position.y][position.x]
-    
+
     var tile_level = tile.get_level(new_level)
-    if not player_node.check_resources(tile_level.cost_sausage, tile_level.cost_beer):
+    if not player.check_resources(tile_level.cost_sausage, tile_level.cost_beer):
         return;
     else:
-        player_node.take_resources(tile_level.cost_sausage, tile_level.cost_beer)
-        
+        player.take_resources(tile_level.cost_sausage, tile_level.cost_beer)
+
     tile.get_node("level" + str(old_level)).hide()
     tile.get_node("level" + str(new_level)).show()
     levels[position.y][position.x] = new_level
     player.hud.camp_hud.show_upgrade_card(tile, new_level)
+    apply_building_effect(tile.get_level(new_level).building_name)
 
 func _next_template():
     var names = buildings.keys()
@@ -200,3 +202,53 @@ func _prev_template():
 
     selected_building_name = names[selected_building_template]
     add_ghost()
+
+func apply_building_effect(name):
+    print("Built " + name)
+
+    if name == "Pile of trash" or name == "Thrash cans" or name == "Waste containers":
+        player.garbage_charges += 1
+
+    if name == "Tents" or name == "Camper" or name == "Cottage":
+        player.hp += 1
+        player.current_hp += 1
+
+    if name == "Bushes" or name == "Toi Toi" or name == "Toilet":
+        player.rotate_speed += 0.05
+        player.move_speed_fb + 0.05
+
+    if name == "Boombox" or name == "Dj Stand" or name == "Dance Floor":
+        if not player.noisemaker_enabled:
+            player.noisemaker_enabled = true
+            player.noisemaker = true
+        else:
+            player.noisemaker_recharge -= 30
+            if player.noisemaker_recharge < player.noisemaker_recharge_min:
+                player.noisemaker_recharge = player.noisemaker_recharge_min
+            player.noisemaker_cost -= 10
+            if player.noisemaker_cost < player.noisemaker_cost_min:
+                player.noisemaker_cost = player.noisemaker_cost_min
+
+    if name == "Beer Hut" or name == "Alcohol Shop" or name == "Fancy Bar":
+        if not player.boarding_party_enabled:
+            player.boarding_party_enabled = true
+            player.boarding_party = true
+        else:
+            player.boarding_party_recharge -= 20
+            if player.boarding_party_recharge < player.boarding_party_recharge_min:
+                player.boarding_party_recharge = player.boarding_party_recharge_min
+            player.boarding_party_cost -= 10
+            if player.boarding_party_cost < player.boarding_party_cost_min:
+                player.boarding_party_cost = player.boarding_party_cost_min
+
+    if name == "Campfire" or name == "Grill" or name == "Big grill":
+        if not player.smokescreen_enabled:
+            player.smokescreen_enabled = true
+            player.smokescreen = true
+        else:
+            player.smokescreen_recharge -= 30
+            if player.smokescreen_recharge < player.smokescreen_recharge_min:
+                player.smokescreen_recharge = player.smokescreen_recharge_min
+            player.smokescreen_cost -= 10
+            if player.smokescreen_cost < player.smokescreen_cost_min:
+                player.smokescreen_cost = player.smokescreen_cost_min
