@@ -6,14 +6,15 @@ export var rotate_speed = 2.0
 export var move_speed = 0.4
 export var hitbox_size = 3.0
 export var aggro_range = 100.0
-export var barrage_size = 1
-export var barrage_cooldown = 1
+export var barrage_size = 2
+export var barrage_cooldown = 2
 export var hp = 3
 export var loot_sausage = 10
 export var loot_beer = 5
 
 const ANGLE_THRESHOLD = 0.1
 const TARGET_PROXIMITY = 10.0
+const BARRAGE_DELAY = 0.1
 
 var current_target = Vector2(0, 0)
 var previous_target = null
@@ -27,6 +28,8 @@ var move_to
 var current_hp
 var projectile_template = preload("res://assets/scenes/projectile.tscn")
 var shot_timer = 2
+var barrage_progress = 0
+var barrage_timer = 1
 
 func select_random_start():
     var index = randi() % navigation.pairs.size()
@@ -93,9 +96,14 @@ func _physics_process(delta):
 
     var player_direction = Vector2(world.player.transform.origin.x, world.player.transform.origin.z) - Vector2(self.transform.origin.x, self.transform.origin.z)
     shot_timer += delta
-    if player_direction.length() < aggro_range and shot_timer > barrage_cooldown:
+    barrage_timer += delta
+    if player_direction.length() < aggro_range and shot_timer > barrage_cooldown and barrage_progress < barrage_size and barrage_timer > BARRAGE_DELAY:
         shoot()
-        shot_timer = 0.0
+        barrage_progress += 1
+        barrage_timer = 0.0
+        if barrage_progress == barrage_size:
+            shot_timer = 0.0
+            barrage_progress = 0
 
 func hit_by_garbage():
     current_hp -= 1
