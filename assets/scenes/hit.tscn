@@ -2,41 +2,42 @@
 
 [ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=1]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=10]
 
 offsets = PoolRealArray( 0, 0.446429, 0.723214, 1 )
 colors = PoolColorArray( 1, 0.890625, 0, 1, 1, 0, 0, 1, 0.433594, 0.433594, 0.433594, 0.992941, 0, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=2]
+[sub_resource type="GradientTexture" id=11]
 
-gradient = SubResource( 1 )
+gradient = SubResource( 10 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=12]
 
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.794906, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
+[sub_resource type="CurveTexture" id=13]
 
-curve = SubResource( 3 )
+curve = SubResource( 12 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=14]
 
 emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 8.12753e-44
 scale = 2.0
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=15]
 
 flags_transparent = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource( 1 )
 
-[sub_resource type="SphereMesh" id=7]
+[sub_resource type="SphereMesh" id=16]
 
-material = SubResource( 6 )
+material = SubResource( 15 )
 radius = 2.0
 height = 4.0
 radial_segments = 6
@@ -47,6 +48,6 @@ emitting = false
 amount = 3
 lifetime = 0.5
 one_shot = true
-process_material = SubResource( 5 )
-draw_pass_1 = SubResource( 7 )
+process_material = SubResource( 14 )
+draw_pass_1 = SubResource( 16 )
 
