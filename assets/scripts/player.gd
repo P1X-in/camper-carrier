@@ -326,6 +326,8 @@ func hit_by_garbage():
         destroyed()
 
 func destroyed():
+    dead.get_node("camera_wasted").set_current(true)
+    dead.get_node("over").show()
     world.add_child(dead)
     dead.transform.origin = transform.origin
     hide()
