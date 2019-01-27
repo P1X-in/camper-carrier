@@ -3,9 +3,9 @@
 [sub_resource type="ProceduralSky" id=1]
 
 radiance_size = 2
-sky_top_color = Color( 1, 1, 1, 1 )
-sky_horizon_color = Color( 0.976471, 0.858824, 0.611765, 1 )
-sky_curve = 0.52707
+sky_top_color = Color( 1, 0.996078, 0.976471, 1 )
+sky_horizon_color = Color( 0.976471, 0.784314, 0.611765, 1 )
+sky_curve = 0.282449
 ground_bottom_color = Color( 0.254902, 0.211765, 0.109804, 1 )
 ground_horizon_color = Color( 0.353741, 0.760613, 0.870746, 1 )
 ground_curve = 0.331285
@@ -16,20 +16,18 @@ texture_size = 0
 
 background_mode = 2
 background_sky = SubResource( 1 )
-ambient_light_color = Color( 0.666667, 0.666667, 0.666667, 1 )
-ambient_light_energy = 0.05
-ambient_light_sky_contribution = 0.2
+ambient_light_color = Color( 0.462745, 0.462745, 0.462745, 1 )
+ambient_light_energy = 0.0
 fog_enabled = true
-fog_color = Color( 0, 0.703744, 0.832031, 1 )
+fog_color = Color( 0.0470588, 0.776471, 0.760784, 1 )
+fog_sun_amount = 0.88
 fog_depth_begin = 128.0
-fog_depth_end = 386.0
-fog_depth_curve = 2.73207
-fog_transmit_curve = 0.203063
+fog_depth_end = 512.0
+fog_depth_curve = 1.1892
 tonemap_mode = 2
 tonemap_exposure = 0.8
 tonemap_white = 1.25
 ss_reflections_enabled = true
-ss_reflections_max_steps = 128
 ssao_light_affect = 1.0
 ssao_blur = 2
 ssao_edge_sharpness = 2.0

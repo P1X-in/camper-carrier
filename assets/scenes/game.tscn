@@ -21,12 +21,13 @@ environment = ExtResource( 3 )
 [node name="sun" type="DirectionalLight" parent="."]
 transform = Transform( 0.5, -0.496732, -0.709406, 7.16125e-08, -0.819152, 0.573577, -0.866025, -0.286788, -0.409576, 0, 128, 0 )
 light_color = Color( 0.996078, 1, 0.85098, 1 )
-light_energy = 2.0
+light_energy = 1.4
 shadow_enabled = true
-directional_shadow_mode = 0
-directional_shadow_split_1 = 0.107
-directional_shadow_bias_split_scale = 0.4
-directional_shadow_max_distance = 512.0
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_normal_bias = 0.9
+directional_shadow_bias_split_scale = 0.6
+directional_shadow_max_distance = 256.0
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 
