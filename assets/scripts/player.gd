@@ -183,6 +183,28 @@ func select_b():
         camp.clear_ghost()
         hud.hide_camp_hud()
 
+func update_hud_icons():
+    if hud == null:
+        return
+
+    if smokescreen:
+        hud.smokescreen.show()
+    else:
+        hud.smokescreen.hide()
+    hud.smokescreen_label.set_value(smokescreen_cost)
+
+    if noisemaker:
+        hud.noisemaker.show()
+    else:
+        hud.noisemaker.hide()
+    hud.noisemaker_label.set_value(noisemaker_cost)
+
+    if boarding_party:
+        hud.boarding_party.show()
+    else:
+        hud.boarding_party.hide()
+    hud.boarding_party_label.set_value(boarding_party_cost)
+
 func fire_garbage():
     if self.garbage_charges < 1 or active_camera == 3:
         return
@@ -268,11 +290,13 @@ func fire_boarding_party():
     var basis = Basis(Vector3(0.0, 1.0, 0.0), -angle)
     new_party.transform.basis = basis
 
+    update_hud_icons()
+
     return new_party
 
 func boarding_party_returns():
     boarding_party = true
-
+    update_hud_icons()
 
 func use_smokescreen():
     if not smokescreen or active_camera == 3:
@@ -282,18 +306,20 @@ func use_smokescreen():
         return
 
     take_resources(0, smokescreen_cost)
-    
+
     smokescreen_effect = true
     smokescreen = false
 
     self.timer.set_timeout(smokescreen_duration, self, "end_smokescreen")
     self.timer.set_timeout(smokescreen_recharge, self, "cool_smokescreen")
-    
+    update_hud_icons()
+
 func end_smokescreen():
     smokescreen_effect = false
 
 func cool_smokescreen():
     smokescreen = true
+    update_hud_icons()
 
 
 func use_noisemaker():
@@ -319,6 +345,7 @@ func use_noisemaker():
 
     self.timer.set_timeout(noisemaker_duration, self, "end_noisemaker")
     self.timer.set_timeout(noisemaker_recharge, self, "cool_noisemaker")
+    update_hud_icons()
 
 
 func end_noisemaker():
@@ -327,3 +354,4 @@ func end_noisemaker():
 
 func cool_noisemaker():
     noisemaker = true
+    update_hud_icons()

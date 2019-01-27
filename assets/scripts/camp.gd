@@ -255,3 +255,5 @@ func apply_building_effect(name):
             if player.smokescreen_cost < player.smokescreen_cost_min:
                 player.smokescreen_cost = player.smokescreen_cost_min
             player.smokescreen_duration += 1
+
+    player.update_hud_icons()
