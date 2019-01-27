@@ -6,8 +6,9 @@
 [node name="bot_boat_base" type="Position3D"]
 script = ExtResource( 1 )
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="icon" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0 )
+cast_shadow = 0
 pixel_size = 2.0
 axis = 1
 double_sided = false
