@@ -82,12 +82,14 @@ func _ready():
     timer = preload("res://assets/scripts/timers.gd").new(self)
     schedule_regen()
     update_hud_hp()
+    
 
 func _process(delta):
     if current_hp == 0:
         return
 
     hud.update_resources_panel(sausage, beer)
+    hud.update_kills(world.killed_ships)
 
     if angle_y != _angle_y:
         _angle_y += (angle_y - _angle_y) * delta * 10.0

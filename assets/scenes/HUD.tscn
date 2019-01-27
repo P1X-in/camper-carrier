@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/scripts/hud.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/disco.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/death.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/kiils.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -173,6 +174,17 @@ margin_bottom = 48.5
 text = "100 HP"
 align = 1
 valign = 1
+
+[node name="kills" type="Sprite" parent="top"]
+position = Vector2( -23.1264, 69.3791 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="top/kills"]
+margin_left = 32.649
+margin_top = -10.883
+margin_right = 72.649
+margin_bottom = 6.11703
+text = "00"
 
 [node name="info" type="Control" parent="."]
 anchor_left = 1.0

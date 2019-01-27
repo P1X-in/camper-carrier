@@ -27,3 +27,6 @@ func update_resources_panel(sausage, beer):
 func update_hp(current, hp):
     var hpstring = str(current) + "/" + str(hp) + " HP"
     get_node("top/Label").set_text(hpstring)
+    
+func update_kills(value):
+    get_node("top/kills/Label").set_text(str(value).pad_zeros(2))
