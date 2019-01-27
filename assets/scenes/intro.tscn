@@ -1,10 +1,24 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/materials/main.theme" type="Theme" id=1]
 [ext_resource path="res://assets/scripts/intro.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/intro.jpg" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/logo_p1x.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/logo_cc.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/logo_cc.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/susage_big.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/sprites/logo_p1x.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 80
+outline_size = 6
+outline_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = -8
+extra_spacing_space = -9
+font_data = ExtResource( 7 )
 
 [sub_resource type="Animation" id=1]
 
@@ -35,6 +49,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/Labellogo2:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ) ]
+}
 
 [node name="intro" type="Control"]
 anchor_right = 1.0
@@ -43,7 +81,8 @@ theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 525.022, 332.381 )
+modulate = Color( 0.8, 0.8, 0.8, 1 )
+position = Vector2( 593.62, 335.245 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
@@ -53,20 +92,55 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 
-[node name="logo_p1x" type="Sprite" parent="Control"]
-scale = Vector2( 0.75, 0.75 )
+[node name="Sprite2" type="Sprite" parent="Control"]
 texture = ExtResource( 4 )
 
-[node name="Sprite2" type="Sprite" parent="Control"]
-texture = ExtResource( 5 )
-
 [node name="Label" type="Label" parent="Control"]
-modulate = Color( 1, 1, 1, 0.919925 )
-margin_left = -110.0
-margin_top = 180.0
-margin_right = 74.0
-margin_bottom = 197.0
-text = "PRESS START TO VACATION"
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -124.0
+margin_top = 161.5
+margin_right = 124.0
+margin_bottom = 178.5
+text = "PRESS      TO START TO VACATION"
+
+[node name="Sprite" type="Sprite" parent="Control/Label"]
+position = Vector2( 64.8803, 7.93341 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Sprite" type="Sprite" parent="Control"]
+modulate = Color( 0.560784, 0.560784, 0.560784, 1 )
+position = Vector2( -403.562, 201.642 )
+rotation = 6.28319
+scale = Vector2( 0.612558, 0.69692 )
+texture = ExtResource( 6 )
+
+[node name="Labellogo2" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -223.5
+margin_top = -30.5
+margin_right = 223.5
+margin_bottom = 50.5
+rect_pivot_offset = Vector2( 223.04, 45.46 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.976471, 0.372549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 12
+text = "CAMPER CARRIER"
+
+[node name="logo_p1x" type="Sprite" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
