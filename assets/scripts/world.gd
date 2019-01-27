@@ -16,6 +16,7 @@ onready var units = [
     preload('res://assets/scenes/bot_boat3.tscn'),
     preload('res://assets/scenes/bot_boat4.tscn')
 ]
+onready var player = $"player"
 
 var height_map
 

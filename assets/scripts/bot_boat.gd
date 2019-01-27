@@ -5,6 +5,11 @@ var navigation = preload("res://assets/scripts/bot_navigation.gd").new()
 export var rotate_speed = 2.0
 export var move_speed = 0.4
 export var hitbox_size = 3.0
+export var aggro_range = 100.0
+export var barrage_size = 1
+export var hp = 3
+export var loot_sausage = 10
+export var loot_beer = 5
 
 const ANGLE_THRESHOLD = 0.1
 const TARGET_PROXIMITY = 10.0
@@ -17,6 +22,9 @@ var world
 var angle_y = 0
 var _angle_y = 0
 var move_to
+
+var current_hp
+var projectile_template = preload("res://assets/scenes/projectile.tscn")
 
 
 func select_random_start():
@@ -37,6 +45,7 @@ func select_next_target():
 
 func _init():
     select_random_start()
+    current_hp = hp
 
 func _ready():
     world = get_parent()
@@ -82,6 +91,23 @@ func _physics_process(delta):
             angle_y -= rotate_speed
 
 func hit_by_garbage():
+    current_hp -= 1
+    if current_hp == 0:
+        destroyed()
+
+func destroyed():
     world.counter -= 1
     world.spawned_ships.erase(get_instance_id())
     queue_free()
+
+func shoot():
+    var direction = Vector2(0.0, -1.0)
+    var elevation = 1
+
+    #var new_garbage = projectile_template.instance()
+    #new_garbage.direction = Vector3(direction.x, 0.0, direction.y)
+    #new_garbage.transform.origin = Vector3(self.transform.origin.x, self.transform.origin.y + elevation, self.transform.origin.z)
+    #world.add_child(new_garbage)
+
+    #garbage_charges -= 1
+    #self.timer.set_timeout(garbage_recharge, self, "add_garbage")
