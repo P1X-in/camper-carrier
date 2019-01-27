@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/materials/environment.tres" type="Environment" id=3]
 [ext_resource path="res://assets/scenes/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scenes/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scenes/dead_ship.tscn" type="PackedScene" id=6]
 
 [node name="game" type="Spatial"]
 script = ExtResource( 1 )
@@ -33,3 +34,11 @@ directional_shadow_max_distance = 256.0
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
+[node name="dead_ship" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76.4155, 50, 0 )
+
+[node name="camera_wasted" parent="dead_ship" index="5"]
+transform = Transform( 1, 0, 0, 0, 0.718855, 0.69516, 0, -0.695161, 0.718854, 0, 64, 64 )
+
+
+[editable path="dead_ship"]

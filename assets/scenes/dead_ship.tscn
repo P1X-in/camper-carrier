@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/scripts/dead_ship.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/hit.tscn" type="PackedScene" id=2]
@@ -91,6 +91,56 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( -6.25, 11.23, 5.43 ), Vector3( 13.39, -8.64, -43.06 ), Vector3( 13.39, 17.38, 42.13 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("camera_wasted:translation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 32, 32 ), Vector3( 0, 48, 48 ), Vector3( 0, 128, 96 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("camera_wasted:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -40.85, 0, 0 ), Vector3( -34.37, 0, 0 ), Vector3( 59.12, 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("camera_wasted:current")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Gradient" id=4]
+
+
+[sub_resource type="GradientTexture" id=5]
+
+gradient = SubResource( 4 )
+
+[sub_resource type="Environment" id=6]
+
+adjustment_enabled = true
+adjustment_contrast = 0.72
+adjustment_saturation = 0.01
+adjustment_color_correction = SubResource( 5 )
 
 [node name="dead_ship" type="Spatial"]
 script = ExtResource( 1 )
@@ -111,4 +161,11 @@ visibility_aabb = AABB( -3.01288, -0.325685, -1.82412, 6.02577, 0.65137, 3.35331
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "sink"
 anims/sink = SubResource( 3 )
+
+[node name="camera_wasted" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.756425, 0.654081, 0, -0.654081, 0.756424, 0, 32, 32 )
+environment = SubResource( 6 )
+current = true
+fov = 60.0
+far = 2048.0
 
