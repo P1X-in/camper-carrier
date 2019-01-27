@@ -6,6 +6,7 @@ export var move_speed_lr = 0.5
 export var move_speed_fb = 0.5
 export var reverse_speed_multiplier = 0.4
 export var hitbox_size = 3.0
+export var barrel_pickup_range = 10.0
 
 var active_camera = 0
 onready var cameras = [
@@ -168,6 +169,18 @@ func _physics_process(delta):
 
     garbage_stagger_timer += delta
     $smoke.emitting = smokescreen_effect
+    pickup_barrels()
+
+func pickup_barrels():
+    var player_position = Vector2(transform.origin.x, transform.origin.z)
+    var barrel
+    var barrel_position
+    for identifier in world.spawned_barrels:
+        barrel = world.spawned_barrels[identifier]
+        barrel_position = Vector2(barrel.transform.origin.x, barrel.transform.origin.z)
+
+        if player_position.distance_to(barrel_position) < barrel_pickup_range:
+            barrel.destroyed()
 
 
 func select_a():

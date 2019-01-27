@@ -8,6 +8,8 @@ export var BLUE_LINE = 0.4
 export var GREEN_LINE = 0.5
 export var BOT_LIMIT = 10
 export var BOT_SPAWN_DELAY = 5
+export var BARREL_LIMIT = 5
+export var BARREL_SPAWN_DELAY = 5
 
 onready var heightmap_file = preload("res://assets/materials/worldmap.png")
 onready var units = [
@@ -18,17 +20,22 @@ onready var units = [
 ]
 onready var player = $"player"
 
+var barrel
+
 var height_map
 
 var timer
 var counter = 0
 var spawned_ships = {}
+var barrel_counter = 0
+var spawned_barrels = {}
 
 func _ready():
     height_map = heightmap_file.get_data()
     timer = preload("res://assets/scripts/timers.gd").new(self)
+    barrel = preload("res://assets/scenes/barrel.tscn")
     schedule_bot_spawn()
-
+    shcedule_barrel_spawn()
 
 func get_height(pos, below_water=false):
     var pos2 = convert_pos(pos)
@@ -52,6 +59,14 @@ func spawn_unit():
         spawned_ships[new_unit.get_instance_id()] = new_unit
     schedule_bot_spawn()
 
+func spawn_barrel():
+    if barrel_counter < BARREL_LIMIT:
+        var new_barrel = barrel.instance()
+        self.add_child(new_barrel)
+        barrel_counter += 1
+        spawned_barrels[new_barrel.get_instance_id()] = new_barrel
+    shcedule_barrel_spawn()
+
 func change_map_seed():
     pass
 
@@ -60,3 +75,6 @@ func _on_world_tick_timeout():
 
 func schedule_bot_spawn():
     timer.set_timeout(BOT_SPAWN_DELAY, self, "spawn_unit")
+
+func shcedule_barrel_spawn():
+    timer.set_timeout(BARREL_SPAWN_DELAY, self, "spawn_barrel")
