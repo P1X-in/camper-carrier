@@ -27,6 +27,7 @@ var move_to
 
 var current_hp
 var projectile_template = preload("res://assets/scenes/projectile.tscn")
+var dead = preload("res://assets/scenes/dead_ship.tscn").instance()
 var shot_timer = 2
 var barrage_progress = 0
 var barrage_timer = 1
@@ -126,6 +127,8 @@ func destroyed(multiplier=1):
     world.counter -= 1
     world.spawned_ships.erase(get_instance_id())
     world.player.add_resources(loot_sausage * multiplier, loot_beer * multiplier)
+    world.add_child(dead)
+    dead.transform.origin = transform.origin
     queue_free()
 
 func shoot():
