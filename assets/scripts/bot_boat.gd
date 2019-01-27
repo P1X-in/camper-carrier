@@ -105,6 +105,7 @@ func hit_by_garbage():
 func destroyed():
     world.counter -= 1
     world.spawned_ships.erase(get_instance_id())
+    world.player.add_resources(loot_sausage, loot_beer)
     queue_free()
 
 func shoot():
