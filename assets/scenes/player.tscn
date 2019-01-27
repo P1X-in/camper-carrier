@@ -72,7 +72,7 @@ adjustment_color_correction = SubResource( 8 )
 [sub_resource type="Gradient" id=10]
 
 offsets = PoolRealArray( 0, 0.446429, 0.723214, 1 )
-colors = PoolColorArray( 1, 0.890625, 0, 1, 1, 0, 0, 1, 0.433594, 0.433594, 0.433594, 0.992941, 0, 0, 0, 0 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.106239, 0.0954784, 0.0705491, 1, 0.699989, 0.699989, 0.699989, 0.992941, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture" id=11]
 
@@ -80,7 +80,7 @@ gradient = SubResource( 10 )
 
 [sub_resource type="Curve" id=12]
 
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.794906, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=13]
 
@@ -88,9 +88,9 @@ curve = SubResource( 12 )
 
 [sub_resource type="ParticlesMaterial" id=14]
 
-emission_shape = 1
-emission_sphere_radius = 1.0
-gravity = Vector3( 0, 0, 0 )
+emission_shape = 2
+emission_box_extents = Vector3( 4, 1, 4 )
+gravity = Vector3( 0, 0.42, 0 )
 angular_velocity = 8.12753e-44
 scale = 2.0
 scale_curve = SubResource( 13 )
@@ -101,6 +101,8 @@ color_ramp = SubResource( 11 )
 flags_transparent = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource( 12 )
+metallic = 1.0
+metallic_specular = 0.0
 
 [sub_resource type="SphereMesh" id=16]
 
@@ -111,7 +113,6 @@ radial_segments = 6
 rings = 3
 
 [node name="player" type="Position3D"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50.729, 0 )
 script = ExtResource( 1 )
 
@@ -214,8 +215,7 @@ mesh = ExtResource( 5 )
 material/0 = null
 material/1 = null
 
-[node name="cursor" type="CSGMesh" parent="carrier/camp" instance=ExtResource( 6 )]
-transform = Transform( -0.338019, 0, -0.368433, 0, 0.5, 0, 0.368433, 0, -0.338019, 0, 0.340855, 0 )
+[node name="cursor" parent="carrier/camp" instance=ExtResource( 6 )]
 mesh = SubResource( 4 )
 
 [node name="pivot" type="Position3D" parent="."]
@@ -261,12 +261,18 @@ axis = 1
 double_sided = false
 texture = ExtResource( 10 )
 
-[node name="hit" type="Particles" parent="." instance=ExtResource( 11 )]
+[node name="hit" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.11212, 0 )
-emitting = false
-amount = 3
-lifetime = 0.5
-one_shot = true
 process_material = SubResource( 14 )
 draw_pass_1 = SubResource( 16 )
 
+[node name="smoke" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52364, 0.683813 )
+emitting = false
+lifetime = 4.0
+visibility_aabb = AABB( -2.89259, -0.325685, -7.20413, 5.78519, 0.65137, 14.4083 )
+process_material = SubResource( 14 )
+draw_pass_1 = SubResource( 16 )
+
+
+[editable path="hit"]
