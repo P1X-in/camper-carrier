@@ -4,6 +4,7 @@ export var move_speed = 10.0
 
 var world
 var direction = Vector3(0.0, 0.0, 0.0)
+var hostile = false
 
 func _ready():
     world = get_parent()
@@ -22,11 +23,19 @@ func _physics_process(delta):
     var ship
     var ship_position
     var projectile_position = Vector2(transform.origin.x, transform.origin.z)
-    for identifier in world.spawned_ships:
-        ship = world.spawned_ships[identifier]
-        ship_position = Vector2(ship.transform.origin.x, ship.transform.origin.z)
 
+    if not hostile:
+        for identifier in world.spawned_ships:
+            ship = world.spawned_ships[identifier]
+            ship_position = Vector2(ship.transform.origin.x, ship.transform.origin.z)
+
+            if projectile_position.distance_to(ship_position) < ship.hitbox_size:
+                ship.hit_by_garbage()
+                queue_free()
+                return
+    else:
+        ship = world.player
+        ship_position = Vector2(ship.transform.origin.x, ship.transform.origin.z)
         if projectile_position.distance_to(ship_position) < ship.hitbox_size:
             ship.hit_by_garbage()
             queue_free()
-            return

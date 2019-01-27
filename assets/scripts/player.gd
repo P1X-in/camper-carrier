@@ -5,6 +5,7 @@ export var move_speed = 1.0
 export var move_speed_lr = 0.5
 export var move_speed_fb = 0.5
 export var reverse_speed_multiplier = 0.4
+export var hitbox_size = 3.0
 
 var active_camera = 0
 onready var cameras = [
@@ -188,4 +189,5 @@ func take_resources(sausage_amount, beer_amount):
     sausage = sausage - sausage_amount
     beer = beer - beer_amount
 
-
+func hit_by_garbage():
+    return

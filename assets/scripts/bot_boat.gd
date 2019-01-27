@@ -7,6 +7,7 @@ export var move_speed = 0.4
 export var hitbox_size = 3.0
 export var aggro_range = 100.0
 export var barrage_size = 1
+export var barrage_cooldown = 1
 export var hp = 3
 export var loot_sausage = 10
 export var loot_beer = 5
@@ -25,7 +26,7 @@ var move_to
 
 var current_hp
 var projectile_template = preload("res://assets/scenes/projectile.tscn")
-
+var shot_timer = 2
 
 func select_random_start():
     var index = randi() % navigation.pairs.size()
@@ -90,6 +91,12 @@ func _physics_process(delta):
         else:
             angle_y -= rotate_speed
 
+    var player_direction = Vector2(world.player.transform.origin.x, world.player.transform.origin.z) - Vector2(self.transform.origin.x, self.transform.origin.z)
+    shot_timer += delta
+    if player_direction.length() < aggro_range and shot_timer > barrage_cooldown:
+        shoot()
+        shot_timer = 0.0
+
 func hit_by_garbage():
     current_hp -= 1
     if current_hp == 0:
@@ -101,13 +108,13 @@ func destroyed():
     queue_free()
 
 func shoot():
-    var direction = Vector2(0.0, -1.0)
+    var direction = Vector2(world.player.transform.origin.x, world.player.transform.origin.z) - Vector2(self.transform.origin.x, self.transform.origin.z)
     var elevation = 1
 
-    #var new_garbage = projectile_template.instance()
-    #new_garbage.direction = Vector3(direction.x, 0.0, direction.y)
-    #new_garbage.transform.origin = Vector3(self.transform.origin.x, self.transform.origin.y + elevation, self.transform.origin.z)
-    #world.add_child(new_garbage)
+    direction = direction.normalized()
 
-    #garbage_charges -= 1
-    #self.timer.set_timeout(garbage_recharge, self, "add_garbage")
+    var new_garbage = projectile_template.instance()
+    new_garbage.direction = Vector3(direction.x, 0.0, direction.y)
+    new_garbage.hostile = true
+    new_garbage.transform.origin = Vector3(self.transform.origin.x, self.transform.origin.y + elevation, self.transform.origin.z)
+    world.add_child(new_garbage)
