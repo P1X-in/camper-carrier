@@ -190,4 +190,5 @@ func take_resources(sausage_amount, beer_amount):
     beer = beer - beer_amount
 
 func hit_by_garbage():
+    $hit.emitting = true
     return

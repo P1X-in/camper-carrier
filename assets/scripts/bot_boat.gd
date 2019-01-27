@@ -107,6 +107,7 @@ func _physics_process(delta):
 
 func hit_by_garbage():
     current_hp -= 1
+    $hit.emitting = true
     if current_hp == 0:
         destroyed()
 
