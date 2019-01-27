@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/shaders/terrain.shader" type="Shader" id=1]
 [ext_resource path="res://assets/materials/worldmap.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/shaders/grass_particle.shader" type="Shader" id=4]
 [ext_resource path="res://assets/meshes/tree.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://assets/scripts/particle_follow_camera_rig.gd" type="Script" id=6]
+[ext_resource path="res://assets/blender/Port1.dae" type="PackedScene" id=7]
+[ext_resource path="res://assets/blender/Port2.dae" type="PackedScene" id=8]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -48,6 +50,9 @@ shader_param/NOISE_MAP = ExtResource( 3 )
 [node name="terrain" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Particles" type="Particles" parent="terrain"]
 amount = 4096
@@ -57,4 +62,43 @@ local_coords = false
 process_material = SubResource( 3 )
 draw_pass_1 = ExtResource( 5 )
 script = ExtResource( 6 )
+
+[node name="Scene Root" parent="terrain" instance=ExtResource( 7 )]
+transform = Transform( 7.02327, 0, -3.83062, 0, 8, 0, 3.83062, 0, 7.02327, 70.7315, 52.8814, -187.808 )
+
+[node name="Scene Root5" parent="terrain" instance=ExtResource( 7 )]
+transform = Transform( 7.99615, 0, -0.248224, 0, 8, 0, 0.248224, 0, 7.99615, -1184.06, 52.8814, -439.877 )
+
+[node name="Scene Root2" parent="terrain" instance=ExtResource( 7 )]
+transform = Transform( -6.08405, 0, -5.19465, 0, 8, 0, 5.19465, 0, -6.08405, -359.622, 52.8814, 496.544 )
+
+[node name="Scene Root12" parent="terrain" instance=ExtResource( 7 )]
+transform = Transform( 0.320151, 0, -7.99359, 0, 8, 0, 7.99359, 0, 0.320151, 621.414, 52.8814, 946.222 )
+
+[node name="Scene Root7" parent="terrain" instance=ExtResource( 7 )]
+transform = Transform( 6.01386, 0, -5.27574, 0, 8, 0, -5.27574, 0, -6.01386, -601.048, 52.8814, 561.786 )
+
+[node name="Scene Root8" parent="terrain" instance=ExtResource( 7 )]
+transform = Transform( 6.01386, 0, 5.27574, 0, 8, 0, -5.27574, 0, 6.01386, -690.93, 52.8814, 469.642 )
+
+[node name="Scene Root11" parent="terrain" instance=ExtResource( 7 )]
+transform = Transform( 1.79972, 0, 7.79494, 0, 8, 0, -7.79494, 0, 1.79972, -929.245, 52.8814, 1278.17 )
+
+[node name="Scene Root10" parent="terrain" instance=ExtResource( 7 )]
+transform = Transform( 7.73116, 0, -2.05649, 0, 8, 0, 2.05649, 0, 7.73116, -713.105, 52.6308, 263.935 )
+
+[node name="Scene Root3" parent="terrain" instance=ExtResource( 8 )]
+transform = Transform( -5.09997, 0, 6.16363, 0, 8, 0, -6.16363, 0, -5.09997, -294.375, 52.0001, 475.837 )
+
+[node name="Scene Root13" parent="terrain" instance=ExtResource( 8 )]
+transform = Transform( -7.99759, 0, -0.196532, 0, 8, 0, 0.196532, 0, -7.99759, 645.489, 52.0001, 882.141 )
+
+[node name="Scene Root9" parent="terrain" instance=ExtResource( 8 )]
+transform = Transform( 7.98949, 0, 0.409876, 0, 8, 0, -0.409876, 0, 7.98949, -715.873, 52.0001, 343.212 )
+
+[node name="Scene Root6" parent="terrain" instance=ExtResource( 8 )]
+transform = Transform( 5.94044, 0, -5.35828, 0, 8, 0, -5.35828, 0, -5.94044, -445.379, 50.1499, 558.122 )
+
+[node name="Scene Root4" parent="terrain" instance=ExtResource( 8 )]
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, -1166.42, 52, -528.324 )
 

@@ -9,9 +9,9 @@
 [ext_resource path="res://assets/scripts/resource.gd" type="Script" id=7]
 [ext_resource path="res://assets/sprites/sausage_icon.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/grill-512.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/disco.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/death.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/disco.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/death.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -35,7 +35,7 @@ __meta__ = {
 }
 
 [node name="camp_management" type="Control" parent="."]
-visible = false
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -44,6 +44,7 @@ __meta__ = {
 }
 
 [node name="corner" type="Control" parent="camp_management"]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 
@@ -94,7 +95,6 @@ script = ExtResource( 7 )
 
 [node name="smokescreen" type="Sprite" parent="right"]
 editor/display_folded = true
-visible = false
 position = Vector2( -100.216, 120 )
 texture = ExtResource( 9 )
 
@@ -107,11 +107,17 @@ text = "000"
 valign = 1
 script = ExtResource( 7 )
 
+[node name="b5" type="Sprite" parent="right/smokescreen"]
+position = Vector2( -40, 0 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 2
+frame = 3
+
 [node name="noisemaker" type="Sprite" parent="right"]
 editor/display_folded = true
-visible = false
 position = Vector2( -100.216, 160 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="label" type="Label" parent="right/noisemaker"]
 margin_left = 22.0
@@ -122,11 +128,17 @@ text = "000"
 valign = 1
 script = ExtResource( 7 )
 
+[node name="b6" type="Sprite" parent="right/noisemaker"]
+position = Vector2( -40, 0 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 2
+frame = 3
+
 [node name="boarding" type="Sprite" parent="right"]
 editor/display_folded = true
-visible = false
 position = Vector2( -100.216, 200 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="label" type="Label" parent="right/boarding"]
 margin_left = 22.0
@@ -137,17 +149,41 @@ text = "000"
 valign = 1
 script = ExtResource( 7 )
 
+[node name="b7" type="Sprite" parent="right/boarding"]
+position = Vector2( -40, 0 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 2
+frame = 3
+
+[node name="top" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+
+[node name="Label" type="Label" parent="top"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = 31.5
+margin_right = 24.0
+margin_bottom = 48.5
+text = "100 HP"
+align = 1
+valign = 1
+
 [node name="info" type="Control" parent="."]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="b" type="Sprite" parent="info"]
+editor/display_folded = true
 position = Vector2( -180, -30 )
-texture = ExtResource( 12 )
-vframes = 2
+texture = ExtResource( 10 )
+vframes = 4
 hframes = 2
 frame = 3
 
@@ -156,6 +192,67 @@ margin_left = 22.0
 margin_top = -16.0
 margin_right = 110.0
 margin_bottom = 16.0
-text = "CHANGE MODE"
+text = "SPYGLASS VIEW"
+valign = 1
+
+[node name="b2" type="Sprite" parent="info"]
+position = Vector2( -330, -30 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 2
+frame = 4
+
+[node name="label" type="Label" parent="info/b2"]
+margin_left = 22.0
+margin_top = -16.0
+margin_right = 110.0
+margin_bottom = 16.0
+text = "MAP"
+valign = 1
+
+[node name="b3" type="Sprite" parent="info"]
+position = Vector2( -460, -30 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 2
+frame = 6
+
+[node name="label" type="Label" parent="info/b3"]
+margin_left = 22.0
+margin_top = -16.0
+margin_right = 110.0
+margin_bottom = 16.0
+text = "CAMP"
+valign = 1
+
+[node name="b4" type="Sprite" parent="info"]
+editor/display_folded = true
+position = Vector2( -630, -30 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 2
+frame = 5
+
+[node name="label" type="Label" parent="info/b4"]
+margin_left = 22.0
+margin_top = -16.0
+margin_right = 110.0
+margin_bottom = 16.0
+text = "ON BOARD VIEW"
+valign = 1
+
+[node name="b5" type="Sprite" parent="info"]
+position = Vector2( -790, -30 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 2
+frame = 7
+
+[node name="label" type="Label" parent="info/b5"]
+margin_left = 22.0
+margin_top = -16.0
+margin_right = 110.0
+margin_bottom = 16.0
+text = "???"
 valign = 1
 

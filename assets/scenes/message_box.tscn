@@ -36,7 +36,7 @@ autowrap = true
 visible = false
 position = Vector2( 122.983, 87.3504 )
 texture = ExtResource( 2 )
-vframes = 2
+vframes = 4
 hframes = 2
 
 [node name="label" type="Label" parent="a"]
@@ -50,7 +50,7 @@ valign = 1
 [node name="b" type="Sprite" parent="."]
 position = Vector2( 252.983, 87.3504 )
 texture = ExtResource( 2 )
-vframes = 2
+vframes = 4
 hframes = 2
 frame = 1
 
