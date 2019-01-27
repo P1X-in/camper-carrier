@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/sprites/logo_p1x.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 
 size = 80
 outline_size = 6
@@ -20,9 +20,8 @@ extra_spacing_char = -8
 extra_spacing_space = -9
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource_name = "intro"
 length = 8.0
 loop = true
 tracks/0/type = "value"
@@ -73,6 +72,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ), Vector2( 1.4, 1.4 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/Sprite2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -96, 0 ) ]
+}
 
 [node name="intro" type="Control"]
 anchor_right = 1.0
@@ -82,7 +93,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.8, 0.8, 0.8, 1 )
-position = Vector2( 593.62, 335.245 )
+position = Vector2( 599.348, 332.381 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
@@ -116,7 +127,6 @@ frame = 2
 [node name="Sprite" type="Sprite" parent="Control"]
 modulate = Color( 0.560784, 0.560784, 0.560784, 1 )
 position = Vector2( -403.562, 201.642 )
-rotation = 6.28319
 scale = Vector2( 0.612558, 0.69692 )
 texture = ExtResource( 6 )
 
@@ -130,12 +140,25 @@ margin_top = -30.5
 margin_right = 223.5
 margin_bottom = 50.5
 rect_pivot_offset = Vector2( 223.04, 45.46 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0.976471, 0.372549, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 12
 text = "CAMPER CARRIER"
+
+[node name="Label2" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -316.0
+margin_top = -268.0
+margin_right = 316.0
+margin_bottom = -251.0
+text = "Game made on ~ GLOBAL GAME JAM 2019 ~ at Poznan Game Jam site in less than 48h."
+align = 1
+valign = 1
 
 [node name="logo_p1x" type="Sprite" parent="."]
 position = Vector2( 512, 300 )
@@ -145,5 +168,5 @@ texture = ExtResource( 8 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
 playback_speed = 0.5
-anims/intro = SubResource( 1 )
+anims/intro = SubResource( 2 )
 
