@@ -159,7 +159,7 @@ func _physics_process(delta):
         move_to += front_back * move_speed_fb * current_axis.y
 
     garbage_stagger_timer += delta
-
+    $smoke.emitting = smokescreen_effect
 
 
 func select_a():
@@ -282,13 +282,13 @@ func use_smokescreen():
         return
 
     take_resources(0, smokescreen_cost)
-
+    
     smokescreen_effect = true
     smokescreen = false
 
     self.timer.set_timeout(smokescreen_duration, self, "end_smokescreen")
     self.timer.set_timeout(smokescreen_recharge, self, "cool_smokescreen")
-
+    
 func end_smokescreen():
     smokescreen_effect = false
 

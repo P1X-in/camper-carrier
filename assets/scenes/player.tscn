@@ -69,6 +69,22 @@ adjustment_contrast = 0.89
 adjustment_saturation = 0.2
 adjustment_color_correction = SubResource( 8 )
 
+[sub_resource type="SpatialMaterial" id=15]
+
+flags_transparent = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource( 12 )
+metallic = 1.0
+metallic_specular = 0.0
+
+[sub_resource type="SphereMesh" id=16]
+
+material = SubResource( 15 )
+radius = 2.0
+height = 4.0
+radial_segments = 6
+rings = 3
+
 [sub_resource type="Gradient" id=10]
 
 offsets = PoolRealArray( 0, 0.446429, 0.723214, 1 )
@@ -86,7 +102,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 curve = SubResource( 12 )
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=17]
 
 emission_shape = 2
 emission_box_extents = Vector3( 4, 1, 4 )
@@ -95,22 +111,6 @@ angular_velocity = 8.12753e-44
 scale = 2.0
 scale_curve = SubResource( 13 )
 color_ramp = SubResource( 11 )
-
-[sub_resource type="SpatialMaterial" id=15]
-
-flags_transparent = true
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource( 12 )
-metallic = 1.0
-metallic_specular = 0.0
-
-[sub_resource type="SphereMesh" id=16]
-
-material = SubResource( 15 )
-radius = 2.0
-height = 4.0
-radial_segments = 6
-rings = 3
 
 [node name="player" type="Position3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50.729, 0 )
@@ -263,7 +263,6 @@ texture = ExtResource( 10 )
 
 [node name="hit" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.11212, 0 )
-process_material = SubResource( 14 )
 draw_pass_1 = SubResource( 16 )
 
 [node name="smoke" type="Particles" parent="."]
@@ -271,7 +270,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52364, 0.683813 )
 emitting = false
 lifetime = 4.0
 visibility_aabb = AABB( -2.89259, -0.325685, -7.20413, 5.78519, 0.65137, 14.4083 )
-process_material = SubResource( 14 )
+process_material = SubResource( 17 )
 draw_pass_1 = SubResource( 16 )
 
 
