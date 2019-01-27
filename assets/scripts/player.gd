@@ -47,6 +47,8 @@ var smokescreen_recharge = 300
 var smokescreen_recharge_min = 10
 var smokescreen_cost = 100
 var smokescreen_cost_min = 10
+var smokescreen_effect = false
+var smokescreen_duration = 3
 
 var noisemaker_enabled = false
 var noisemaker = false
@@ -54,6 +56,8 @@ var noisemaker_recharge = 300
 var noisemaker_recharge_min = 10
 var noisemaker_cost = 80
 var noisemaker_cost_min = 5
+var noisemaker_range = 50
+var noisemaker_duration = 5
 
 var boarding_party_enabled = false
 var boarding_party = false
@@ -119,6 +123,10 @@ func _input(event):
             fire_garbage()
         if Input.is_action_pressed("fire_party"):
             fire_boarding_party()
+        if Input.is_action_pressed("game_x"):
+            use_smokescreen()
+        if Input.is_action_pressed("game_y"):
+            use_noisemaker()
     if Input.is_action_pressed("game_b"):
         select_b()
     if Input.is_action_pressed("game_pro"):
@@ -228,7 +236,7 @@ func take_resources(sausage_amount, beer_amount):
 
 func hit_by_garbage():
     $hit.emitting = true
-    return
+
 
 func fire_boarding_party():
     if not boarding_party or active_camera == 3:
@@ -264,3 +272,58 @@ func fire_boarding_party():
 
 func boarding_party_returns():
     boarding_party = true
+
+
+func use_smokescreen():
+    if not smokescreen or active_camera == 3:
+        return
+
+    if not check_resources(0, smokescreen_cost):
+        return
+
+    take_resources(0, smokescreen_cost)
+
+    smokescreen_effect = true
+    smokescreen = false
+
+    self.timer.set_timeout(smokescreen_duration, self, "end_smokescreen")
+    self.timer.set_timeout(smokescreen_recharge, self, "cool_smokescreen")
+
+func end_smokescreen():
+    smokescreen_effect = false
+
+func cool_smokescreen():
+    smokescreen = true
+
+
+func use_noisemaker():
+    if not noisemaker or active_camera == 3:
+        return
+
+    if not check_resources(0, noisemaker_cost):
+        return
+
+    take_resources(0, noisemaker_cost)
+
+    noisemaker = false
+
+    var player_position = Vector2(transform.origin.x, transform.origin.z)
+    var ship
+    var ship_position
+    for identifier in world.spawned_ships:
+        ship = world.spawned_ships[identifier]
+        ship_position = Vector2(ship.transform.origin.x, ship.transform.origin.z)
+
+        if player_position.distance_to(ship_position) < noisemaker_range:
+            ship.noisemaker_effect = true
+
+    self.timer.set_timeout(noisemaker_duration, self, "end_noisemaker")
+    self.timer.set_timeout(noisemaker_recharge, self, "cool_noisemaker")
+
+
+func end_noisemaker():
+    for identifier in world.spawned_ships:
+        world.spawned_ships[identifier].noisemaker_effect = false
+
+func cool_noisemaker():
+    noisemaker = true

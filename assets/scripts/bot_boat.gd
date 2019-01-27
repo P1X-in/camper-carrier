@@ -13,7 +13,7 @@ export var loot_sausage = 10
 export var loot_beer = 5
 
 const ANGLE_THRESHOLD = 0.1
-const TARGET_PROXIMITY = 10.0
+const TARGET_PROXIMITY = 12.0
 const BARRAGE_DELAY = 0.1
 
 var current_target = Vector2(0, 0)
@@ -30,6 +30,8 @@ var projectile_template = preload("res://assets/scenes/projectile.tscn")
 var shot_timer = 2
 var barrage_progress = 0
 var barrage_timer = 1
+
+var noisemaker_effect = false
 
 func select_random_start():
     var index = randi() % navigation.pairs.size()
@@ -75,11 +77,15 @@ func _physics_process(delta):
     var angle = rad2deg(target_diff_vector.angle())
     var angle_value = angle - angle_y
 
+    var current_speed = move_speed
+    if noisemaker_effect:
+        current_speed /= 2
+
     if target_diff_vector.length() > TARGET_PROXIMITY:
         var front_back = transform.basis.z
         front_back.y = 0.0
         front_back = front_back.normalized()
-        move_to -= front_back * move_speed
+        move_to -= front_back * current_speed
     else:
         move_to = transform.origin
         select_next_target()
@@ -97,7 +103,7 @@ func _physics_process(delta):
     var player_direction = Vector2(world.player.transform.origin.x, world.player.transform.origin.z) - Vector2(self.transform.origin.x, self.transform.origin.z)
     shot_timer += delta
     barrage_timer += delta
-    if player_direction.length() < aggro_range and shot_timer > barrage_cooldown and barrage_progress < barrage_size and barrage_timer > BARRAGE_DELAY:
+    if player_direction.length() < aggro_range and shot_timer > barrage_cooldown and barrage_progress < barrage_size and barrage_timer > BARRAGE_DELAY and not noisemaker_effect:
         shoot()
         barrage_progress += 1
         barrage_timer = 0.0

@@ -228,6 +228,8 @@ func apply_building_effect(name):
             player.noisemaker_cost -= 10
             if player.noisemaker_cost < player.noisemaker_cost_min:
                 player.noisemaker_cost = player.noisemaker_cost_min
+            player.noisemaker_range += 50
+            player.noisemaker_duration +=1
 
     if name == "Beer Hut" or name == "Alcohol Shop" or name == "Fancy Bar":
         if not player.boarding_party_enabled:
@@ -252,3 +254,4 @@ func apply_building_effect(name):
             player.smokescreen_cost -= 10
             if player.smokescreen_cost < player.smokescreen_cost_min:
                 player.smokescreen_cost = player.smokescreen_cost_min
+            player.smokescreen_duration += 1

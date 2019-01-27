@@ -43,6 +43,6 @@ func _physics_process(delta):
     else:
         ship = world.player
         ship_position = Vector2(ship.transform.origin.x, ship.transform.origin.z)
-        if projectile_position.distance_to(ship_position) < ship.hitbox_size:
+        if projectile_position.distance_to(ship_position) < ship.hitbox_size and not ship.smokescreen_effect:
             ship.hit_by_garbage()
             queue_free()
