@@ -43,6 +43,7 @@ var garbage_stagger_timer = 2.0
 
 var hp = 4
 var current_hp = 4
+var got_hit = false
 
 var smokescreen_enabled = false
 var smokescreen = false
@@ -80,6 +81,7 @@ func _ready():
     boarding_party_template = preload("res://assets/scenes/boarding_party.tscn")
     timer = preload("res://assets/scripts/timers.gd").new(self)
     schedule_regen()
+    update_hud_hp()
 
 func _process(delta):
     if current_hp == 0:
@@ -254,6 +256,12 @@ func update_hud_icons():
         hud.boarding_party.hide()
     hud.boarding_party_label.set_value(boarding_party_cost)
 
+func update_hud_hp():
+    if hud == null:
+        return
+
+    hud.update_hp(current_hp, hp)
+
 func fire_garbage():
     if self.garbage_charges < 1 or active_camera == 3:
         return
@@ -309,7 +317,9 @@ func hit_by_garbage():
     if current_hp == 0:
         return
 
+    got_hit = true
     current_hp -= 1
+    update_hud_hp()
     $hit.emitting = true
     print("HP reduced to ", current_hp)
     if current_hp == 0:
@@ -421,7 +431,8 @@ func schedule_regen():
     self.timer.set_timeout(10, self, "regen_hp")
 
 func regen_hp():
-    if current_hp > 0 and current_hp < hp:
+    if current_hp > 0 and current_hp < hp and not got_hit:
         current_hp += 1
+    got_hit = false
 
     schedule_regen()

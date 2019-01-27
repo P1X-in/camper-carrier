@@ -212,6 +212,7 @@ func apply_building_effect(name):
     if name == "Tents" or name == "Camper" or name == "Cottage":
         player.hp += 1
         player.current_hp += 1
+        player.update_hud_hp()
 
     if name == "Bushes" or name == "Toi Toi" or name == "Toilet":
         player.rotate_speed += 0.05

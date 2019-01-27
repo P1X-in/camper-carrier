@@ -12,6 +12,8 @@ onready var smokescreen_label = $"right/smokescreen/label"
 onready var noisemaker_label = $"right/noisemaker/label"
 onready var boarding_party_label = $"right/boarding/label"
 
+onready var hp_label = $"top/Label"
+
 func show_camp_hud():
     camp_hud.show()
 
@@ -21,3 +23,7 @@ func hide_camp_hud():
 func update_resources_panel(sausage, beer):
     beer_label.set_value(beer)
     sausage_label.set_value(sausage)
+
+func update_hp(current, hp):
+    var hpstring = str(current) + "/" + str(hp) + " HP"
+    get_node("top/Label").set_text(hpstring)
