@@ -19,4 +19,14 @@ func _process(delta):
     transform.origin = new_origin
 
 func _physics_process(delta):
-    pass
+    var ship
+    var ship_position
+    var projectile_position = Vector2(transform.origin.x, transform.origin.z)
+    for identifier in world.spawned_ships:
+        ship = world.spawned_ships[identifier]
+        ship_position = Vector2(ship.transform.origin.x, ship.transform.origin.z)
+
+        if projectile_position.distance_to(ship_position) < ship.hitbox_size:
+            ship.hit_by_garbage()
+            queue_free()
+            return

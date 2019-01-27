@@ -4,6 +4,7 @@ var navigation = preload("res://assets/scripts/bot_navigation.gd").new()
 
 export var rotate_speed = 2.0
 export var move_speed = 0.4
+export var hitbox_size = 3.0
 
 const ANGLE_THRESHOLD = 0.1
 const TARGET_PROXIMITY = 10.0
@@ -80,3 +81,7 @@ func _physics_process(delta):
         else:
             angle_y -= rotate_speed
 
+func hit_by_garbage():
+    world.counter -= 1
+    world.spawned_ships.erase(get_instance_id())
+    queue_free()

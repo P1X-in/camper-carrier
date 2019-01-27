@@ -21,6 +21,7 @@ var height_map
 
 var timer
 var counter = 0
+var spawned_ships = {}
 
 func _ready():
     height_map = heightmap_file.get_data()
@@ -47,6 +48,7 @@ func spawn_unit():
         var new_unit = units[random_unit].instance()
         self.add_child(new_unit)
         counter += 1
+        spawned_ships[new_unit.get_instance_id()] = new_unit
     schedule_bot_spawn()
 
 func change_map_seed():
