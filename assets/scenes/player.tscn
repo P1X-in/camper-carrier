@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/meshes/letniskowiec.mesh" type="ArrayMesh" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://assets/sprites/home.png" type="Texture" id=10]
 [ext_resource path="res://assets/scenes/hit.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=12]
+[ext_resource path="res://assets/scenes/smoke.tscn" type="PackedScene" id=13]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=8]
 
 render_priority = -1
 flags_transparent = true
@@ -22,54 +23,54 @@ albedo_texture = ExtResource( 3 )
 metallic = 0.21
 roughness = 0.72
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="PlaneMesh" id=9]
 
-material = SubResource( 1 )
+material = SubResource( 8 )
 size = Vector2( 5, 3 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=10]
 
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0.12549 )
 metallic = 1.0
 
-[sub_resource type="CylinderMesh" id=4]
+[sub_resource type="CylinderMesh" id=11]
 
-material = SubResource( 3 )
+material = SubResource( 10 )
 top_radius = 0.8
 bottom_radius = 0.8
 height = 0.1
 radial_segments = 6
 rings = 2
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=12]
 
 flags_transparent = true
 flags_unshaded = true
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="PlaneMesh" id=6]
+[sub_resource type="PlaneMesh" id=13]
 
-material = SubResource( 5 )
+material = SubResource( 12 )
 size = Vector2( 0.5, 0.5 )
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=14]
 
 colors = PoolColorArray( 0.0293974, 0.116152, 0.129754, 1, 1, 0.832954, 0.488281, 1 )
 
-[sub_resource type="GradientTexture" id=8]
+[sub_resource type="GradientTexture" id=15]
 
-gradient = SubResource( 7 )
+gradient = SubResource( 14 )
 
-[sub_resource type="Environment" id=9]
+[sub_resource type="Environment" id=16]
 
 tonemap_mode = 3
 adjustment_enabled = true
 adjustment_contrast = 0.89
 adjustment_saturation = 0.2
-adjustment_color_correction = SubResource( 8 )
+adjustment_color_correction = SubResource( 15 )
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=6]
 
 flags_transparent = true
 vertex_color_use_as_albedo = true
@@ -77,40 +78,13 @@ albedo_texture = ExtResource( 12 )
 metallic = 1.0
 metallic_specular = 0.0
 
-[sub_resource type="SphereMesh" id=16]
+[sub_resource type="SphereMesh" id=7]
 
-material = SubResource( 15 )
+material = SubResource( 6 )
 radius = 2.0
 height = 4.0
 radial_segments = 6
 rings = 3
-
-[sub_resource type="Gradient" id=10]
-
-offsets = PoolRealArray( 0, 0.446429, 0.723214, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.106239, 0.0954784, 0.0705491, 1, 0.699989, 0.699989, 0.699989, 0.992941, 0, 0, 0, 0 )
-
-[sub_resource type="GradientTexture" id=11]
-
-gradient = SubResource( 10 )
-
-[sub_resource type="Curve" id=12]
-
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=13]
-
-curve = SubResource( 12 )
-
-[sub_resource type="ParticlesMaterial" id=17]
-
-emission_shape = 2
-emission_box_extents = Vector3( 4, 1, 4 )
-gravity = Vector3( 0, 0.42, 0 )
-angular_velocity = 8.12753e-44
-scale = 2.0
-scale_curve = SubResource( 13 )
-color_ramp = SubResource( 11 )
 
 [node name="player" type="Position3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50.729, 0 )
@@ -132,7 +106,7 @@ far = 1024.0
 
 [node name="camp" type="MeshInstance" parent="carrier"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.844, -0.941 )
-mesh = SubResource( 2 )
+mesh = SubResource( 9 )
 material/0 = null
 script = ExtResource( 4 )
 
@@ -216,7 +190,7 @@ material/0 = null
 material/1 = null
 
 [node name="cursor" parent="carrier/camp" instance=ExtResource( 6 )]
-mesh = SubResource( 4 )
+mesh = SubResource( 11 )
 
 [node name="pivot" type="Position3D" parent="."]
 editor/display_folded = true
@@ -238,13 +212,13 @@ far = 1024.0
 
 [node name="vidgete" type="MeshInstance" parent="pivot/camera_spyglass"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5 )
-mesh = SubResource( 6 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="camera_satellite" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2048, 64 )
 visible = false
-environment = SubResource( 9 )
+environment = SubResource( 16 )
 fov = 50.0
 far = 4096.0
 
@@ -263,15 +237,9 @@ texture = ExtResource( 10 )
 
 [node name="hit" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.11212, 0 )
-draw_pass_1 = SubResource( 16 )
+draw_pass_1 = SubResource( 7 )
 
-[node name="smoke" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52364, 0.683813 )
-emitting = false
-lifetime = 4.0
-visibility_aabb = AABB( -2.89259, -0.325685, -7.20413, 5.78519, 0.65137, 14.4083 )
-process_material = SubResource( 17 )
-draw_pass_1 = SubResource( 16 )
+[node name="smoke" parent="." instance=ExtResource( 13 )]
 
 
 [editable path="hit"]
