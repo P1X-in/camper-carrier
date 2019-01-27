@@ -133,7 +133,7 @@ func _input(event):
         move_to += front_back * move_speed
     if active_camera != 3 and active_camera != 4:
         if Input.is_action_pressed("game_a"):
-            select_a()
+            fire_boarding_party()
         if Input.is_action_pressed("fire_garbage"):
             fire_garbage()
         if Input.is_action_pressed("fire_party"):
@@ -434,5 +434,5 @@ func regen_hp():
     if current_hp > 0 and current_hp < hp and not got_hit:
         current_hp += 1
     got_hit = false
-
+    update_hud_hp()
     schedule_regen()
