@@ -26,6 +26,7 @@ var height_map
 
 var timer
 var counter = 0
+var killed_ships = 0
 var spawned_ships = {}
 var barrel_counter = 0
 var spawned_barrels = {}
@@ -57,6 +58,8 @@ func spawn_unit():
         self.add_child(new_unit)
         counter += 1
         spawned_ships[new_unit.get_instance_id()] = new_unit
+        var scale = (killed_ships - (killed_ships % 5)) / 5 + 1
+        new_unit.scale(scale)
     schedule_bot_spawn()
 
 func spawn_barrel():

@@ -6,7 +6,7 @@ export var rotate_speed = 2.0
 export var move_speed = 0.4
 export var hitbox_size = 3.0
 export var aggro_range = 100.0
-export var barrage_size = 2
+export var barrage_size = 1
 export var barrage_cooldown = 2
 export var hp = 3
 export var loot_sausage = 10
@@ -59,6 +59,15 @@ func _ready():
     self.transform.origin = Vector3(current_target_float.x, world.BLUE_LINE * world.MAP_HEIGHT_FACTOR, current_target_float.y)
     move_to = transform.origin
     select_next_target()
+
+func scale(scale):
+    scale = int(scale)
+    print("Bot scaling to ", scale)
+    self.hp *= scale
+    self.current_hp *= scale
+    self.loot_sausage *= scale
+    self.loot_beer *= scale
+    self.barrage_size += scale
 
 func _process(delta):
     if angle_y != _angle_y:
@@ -125,6 +134,7 @@ func hit_by_party():
 
 func destroyed(multiplier=1):
     world.counter -= 1
+    world.killed_ships += 1
     world.spawned_ships.erase(get_instance_id())
     world.player.add_resources(loot_sausage * multiplier, loot_beer * multiplier)
     world.add_child(dead)
