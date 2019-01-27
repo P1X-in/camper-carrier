@@ -35,8 +35,8 @@ var axis_value = Vector2()
 var garbage_recharge = 1
 var garbage_charges = 1
 
-var sausage = 100
-var beer = 100
+var sausage = 300
+var beer = 200
 
 func _ready():
     move_to = transform.origin
