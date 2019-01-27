@@ -100,11 +100,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -124.0
-margin_top = 161.5
-margin_right = 124.0
-margin_bottom = 178.5
-text = "PRESS      TO START TO VACATION"
+margin_left = -112.0
+margin_top = 171.5
+margin_right = 112.0
+margin_bottom = 188.5
+text = "PRESS      TO START VACATION"
 
 [node name="Sprite" type="Sprite" parent="Control/Label"]
 position = Vector2( 64.8803, 7.93341 )
