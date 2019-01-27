@@ -129,6 +129,14 @@ func _input(event):
             use_noisemaker()
     if Input.is_action_pressed("game_b"):
         select_b()
+    if Input.is_action_pressed("dpad_up"):
+        main_screen_on()
+    if Input.is_action_pressed("dpad_down"):
+        what_is_going_on()
+    if Input.is_action_pressed("dpad_left"):
+        get_to_work()
+    if Input.is_action_pressed("dpad_right"):
+        party_mode()
     if Input.is_action_pressed("game_pro"):
         select_pro()
     if Input.is_action_pressed("fire_garbage"):
@@ -167,10 +175,27 @@ func select_a():
 
 
 func select_b():
+    if active_camera == 0:
+        select_camera(1)
+    elif active_camera == 1:
+        select_camera(0)
+
+func main_screen_on():
+    select_camera(0)
+
+func party_mode():
+    select_camera(2)
+
+func get_to_work():
+    select_camera(3)
+
+func what_is_going_on():
+    select_camera(4)
+
+
+func select_camera(index):
     cameras[active_camera].hide()
-    active_camera += 1
-    if active_camera > cameras.size() -1:
-        active_camera = 0
+    active_camera = index
     cameras[active_camera].show()
     cameras[active_camera].set_current(true)
 
