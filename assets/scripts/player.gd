@@ -20,6 +20,8 @@ onready var pivot_point = $"pivot"
 onready var camp = $"carrier/camp"
 onready var hud = $"../HUD"
 
+var dead = preload("res://assets/scenes/dead_ship.tscn").instance()
+
 var projectile_template
 var timer
 
@@ -77,8 +79,12 @@ func _ready():
     projectile_template = preload("res://assets/scenes/projectile.tscn")
     boarding_party_template = preload("res://assets/scenes/boarding_party.tscn")
     timer = preload("res://assets/scripts/timers.gd").new(self)
+    schedule_regen()
 
 func _process(delta):
+    if current_hp == 0:
+        return
+
     hud.update_resources_panel(sausage, beer)
 
     if angle_y != _angle_y:
@@ -101,6 +107,14 @@ func _process(delta):
 
 
 func _input(event):
+    if Input.is_key_pressed(KEY_ESCAPE):
+        quit_game()
+    if Input.is_action_pressed("game_pro"):
+        select_pro()
+
+    if current_hp == 0:
+        return
+
     if Input.is_action_pressed("game_left"):
         angle_y += rotate_speed
     if Input.is_action_pressed("game_right"):
@@ -115,8 +129,6 @@ func _input(event):
         front_back.y = 0.0
         front_back = front_back.normalized()
         move_to += front_back * move_speed
-    if Input.is_key_pressed(KEY_ESCAPE):
-        quit_game()
     if active_camera != 3 and active_camera != 4:
         if Input.is_action_pressed("game_a"):
             select_a()
@@ -138,12 +150,11 @@ func _input(event):
         get_to_work()
     if Input.is_action_pressed("dpad_right"):
         party_mode()
-    if Input.is_action_pressed("game_pro"):
-        select_pro()
-    if Input.is_action_pressed("fire_garbage"):
-        fire_garbage()
 
 func _physics_process(delta):
+    if current_hp == 0:
+        return
+
     axis_value.x = Input.get_joy_axis(0, JOY_ANALOG_LX)
     axis_value.y = Input.get_joy_axis(0, JOY_ANALOG_LY)
 
@@ -295,7 +306,19 @@ func take_resources(sausage_amount, beer_amount):
     beer = beer - beer_amount
 
 func hit_by_garbage():
+    if current_hp == 0:
+        return
+
+    current_hp -= 1
     $hit.emitting = true
+    print("HP reduced to ", current_hp)
+    if current_hp == 0:
+        destroyed()
+
+func destroyed():
+    world.add_child(dead)
+    dead.transform.origin = transform.origin
+    hide()
 
 
 func fire_boarding_party():
@@ -393,3 +416,12 @@ func end_noisemaker():
 func cool_noisemaker():
     noisemaker = true
     update_hud_icons()
+
+func schedule_regen():
+    self.timer.set_timeout(10, self, "regen_hp")
+
+func regen_hp():
+    if current_hp > 0 and current_hp < hp:
+        current_hp += 1
+
+    schedule_regen()
