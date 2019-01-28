@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/meshes/letniskowiec.mesh" type="ArrayMesh" id=2]
@@ -6,13 +6,14 @@
 [ext_resource path="res://assets/scripts/camp.gd" type="Script" id=4]
 [ext_resource path="res://assets/meshes/tree.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://assets/scenes/cursor.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=7]
-[ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/compass.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/home.png" type="Texture" id=10]
-[ext_resource path="res://assets/scenes/hit.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=12]
-[ext_resource path="res://assets/scenes/smoke.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/scenes/helicopter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scripts/camera_pivot.gd" type="Script" id=8]
+[ext_resource path="res://assets/materials/spyglass_v.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/compass.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/home.png" type="Texture" id=11]
+[ext_resource path="res://assets/scenes/hit.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=13]
+[ext_resource path="res://assets/scenes/smoke.tscn" type="PackedScene" id=14]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -43,44 +44,74 @@ height = 0.1
 radial_segments = 6
 rings = 2
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="Animation" id=5]
+
+resource_name = "hrli"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.8, 3.4, 4.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -3.3, 0.931, -1 ), Vector3( -3.3, 1.625, -1 ), Vector3( -3.3, 1.516, -1 ), Vector3( -3.3, 1.547, -1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 2.5, 3.2, 4.5, 5.6, 6.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -111.292, 0 ), Vector3( -6.3, -111.292, 0 ), Vector3( -7.045, -105.372, 0 ), Vector3( 0.962, -94.455, 0 ), Vector3( 2.811, -101.198, 1.9 ), Vector3( 2.881, -106.073, 0 ), Vector3( 2.281, -104.12, -1.96 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=6]
 
 flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 8 )
+albedo_texture = ExtResource( 9 )
 
-[sub_resource type="PlaneMesh" id=6]
+[sub_resource type="PlaneMesh" id=7]
 
-material = SubResource( 5 )
+material = SubResource( 6 )
 size = Vector2( 0.5, 0.5 )
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=8]
 
 colors = PoolColorArray( 0.0293974, 0.116152, 0.129754, 1, 1, 0.832954, 0.488281, 1 )
 
-[sub_resource type="GradientTexture" id=8]
+[sub_resource type="GradientTexture" id=9]
 
-gradient = SubResource( 7 )
+gradient = SubResource( 8 )
 
-[sub_resource type="Environment" id=9]
+[sub_resource type="Environment" id=10]
 
 tonemap_mode = 3
 adjustment_enabled = true
 adjustment_contrast = 0.89
 adjustment_saturation = 0.2
-adjustment_color_correction = SubResource( 8 )
+adjustment_color_correction = SubResource( 9 )
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=11]
 
 flags_transparent = true
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource( 12 )
+albedo_texture = ExtResource( 13 )
 metallic = 1.0
 metallic_specular = 0.0
 
-[sub_resource type="SphereMesh" id=11]
+[sub_resource type="SphereMesh" id=12]
 
-material = SubResource( 10 )
+material = SubResource( 11 )
 radius = 2.0
 height = 4.0
 radial_segments = 6
@@ -192,9 +223,16 @@ material/1 = null
 [node name="cursor" parent="carrier/camp" instance=ExtResource( 6 )]
 mesh = SubResource( 4 )
 
+[node name="heli" parent="carrier" instance=ExtResource( 7 )]
+transform = Transform( -0.072623, 0, -0.186349, 0, 0.2, 0, 0.186349, 0, -0.072623, -3.3, 0.931, -1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="carrier/heli"]
+autoplay = "hrli"
+anims/hrli = SubResource( 5 )
+
 [node name="pivot" type="Position3D" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="camera_drone" type="Camera" parent="pivot"]
 transform = Transform( 1, 1.49012e-08, -2.98023e-08, 0, 0.939693, 0.34202, 0, -0.34202, 0.939692, 0, 16, 24 )
@@ -211,20 +249,20 @@ far = 4096.0
 
 [node name="vidgete" type="MeshInstance" parent="pivot/camera_spyglass"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.5 )
-mesh = SubResource( 6 )
+mesh = SubResource( 7 )
 material/0 = null
 
 [node name="camera_satellite" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2048, 64 )
 visible = false
-environment = SubResource( 9 )
+environment = SubResource( 10 )
 fov = 50.0
 far = 4096.0
 
 [node name="compass" type="Sprite3D" parent="camera_satellite"]
 transform = Transform( 0.963444, -0.267911, 0, 0.267911, 0.963444, 0, 0, 0, 1, -4, -2.05, -7.91 )
 modulate = Color( 1, 1, 1, 0.501961 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="icon" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0 )
@@ -232,13 +270,13 @@ cast_shadow = 0
 pixel_size = 2.0
 axis = 1
 double_sided = false
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
-[node name="hit" parent="." instance=ExtResource( 11 )]
+[node name="hit" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.11212, 0 )
-draw_pass_1 = SubResource( 11 )
+draw_pass_1 = SubResource( 12 )
 
-[node name="smoke" parent="." instance=ExtResource( 13 )]
+[node name="smoke" parent="." instance=ExtResource( 14 )]
 
 
 [editable path="hit"]

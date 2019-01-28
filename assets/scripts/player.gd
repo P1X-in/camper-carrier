@@ -14,7 +14,8 @@ onready var cameras = [
     $"pivot/camera_spyglass",
     $"carrier/camera_onboard",
     $"carrier/camp/camera_camp",
-    $"camera_satellite"
+    $"camera_satellite",
+	$"Spatial2/Camera"
 ]
 onready var pivot_point = $"pivot"
 onready var camp = $"carrier/camp"
@@ -206,7 +207,7 @@ func select_b():
     if active_camera == 0:
         select_camera(1)
     elif active_camera == 1:
-        select_camera(0)
+        select_camera(5)
 
 func main_screen_on():
     select_camera(0)
