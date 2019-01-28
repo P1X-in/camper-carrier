@@ -10,7 +10,6 @@ ground_bottom_color = Color( 0.254902, 0.211765, 0.109804, 1 )
 ground_horizon_color = Color( 0.353741, 0.760613, 0.870746, 1 )
 ground_curve = 0.331285
 sun_curve = 0.0784588
-texture_size = 0
 
 [resource]
 
@@ -19,20 +18,23 @@ background_sky = SubResource( 1 )
 ambient_light_color = Color( 0.462745, 0.462745, 0.462745, 1 )
 ambient_light_energy = 0.0
 fog_enabled = true
-fog_color = Color( 0.0470588, 0.776471, 0.760784, 1 )
+fog_color = Color( 0.0588235, 0.827451, 0.811765, 0.894118 )
 fog_sun_amount = 0.88
 fog_depth_begin = 128.0
 fog_depth_end = 512.0
-fog_depth_curve = 1.1892
+fog_depth_curve = 0.659749
 tonemap_mode = 2
 tonemap_exposure = 0.8
 tonemap_white = 1.25
 ss_reflections_enabled = true
+ss_reflections_max_steps = 512
+ss_reflections_fade_in = 0.227358
+ss_reflections_fade_out = 3.36358
+ssao_radius2 = 2.0
 ssao_light_affect = 1.0
-ssao_blur = 2
+ssao_quality = 1
 ssao_edge_sharpness = 2.0
+dof_blur_far_enabled = true
 dof_blur_far_distance = 512.0
-dof_blur_far_amount = 0.06
-dof_blur_far_quality = 0
 dof_blur_near_distance = 18.41
 

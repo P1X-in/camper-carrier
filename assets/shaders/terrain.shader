@@ -60,7 +60,7 @@ void vertex() {
 	
 	float w = -2.5 + get_waves(VERTEX.xz * .04, 16, TIME) * 5.;
 	float anim = mix(w, 0., shore_line);
-	
+	h += mix(0., -0.0 + (ran * .007), ground_line);
 	h = h * HEIGHT_FACTOR + anim;
 	float fh = mix(h, h + ran, mountains_line);
 	VERTEX.y = fh;
@@ -91,8 +91,8 @@ void fragment() {
 	
 	EMISSION = mix(vec3(0.), vec3(.1, .2, 1.), g_line);
 	TRANSMISSION = mix(vec3(0.), vec3(.3, .3, 1.), g_line);
-	TRANSMISSION += mix(vec3(color_height * ran * 2.), vec3(0.), b_line);
-	TRANSMISSION += mix(vec3(.5, 0.8, .2), TRANSMISSION, g_line);
+	TRANSMISSION += mix(vec3(color_height * ran * 24.), vec3(0.), b_line);
+	TRANSMISSION += mix(vec3(.9, .9, .8), TRANSMISSION, g_line);
 	
 	SPECULAR = mix(1., .4, b_line);
 	ROUGHNESS = mix(.6, 1., b_line);

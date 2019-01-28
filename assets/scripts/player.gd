@@ -25,7 +25,7 @@ var dead = preload("res://assets/scenes/dead_ship.tscn").instance()
 var projectile_template
 var timer
 
-const DEADZONE = 0.15
+const DEADZONE = 0.1
 
 var angle_y = 0
 var _angle_y = 0
