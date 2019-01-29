@@ -81,3 +81,33 @@ func schedule_bot_spawn():
 
 func shcedule_barrel_spawn():
     timer.set_timeout(BARREL_SPAWN_DELAY, self, "spawn_barrel")
+
+func set_graphics_settings(gfx_type):
+    #$world/terrain
+    if gfx_type == "PERF_HI":
+        $sun.shadow_enabled = true
+        ProjectSettings.set_setting("rendering/quality/directional_shadow/size", 8192)
+        ProjectSettings.set_setting("rendering/quality/reflections/high_quality_ggx", true)
+        ProjectSettings.set_setting("rendering/quality/voxel_cone_tracing/high_quality", true)
+        ProjectSettings.set_setting("rendering/quality/shading/force_vertex_shading", false)
+        get_viewport().msaa = Viewport.MSAA_4X
+        ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 2)
+        
+        # msaa 4x
+    if gfx_type == "PERF_NORMAL":
+        $sun.shadow_enabled = true
+        ProjectSettings.set_setting("rendering/quality/directional_shadow/size", 4096)
+        ProjectSettings.set_setting("rendering/quality/reflections/high_quality_ggx", false)
+        ProjectSettings.set_setting("rendering/quality/voxel_cone_tracing/high_quality", false)
+        ProjectSettings.set_setting("rendering/quality/shading/force_vertex_shading", false)
+        get_viewport().msaa = Viewport.MSAA_DISABLED
+        ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 1)
+        
+    if gfx_type == "PERF_LOW":
+        $sun.shadow_enabled = false
+        ProjectSettings.set_setting("rendering/quality/directional_shadow/size", 2048)
+        ProjectSettings.set_setting("rendering/quality/reflections/high_quality_ggx", false)
+        ProjectSettings.set_setting("rendering/quality/voxel_cone_tracing/high_quality", false)
+        ProjectSettings.set_setting("rendering/quality/shading/force_vertex_shading", true)
+        get_viewport().msaa = Viewport.MSAA_DISABLED
+        ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 0)

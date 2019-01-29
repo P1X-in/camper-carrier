@@ -25,7 +25,6 @@ environment = ExtResource( 3 )
 transform = Transform( 0.5, -0.496732, -0.709406, 7.16125e-08, -0.819152, 0.573577, -0.866025, -0.286788, -0.409576, 0, 128, 0 )
 light_color = Color( 1, 0.933333, 0.894118, 1 )
 light_energy = 1.96
-shadow_enabled = true
 directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 0.9
 directional_shadow_bias_split_scale = 0.6

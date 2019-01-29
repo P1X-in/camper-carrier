@@ -114,6 +114,14 @@ func _process(delta):
 func _input(event):
     if Input.is_key_pressed(KEY_ESCAPE):
         quit_game()
+    
+    if Input.is_key_pressed(KEY_1):
+        get_parent().set_graphics_settings("PERF_LOW")   
+    if Input.is_key_pressed(KEY_2):
+        get_parent().set_graphics_settings("PERF_NORMAL")
+    if Input.is_key_pressed(KEY_3):
+        get_parent().set_graphics_settings("PERF_HI") 
+    
     if Input.is_action_pressed("game_pro"):
         select_pro()
 
