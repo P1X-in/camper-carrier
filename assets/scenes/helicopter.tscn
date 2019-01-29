@@ -1,49 +1,56 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://assets/materials/steel.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/dark_blue.material" type="Material" id=1]
+[ext_resource path="res://assets/materials/steel.material" type="Material" id=2]
+[ext_resource path="res://assets/materials/wood.material" type="Material" id=3]
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=1]
 
 flags_transparent = true
 albedo_color = Color( 0.741176, 0.968627, 1, 0.568627 )
 
-[sub_resource type="CapsuleMesh" id=15]
+[sub_resource type="CapsuleMesh" id=2]
 
-material = SubResource( 14 )
+material = SubResource( 1 )
 radial_segments = 8
 rings = 12
 
-[sub_resource type="CubeMesh" id=12]
+[sub_resource type="CubeMesh" id=3]
 
 size = Vector3( 2, 1, 1 )
 
-[sub_resource type="CapsuleMesh" id=1]
+[sub_resource type="CapsuleMesh" id=4]
 
 material = ExtResource( 1 )
 radial_segments = 12
 
-[sub_resource type="CubeMesh" id=2]
-
-material = ExtResource( 1 )
-
-[sub_resource type="CubeMesh" id=3]
-
-material = ExtResource( 1 )
-size = Vector3( 0.2, 1, 0.2 )
-
-[sub_resource type="CubeMesh" id=4]
-
-material = ExtResource( 1 )
-size = Vector3( 1, 0.5, 1 )
-
 [sub_resource type="CubeMesh" id=5]
 
 material = ExtResource( 1 )
-size = Vector3( 0.2, 0.1, 1.2 )
 
-[sub_resource type="CylinderMesh" id=6]
+[sub_resource type="CubeMesh" id=6]
 
 material = ExtResource( 1 )
+size = Vector3( 2, 2, 4 )
+
+[sub_resource type="CubeMesh" id=7]
+
+material = ExtResource( 2 )
+size = Vector3( 1, 0.5, 1 )
+
+[sub_resource type="CubeMesh" id=8]
+
+material = ExtResource( 2 )
+size = Vector3( 0.2, 1, 0.2 )
+
+[sub_resource type="CubeMesh" id=9]
+
+material = ExtResource( 2 )
+size = Vector3( 0.2, 0.1, 1.2 )
+
+[sub_resource type="CylinderMesh" id=10]
+
+material = ExtResource( 2 )
 top_radius = 0.4
 bottom_radius = 0.4
 height = 0.05
@@ -52,113 +59,110 @@ rings = 1
 
 [sub_resource type="CylinderMesh" id=11]
 
-material = ExtResource( 1 )
+material = ExtResource( 2 )
 top_radius = 0.35
 bottom_radius = 0.35
 height = 0.1
 radial_segments = 8
 rings = 1
 
-[sub_resource type="CylinderMesh" id=7]
+[sub_resource type="CylinderMesh" id=12]
 
-material = ExtResource( 1 )
+material = ExtResource( 2 )
 top_radius = 2.0
 bottom_radius = 2.0
 height = 0.05
 radial_segments = 16
 rings = 1
 
-[sub_resource type="CylinderMesh" id=10]
+[sub_resource type="CylinderMesh" id=13]
 
-material = ExtResource( 1 )
+material = ExtResource( 2 )
 top_radius = 1.9
 bottom_radius = 1.9
 height = 0.1
 radial_segments = 16
 rings = 1
 
-[sub_resource type="CubeMesh" id=8]
-
-material = ExtResource( 1 )
-size = Vector3( 2, 2, 4 )
-
-[sub_resource type="CubeMesh" id=9]
+[sub_resource type="CubeMesh" id=14]
 
 material = ExtResource( 1 )
 size = Vector3( 0.2, 0.2, 2 )
 
-[sub_resource type="CapsuleMesh" id=13]
+[sub_resource type="CapsuleMesh" id=15]
 
+material = ExtResource( 3 )
 radius = 0.2
 mid_height = 0.4
 radial_segments = 8
 
 [node name="heli" type="Spatial"]
 
-[node name="CSGMesh8" type="CSGMesh" parent="."]
-mesh = SubResource( 15 )
-
-[node name="CSGMesh9" type="CSGMesh" parent="CSGMesh8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.596159, -0.879866 )
-operation = 1
-mesh = SubResource( 12 )
-
-[node name="CSGMesh2" type="CSGMesh" parent="."]
-mesh = SubResource( 1 )
-
-[node name="CSGMesh" type="CSGMesh" parent="CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19704, 0.798766 )
-operation = 2
+[node name="cabin" type="CSGMesh" parent="."]
 mesh = SubResource( 2 )
 
-[node name="CSGMesh2" type="CSGMesh" parent="CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76039, 0.0463389 )
+[node name="cabin-out-cut" type="CSGMesh" parent="cabin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.596159, -0.879866 )
+operation = 1
 mesh = SubResource( 3 )
 
-[node name="CSGMesh" type="CSGMesh" parent="CSGMesh2/CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297649, 0.169875 )
+[node name="body" type="CSGMesh" parent="."]
 mesh = SubResource( 4 )
 
-[node name="CSGMesh2" type="CSGMesh" parent="CSGMesh2/CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.443733, 1.15836 )
+[node name="top-cut" type="CSGMesh" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19704, 0.798766 )
+operation = 2
 mesh = SubResource( 5 )
 
-[node name="CSGMesh" type="CSGMesh" parent="CSGMesh2/CSGMesh2/CSGMesh2"]
-transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0.5, -5.97109e-08, -0.866025, 0.866025, -1.59995e-08, 0.5, 0.0567398, 0, 0.895253 )
+[node name="bottom-cut" type="CSGMesh" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17026, 0 )
+operation = 2
 mesh = SubResource( 6 )
 
-[node name="CSGMesh2" type="CSGMesh" parent="CSGMesh2/CSGMesh2/CSGMesh2/CSGMesh"]
+[node name="cabin-cut" type="CSGMesh" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.596159, -0.879866 )
+operation = 2
+mesh = SubResource( 3 )
+
+[node name="engine" type="CSGMesh" parent="body"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.462741, 0.216214 )
+mesh = SubResource( 7 )
+
+[node name="pole" type="CSGMesh" parent="body/engine"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.297649, -0.169875 )
+mesh = SubResource( 8 )
+
+[node name="back-wing" type="CSGMesh" parent="body/engine/pole"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.443733, 1.15836 )
+mesh = SubResource( 9 )
+
+[node name="smigielko" type="CSGMesh" parent="body/engine/pole/back-wing"]
+transform = Transform( -4.37114e-08, -1, 4.37114e-08, 0.5, -5.97109e-08, -0.866025, 0.866025, -1.59995e-08, 0.5, 0.0567398, 0, 0.895253 )
+mesh = SubResource( 10 )
+
+[node name="cut" type="CSGMesh" parent="body/engine/pole/back-wing/smigielko"]
 transform = Transform( 1, 0, 0, 0, 1, -8.35187e-23, 0, -8.35187e-23, 1, 0, 0, 0 )
 operation = 2
 mesh = SubResource( 11 )
 
-[node name="CSGMesh3" type="CSGMesh" parent="CSGMesh2/CSGMesh2"]
+[node name="big-smigielko" type="CSGMesh" parent="body/engine/pole"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477907, 0 )
-mesh = SubResource( 7 )
-
-[node name="CSGMesh4" type="CSGMesh" parent="CSGMesh2/CSGMesh2/CSGMesh3"]
-operation = 2
-mesh = SubResource( 10 )
-
-[node name="CSGMesh3" type="CSGMesh" parent="CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17026, 0 )
-operation = 2
-mesh = SubResource( 8 )
-
-[node name="CSGMesh4" type="CSGMesh" parent="CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0 )
-mesh = SubResource( 9 )
-
-[node name="CSGMesh5" type="CSGMesh" parent="CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0 )
-mesh = SubResource( 9 )
-
-[node name="CSGMesh6" type="CSGMesh" parent="CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.596159, -0.879866 )
-operation = 2
 mesh = SubResource( 12 )
 
-[node name="CSGMesh7" type="CSGMesh" parent="CSGMesh2"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.438573, 0.228259, -0.73805 )
+[node name="cut" type="CSGMesh" parent="body/engine/pole/big-smigielko"]
+operation = 2
 mesh = SubResource( 13 )
+
+[node name="left-slee" type="CSGMesh" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0 )
+mesh = SubResource( 14 )
+
+[node name="right-slee" type="CSGMesh" parent="body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0 )
+mesh = SubResource( 14 )
+
+[node name="pilot" type="CSGMesh" parent="body"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.438573, 0.228259, -0.73805 )
+mesh = SubResource( 15 )
 

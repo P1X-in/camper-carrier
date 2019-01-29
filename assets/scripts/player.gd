@@ -15,7 +15,7 @@ onready var cameras = [
     $"carrier/camera_onboard",
     $"carrier/camp/camera_camp",
     $"camera_satellite",
-	$"Spatial2/Camera"
+	$"pivot/camera_heli"
 ]
 onready var pivot_point = $"pivot"
 onready var camp = $"carrier/camp"
@@ -83,7 +83,7 @@ func _ready():
     timer = preload("res://assets/scripts/timers.gd").new(self)
     schedule_regen()
     update_hud_hp()
-    
+
 
 func _process(delta):
     if current_hp == 0:
@@ -155,6 +155,8 @@ func _input(event):
         get_to_work()
     if Input.is_action_pressed("dpad_right"):
         party_mode()
+    if Input.is_action_pressed("start"):
+        heli_on()
 
 func _physics_process(delta):
     if current_hp == 0:
@@ -207,7 +209,7 @@ func select_b():
     if active_camera == 0:
         select_camera(1)
     elif active_camera == 1:
-        select_camera(5)
+        select_camera(0)
 
 func main_screen_on():
     select_camera(0)
@@ -221,6 +223,8 @@ func get_to_work():
 func what_is_going_on():
     select_camera(4)
 
+func heli_on():
+    select_camera(5)
 
 func select_camera(index):
     cameras[active_camera].hide()
