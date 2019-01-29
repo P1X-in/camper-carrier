@@ -27,7 +27,6 @@ settings/fps/force_fps=60
 
 [display]
 
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -109,6 +108,6 @@ select={
 [rendering]
 
 threads/thread_model=2
-quality/shadows/filter_mode=2
+quality/shadows/filter_mode=0
 quality/reflections/high_quality_ggx=false
 environment/default_environment="res://assets/materials/environment.tres"

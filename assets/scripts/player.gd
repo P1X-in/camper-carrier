@@ -165,6 +165,8 @@ func _input(event):
         party_mode()
     if Input.is_action_pressed("start"):
         heli_on()
+    if Input.is_action_pressed("select"):
+        toggle_menu()
 
 func _physics_process(delta):
     if current_hp == 0:
@@ -233,7 +235,10 @@ func what_is_going_on():
 
 func heli_on():
     select_camera(5)
-
+    
+func toggle_menu():
+    pass
+    
 func select_camera(index):
     cameras[active_camera].hide()
     active_camera = index

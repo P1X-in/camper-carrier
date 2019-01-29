@@ -92,6 +92,14 @@ func set_graphics_settings(gfx_type):
         ProjectSettings.set_setting("rendering/quality/shading/force_vertex_shading", false)
         get_viewport().msaa = Viewport.MSAA_4X
         ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 2)
+        $environment.environment.dof_blur_far_enabled = true
+        $environment.environment.dof_blur_far_distance = 512
+        $environment.environment.dof_blur_far_transition = 8
+        $environment.environment.dof_blur_far_amount = 0.1
+        $environment.environment.dof_blur_far_quality = Environment.DOF_BLUR_QUALITY_MEDIUM
+        $environment.environment.ss_reflections_max_steps = 256
+        $environment.environment.glow_enabled = true
+        $environment.environment.glow_bloom = 0.3
         
         # msaa 4x
     if gfx_type == "PERF_NORMAL":
@@ -102,6 +110,9 @@ func set_graphics_settings(gfx_type):
         ProjectSettings.set_setting("rendering/quality/shading/force_vertex_shading", false)
         get_viewport().msaa = Viewport.MSAA_DISABLED
         ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 1)
+        $environment.environment.dof_blur_far_enabled = false
+        $environment.environment.ss_reflections_max_steps = 128
+        $environment.environment.glow_enabled = false
         
     if gfx_type == "PERF_LOW":
         $sun.shadow_enabled = false
@@ -111,3 +122,6 @@ func set_graphics_settings(gfx_type):
         ProjectSettings.set_setting("rendering/quality/shading/force_vertex_shading", true)
         get_viewport().msaa = Viewport.MSAA_DISABLED
         ProjectSettings.set_setting("rendering/quality/shadows/filter_mode", 0)
+        $environment.environment.dof_blur_far_enabled = false
+        $environment.environment.ss_reflections_max_steps = 64
+        $environment.environment.glow_enabled = false
