@@ -9,6 +9,8 @@
 [ext_resource path="res://assets/materials/detailed_noise.tres" type="Texture" id=7]
 [ext_resource path="res://assets/blender/Fireplace3.dae" type="PackedScene" id=8]
 
+
+
 [sub_resource type="SphereMesh" id=1]
 
 material = ExtResource( 4 )
