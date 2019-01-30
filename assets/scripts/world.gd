@@ -83,7 +83,7 @@ func shcedule_barrel_spawn():
     timer.set_timeout(BARREL_SPAWN_DELAY, self, "spawn_barrel")
 
 func set_graphics_settings(gfx_type):
-    #$world/terrain
+
     if gfx_type == "PERF_HI":
         $sun.shadow_enabled = true
         ProjectSettings.set_setting("rendering/quality/directional_shadow/size", 8192)
@@ -100,8 +100,7 @@ func set_graphics_settings(gfx_type):
         $environment.environment.ss_reflections_max_steps = 256
         $environment.environment.glow_enabled = true
         $environment.environment.glow_bloom = 0.3
-        
-        # msaa 4x
+ 
     if gfx_type == "PERF_NORMAL":
         $sun.shadow_enabled = true
         ProjectSettings.set_setting("rendering/quality/directional_shadow/size", 4096)

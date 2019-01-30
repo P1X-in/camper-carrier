@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/scripts/hud.gd" type="Script" id=2]
 [ext_resource path="res://assets/scripts/camp_management_hud.gd" type="Script" id=3]
 [ext_resource path="res://assets/scenes/message_box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scripts/fps.gd" type="Script" id=5]
-[ext_resource path="res://assets/sprites/beer_icon.png" type="Texture" id=6]
-[ext_resource path="res://assets/scripts/resource.gd" type="Script" id=7]
-[ext_resource path="res://assets/sprites/sausage_icon.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/grill-512.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/disco.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/death.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/kiils.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/panel2_48x48x9.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/beer_icon.png" type="Texture" id=7]
+[ext_resource path="res://assets/scripts/resource.gd" type="Script" id=8]
+[ext_resource path="res://assets/sprites/sausage_icon.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/grill-512.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/disco.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/death.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/kiils.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -36,7 +37,6 @@ __meta__ = {
 }
 
 [node name="camp_management" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -65,95 +65,113 @@ script = ExtResource( 5 )
 anchor_left = 1.0
 anchor_right = 1.0
 
-[node name="beer" type="Sprite" parent="right"]
-editor/display_folded = true
-position = Vector2( -100.216, 33.6371 )
+[node name="resources" type="NinePatchRect" parent="right"]
+margin_left = -251.47
+margin_top = 20.8544
+margin_right = -23.4702
+margin_bottom = 52.8544
 texture = ExtResource( 6 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
-[node name="label" type="Label" parent="right/beer"]
+[node name="beer" type="Sprite" parent="right/resources"]
+editor/display_folded = true
+position = Vector2( 151.254, 12.7827 )
+texture = ExtResource( 7 )
+
+[node name="label" type="Label" parent="right/resources/beer"]
 margin_left = 22.0
 margin_top = -16.0
 margin_right = 72.002
 margin_bottom = 16.0
 text = "000"
 valign = 1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
-[node name="sausage" type="Sprite" parent="right"]
-editor/display_folded = true
-position = Vector2( -219.665, 35.4377 )
-texture = ExtResource( 8 )
-
-[node name="label" type="Label" parent="right/sausage"]
-margin_left = 22.0
-margin_top = -16.0
-margin_right = 94.0
-margin_bottom = 16.0
-text = "000"
-valign = 1
-script = ExtResource( 7 )
-
-[node name="smokescreen" type="Sprite" parent="right"]
-editor/display_folded = true
-visible = false
-position = Vector2( -100.216, 120 )
+[node name="sausage" type="Sprite" parent="right/resources"]
+position = Vector2( 31.8052, 14.5833 )
 texture = ExtResource( 9 )
 
-[node name="label" type="Label" parent="right/smokescreen"]
+[node name="label" type="Label" parent="right/resources/sausage"]
 margin_left = 22.0
 margin_top = -16.0
 margin_right = 94.0
 margin_bottom = 16.0
 text = "000"
 valign = 1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
-[node name="b5" type="Sprite" parent="right/smokescreen"]
-position = Vector2( -40, 0 )
+[node name="bonuses" type="NinePatchRect" parent="right"]
+margin_left = -147.0
+margin_top = 57.0
+margin_right = -23.0
+margin_bottom = 193.0
+texture = ExtResource( 6 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="smokescreen" type="Sprite" parent="right/bonuses"]
+editor/display_folded = true
+position = Vector2( 64.784, 25 )
 texture = ExtResource( 10 )
+
+[node name="label" type="Label" parent="right/bonuses/smokescreen"]
+margin_left = 22.0
+margin_top = -16.0
+margin_right = 94.0
+margin_bottom = 16.0
+text = "000"
+valign = 1
+script = ExtResource( 8 )
+
+[node name="b5" type="Sprite" parent="right/bonuses/smokescreen"]
+position = Vector2( -40, 0 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 2
 
-[node name="noisemaker" type="Sprite" parent="right"]
+[node name="noisemaker" type="Sprite" parent="right/bonuses"]
 editor/display_folded = true
-visible = false
-position = Vector2( -100.216, 160 )
-texture = ExtResource( 11 )
+position = Vector2( 64.784, 65 )
+texture = ExtResource( 12 )
 
-[node name="label" type="Label" parent="right/noisemaker"]
+[node name="label" type="Label" parent="right/bonuses/noisemaker"]
 margin_left = 22.0
 margin_top = -16.0
 margin_right = 94.0
 margin_bottom = 16.0
 text = "000"
 valign = 1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
-[node name="b6" type="Sprite" parent="right/noisemaker"]
+[node name="b6" type="Sprite" parent="right/bonuses/noisemaker"]
 position = Vector2( -40, 0 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 2
 frame = 1
 
-[node name="boarding" type="Sprite" parent="right"]
+[node name="boarding" type="Sprite" parent="right/bonuses"]
 editor/display_folded = true
-visible = false
-position = Vector2( -100.216, 200 )
-texture = ExtResource( 12 )
+position = Vector2( 64.784, 105 )
+texture = ExtResource( 13 )
 
-[node name="label" type="Label" parent="right/boarding"]
+[node name="label" type="Label" parent="right/bonuses/boarding"]
 margin_left = 22.0
 margin_top = -16.0
 margin_right = 94.0
 margin_bottom = 16.0
 text = "000"
 valign = 1
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
-[node name="b7" type="Sprite" parent="right/boarding"]
+[node name="b7" type="Sprite" parent="right/bonuses/boarding"]
 position = Vector2( -40, 0 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 2
 frame = 2
@@ -162,29 +180,52 @@ frame = 2
 anchor_left = 0.5
 anchor_right = 0.5
 
+[node name="NinePatchRect" type="NinePatchRect" parent="top"]
+margin_left = -109.0
+margin_top = 21.0
+margin_right = -20.0
+margin_bottom = 53.0
+texture = ExtResource( 6 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="top"]
+margin_left = -13.5535
+margin_top = 21.4555
+margin_right = 75.4465
+margin_bottom = 53.4555
+texture = ExtResource( 6 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
 [node name="Label" type="Label" parent="top"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -24.0
-margin_top = 31.5
-margin_right = 24.0
-margin_bottom = 48.5
+margin_left = -102.0
+margin_top = 27.0
+margin_right = -27.0
+margin_bottom = 44.0
 text = "100 HP"
 align = 1
 valign = 1
 
 [node name="kills" type="Sprite" parent="top"]
-position = Vector2( -23.1264, 69.3791 )
-texture = ExtResource( 13 )
+position = Vector2( 17.3888, 37.458 )
+texture = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="top/kills"]
-margin_left = 32.649
-margin_top = -10.883
-margin_right = 72.649
-margin_bottom = 6.11703
+margin_left = 22.0
+margin_top = -16.0
+margin_right = 62.0
+margin_bottom = 16.0
 text = "00"
+valign = 1
 
 [node name="info" type="Control" parent="."]
 anchor_left = 1.0
@@ -195,7 +236,7 @@ anchor_bottom = 1.0
 [node name="b" type="Sprite" parent="info"]
 editor/display_folded = true
 position = Vector2( -180, -30 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 2
 frame = 3
@@ -211,7 +252,7 @@ valign = 1
 [node name="b2" type="Sprite" parent="info"]
 editor/display_folded = true
 position = Vector2( -258, -30 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 2
 frame = 6
@@ -227,7 +268,7 @@ valign = 1
 [node name="b3" type="Sprite" parent="info"]
 editor/display_folded = true
 position = Vector2( -338, -30 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 2
 frame = 7
@@ -243,7 +284,7 @@ valign = 1
 [node name="b4" type="Sprite" parent="info"]
 editor/display_folded = true
 position = Vector2( -491, -30 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 2
 frame = 5
@@ -259,7 +300,7 @@ valign = 1
 [node name="b5" type="Sprite" parent="info"]
 editor/display_folded = true
 position = Vector2( -578, -30 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 2
 frame = 4

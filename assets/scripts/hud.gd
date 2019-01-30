@@ -2,15 +2,15 @@ extends Control
 
 onready var camp_hud = $"camp_management"
 
-onready var beer_label = $"right/beer/label"
-onready var sausage_label = $"right/sausage/label"
+onready var beer_label = $"right/resources/beer/label"
+onready var sausage_label = $"right/resources/sausage/label"
 
-onready var smokescreen = $"right/smokescreen"
-onready var noisemaker = $"right/noisemaker"
-onready var boarding_party = $"right/boarding"
-onready var smokescreen_label = $"right/smokescreen/label"
-onready var noisemaker_label = $"right/noisemaker/label"
-onready var boarding_party_label = $"right/boarding/label"
+onready var smokescreen = $"right/bonuses/smokescreen"
+onready var noisemaker = $"right/bonuses/noisemaker"
+onready var boarding_party = $"right/bonuses/boarding"
+onready var smokescreen_label = $"right/bonuses/smokescreen/label"
+onready var noisemaker_label = $"right/bonuses/noisemaker/label"
+onready var boarding_party_label = $"right/bonuses/boarding/label"
 
 onready var hp_label = $"top/Label"
 

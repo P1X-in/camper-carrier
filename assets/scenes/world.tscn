@@ -9,8 +9,6 @@
 [ext_resource path="res://assets/blender/Port1.dae" type="PackedScene" id=7]
 [ext_resource path="res://assets/blender/Port2.dae" type="PackedScene" id=8]
 
-
-
 [sub_resource type="PlaneMesh" id=1]
 
 size = Vector2( 4096, 4096 )
@@ -50,6 +48,7 @@ shader_param/NOISE_MAP = ExtResource( 3 )
 [node name="world" type="Spatial"]
 
 [node name="terrain" type="MeshInstance" parent="."]
+use_in_baked_light = true
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 __meta__ = {

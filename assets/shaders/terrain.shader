@@ -58,7 +58,7 @@ void vertex() {
 	float ran = texture(noisemap, VERTEX.xz * 8.).x * MOUNTAINS_FACTOR;
 	h = mix(blue_line, h, shore_line);
 	
-	float w = -2.5 + get_waves(VERTEX.xz * .04, 16, TIME) * 5.;
+	float w = -8. + get_waves(VERTEX.xz * 0.005, 16, TIME) * 16.;
 	float anim = mix(w, 0., shore_line);
 	h += mix(0., -0.0 + (ran * .007), ground_line);
 	h = h * HEIGHT_FACTOR + anim;

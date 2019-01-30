@@ -18,23 +18,26 @@ patch_margin_bottom = 16
 
 [node name="title" type="Label" parent="."]
 anchor_right = 1.0
-margin_bottom = 17.0
+margin_left = -1.0
+margin_right = -1.0
+margin_bottom = 25.0
 text = "Title of the box"
 align = 1
 valign = 1
 
 [node name="message" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 31.0
-margin_top = 23.0
-margin_right = -22.0
-margin_bottom = 63.0
+margin_left = 8.0
+margin_top = 28.0
+margin_right = -10.0
+margin_bottom = 72.0
 text = "Name - this is the building for this an that.. Lorem ipsum dolor sid amed"
 autowrap = true
 
 [node name="a" type="Sprite" parent="."]
+editor/display_folded = true
 visible = false
-position = Vector2( 122.983, 87.3504 )
+position = Vector2( 122.983, 93.3504 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 2
@@ -48,7 +51,8 @@ text = "ACCEPT"
 valign = 1
 
 [node name="b" type="Sprite" parent="."]
-position = Vector2( 252.983, 87.3504 )
+editor/display_folded = true
+position = Vector2( 252.983, 93.3504 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 2
@@ -63,7 +67,8 @@ text = "DECLINE"
 valign = 1
 
 [node name="sausage" type="Sprite" parent="."]
-position = Vector2( 30.9511, 84.7084 )
+editor/display_folded = true
+position = Vector2( 23.9511, 93.7084 )
 texture = ExtResource( 3 )
 
 [node name="label" type="Label" parent="sausage"]
@@ -75,7 +80,8 @@ text = "123"
 valign = 1
 
 [node name="beer" type="Sprite" parent="."]
-position = Vector2( 105.951, 84.7084 )
+editor/display_folded = true
+position = Vector2( 101.951, 92.7084 )
 texture = ExtResource( 4 )
 
 [node name="label" type="Label" parent="beer"]
