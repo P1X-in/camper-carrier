@@ -49,6 +49,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 
 [node name="message_box" parent="camp_management/corner" instance=ExtResource( 4 )]
+visible = false
 
 [node name="left" type="Control" parent="."]
 editor/display_folded = true
