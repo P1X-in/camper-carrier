@@ -6,10 +6,23 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    $menu/buttons/low.grab_focus()
 
 func _input(event):
-    if Input.is_action_pressed("ui_accept"):
-        get_tree().change_scene("assets/scenes/game.tscn")
     if Input.is_key_pressed(KEY_ESCAPE):
         get_tree().quit()
+
+func _on_low_pressed():
+    ProjectSettings.set_setting("PERFORMANCE", "PERF_LOW")
+    start_game()
+    
+func _on_medium_pressed():
+    ProjectSettings.set_setting("PERFORMANCE", "PERF_MEDIUM")
+    start_game()
+
+func _on_hi_pressed():
+    ProjectSettings.set_setting("PERFORMANCE", "PERF_HI")
+    start_game()
+
+func start_game():
+    get_tree().change_scene("assets/scenes/game.tscn")

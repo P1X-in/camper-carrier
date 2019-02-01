@@ -35,6 +35,7 @@ func _ready():
     height_map = heightmap_file.get_data()
     timer = preload("res://assets/scripts/timers.gd").new(self)
     barrel = preload("res://assets/scenes/barrel.tscn")
+    set_graphics_settings(ProjectSettings.get_setting("PERFORMANCE"))
     schedule_bot_spawn()
     shcedule_barrel_spawn()
 

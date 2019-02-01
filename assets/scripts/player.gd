@@ -318,7 +318,7 @@ func select_pro():
     get_parent().get_node("sun").shadow_enabled = true
 
 func quit_game():
-    get_tree().quit()
+    get_tree().change_scene("assets/scenes/intro.tscn")
 
 func check_resources(sausage_amount, beer_amount):
     if sausage >= sausage_amount and beer >= beer_amount:

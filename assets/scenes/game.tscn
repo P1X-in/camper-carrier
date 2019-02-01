@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/world.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/materials/environment.tres" type="Environment" id=3]
 [ext_resource path="res://assets/scenes/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/scenes/fire.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/scenes/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/HUD.tscn" type="PackedScene" id=5]
 
 [node name="game" type="Spatial"]
 script = ExtResource( 1 )
@@ -33,17 +32,9 @@ directional_shadow_bias_split_scale = 0.6
 directional_shadow_max_distance = 2048.0
 
 [node name="player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.349, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.319, 0 )
 
-[node name="maszt" parent="player" index="7"]
-editor/display_folded = true
-
-[node name="fire" parent="player" instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00739479, 3.41639, -5.55604 )
-
-[node name="HUD" parent="." instance=ExtResource( 6 )]
+[node name="HUD" parent="." instance=ExtResource( 5 )]
 
 
 [editable path="world"]
-
-[editable path="player"]
