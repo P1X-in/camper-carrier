@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/materials/main.theme" type="Theme" id=1]
+[ext_resource path="res://assets/scripts/shipyard.gd" type="Script" id=2]
+[ext_resource path="res://assets/gui/menu_reveal.anim" type="Animation" id=3]
+[ext_resource path="res://assets/sprites/panel2_48x48x9.png" type="Texture" id=4]
+[ext_resource path="res://assets/scenes/navigarion-bottom.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scenes/logo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/menu_world.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/pimped-letniskowiec.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/blender/Port1.dae" type="PackedScene" id=9]
+
+[node name="shipyard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="menu" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+
+[node name="buttons" type="VBoxContainer" parent="menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_right = -20.0
+margin_bottom = 116.0
+custom_constants/separation = 12
+
+[node name="next" type="Button" parent="menu/buttons"]
+margin_right = 280.0
+margin_bottom = 20.0
+text = "NEXT SHIP"
+align = 2
+
+[node name="prev" type="Button" parent="menu/buttons"]
+margin_top = 32.0
+margin_right = 280.0
+margin_bottom = 52.0
+text = "PREVIOUS SHIP"
+align = 2
+
+[node name="select" type="Button" parent="menu/buttons"]
+margin_top = 64.0
+margin_right = 280.0
+margin_bottom = 84.0
+text = "SELECT"
+align = 2
+
+[node name="back" type="Button" parent="menu/buttons"]
+margin_top = 96.0
+margin_right = 280.0
+margin_bottom = 116.0
+text = "BACK TO MENU"
+align = 2
+
+[node name="menu_animation" type="AnimationPlayer" parent="menu"]
+autoplay = "menu_reveal"
+anims/menu_reveal = ExtResource( 3 )
+
+[node name="infobox" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 132.155
+margin_top = 105.244
+margin_right = 477.155
+margin_bottom = 214.244
+texture = ExtResource( 4 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Label" type="Label" parent="infobox"]
+margin_left = 14.0
+margin_top = 7.0
+margin_right = 327.0
+margin_bottom = 24.0
+text = "LETNISKOWIEC MK-I"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="infobox"]
+margin_left = 18.6616
+margin_top = 54.8185
+margin_right = 82.6616
+margin_bottom = 71.8185
+text = "STATS..."
+
+[node name="navigarion-bottom" parent="." instance=ExtResource( 5 )]
+
+[node name="Label" parent="navigarion-bottom" index="0"]
+editor/display_folded = true
+
+[node name="Label2" parent="navigarion-bottom" index="1"]
+editor/display_folded = true
+
+[node name="logo" parent="." instance=ExtResource( 6 )]
+
+[node name="world" parent="." instance=ExtResource( 7 )]
+
+[node name="pimped-letniskowiec" parent="world" instance=ExtResource( 8 )]
+
+[node name="port" parent="world" instance=ExtResource( 9 )]
+transform = Transform( 3.98339, 0, -11.3196, 0, 12, 0, 11.3196, 0, 3.98339, 27.566, 0, -126.75 )
+
+[connection signal="pressed" from="menu/buttons/select" to="." method="_on_select_pressed"]
+[connection signal="pressed" from="menu/buttons/back" to="." method="_on_back_pressed"]
+
+[editable path="navigarion-bottom"]
+
+[editable path="world"]

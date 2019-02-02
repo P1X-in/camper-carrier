@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=1]
+
+[node name="navigarion-bottom" type="Control"]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 186.616
+margin_top = -49.5934
+margin_right = 483.616
+margin_bottom = -32.5934
+text = "PRESS      TO CONFIRM"
+align = 1
+
+[node name="Sprite" type="Sprite" parent="Label"]
+position = Vector2( 128.88, 7.93341 )
+texture = ExtResource( 1 )
+vframes = 4
+hframes = 2
+frame = 2
+
+[node name="Label2" type="Label" parent="."]
+margin_left = -476.384
+margin_top = -49.5934
+margin_right = -179.384
+margin_bottom = -32.5934
+text = "PRESS      TO BACK"
+align = 1
+
+[node name="Sprite" type="Sprite" parent="Label2"]
+position = Vector2( 137.88, 7.93341 )
+texture = ExtResource( 1 )
+vframes = 4
+hframes = 2
+frame = 3
+

@@ -1,0 +1,39 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://assets/shaders/terrain.shader" type="Shader" id=1]
+
+[sub_resource type="Gradient" id=1]
+
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+
+gradient = SubResource( 1 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+
+
+[sub_resource type="NoiseTexture" id=4]
+
+width = 256
+height = 256
+noise = SubResource( 3 )
+
+[resource]
+
+shader = ExtResource( 1 )
+shader_param/HEIGHTMAP_SIZE = Vector2( 256, 256 )
+shader_param/HEIGHT_FACTOR = 2.0
+shader_param/MOUNTAINS_FACTOR = 24.0
+shader_param/RANDOM_UV_FACTOR = 4.0
+shader_param/GRASS_UV_FACTOR = 4.0
+shader_param/white_line = 0.8
+shader_param/green_line = 0.5
+shader_param/ground_line = 0.38
+shader_param/blue_line = 0.4
+shader_param/GOLDEN_ANGLE_RADIAN = 2.39996
+shader_param/WAVES_FACTOR_BIG = 4.0
+shader_param/WAVES_FACTOR_SMALL = 4.0
+shader_param/heightmap = SubResource( 2 )
+shader_param/noisemap = SubResource( 4 )
+

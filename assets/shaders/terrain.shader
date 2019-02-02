@@ -14,6 +14,8 @@ uniform float green_line = 0.5;
 uniform float ground_line = 0.38;
 uniform float blue_line = 0.4;
 uniform float GOLDEN_ANGLE_RADIAN = 2.39996;
+uniform float WAVES_FACTOR_BIG = 16.;
+uniform float WAVES_FACTOR_SMALL = 8;
 
 float get_height(vec2 pos) {
 	pos -= .5 * HEIGHTMAP_SIZE;
@@ -58,7 +60,7 @@ void vertex() {
 	float ran = texture(noisemap, VERTEX.xz * 8.).x * MOUNTAINS_FACTOR;
 	h = mix(blue_line, h, shore_line);
 	
-	float w = -8. + get_waves(VERTEX.xz * 0.005, 16, TIME) * 16.;
+	float w = -WAVES_FACTOR_SMALL + get_waves(VERTEX.xz * 0.005, 16, TIME) * WAVES_FACTOR_BIG;
 	float anim = mix(w, 0., shore_line);
 	h += mix(0., -0.0 + (ran * .007), ground_line);
 	h = h * HEIGHT_FACTOR + anim;

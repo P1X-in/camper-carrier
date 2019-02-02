@@ -10,7 +10,7 @@ func _ready():
 
 func _input(event):
     if Input.is_key_pressed(KEY_ESCAPE):
-        get_tree().quit()
+        quit_game()
 
 func _on_low_pressed():
     ProjectSettings.set_setting("PERFORMANCE", "PERF_LOW")
@@ -25,4 +25,10 @@ func _on_hi_pressed():
     start_game()
 
 func start_game():
-    get_tree().change_scene("assets/scenes/game.tscn")
+    get_tree().change_scene("assets/scenes/menu.tscn")
+
+func _on_exit_pressed():
+    quit_game()
+    
+func quit_game():
+    get_tree().quit()

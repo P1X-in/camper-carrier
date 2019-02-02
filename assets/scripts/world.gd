@@ -84,7 +84,6 @@ func shcedule_barrel_spawn():
     timer.set_timeout(BARREL_SPAWN_DELAY, self, "spawn_barrel")
 
 func set_graphics_settings(gfx_type):
-
     if gfx_type == "PERF_HI":
         $sun.shadow_enabled = true
         ProjectSettings.set_setting("rendering/quality/directional_shadow/size", 8192)

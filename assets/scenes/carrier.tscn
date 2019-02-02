@@ -1,0 +1,230 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/meshes/letniskowiec.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/sprites/grass_field.png" type="Texture" id=2]
+[ext_resource path="res://assets/scripts/camp.gd" type="Script" id=3]
+[ext_resource path="res://assets/meshes/tree.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/scenes/cursor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scenes/helicopter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/flag_p1x.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/materials/wood.material" type="Material" id=8]
+[ext_resource path="res://assets/materials/flag/flag.material" type="Material" id=9]
+
+[sub_resource type="SpatialMaterial" id=3]
+
+render_priority = -1
+flags_transparent = true
+flags_ensure_correct_normals = true
+albedo_texture = ExtResource( 2 )
+metallic = 0.21
+roughness = 0.72
+
+[sub_resource type="PlaneMesh" id=4]
+
+material = SubResource( 3 )
+size = Vector2( 5, 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.12549 )
+metallic = 1.0
+
+[sub_resource type="CylinderMesh" id=6]
+
+material = SubResource( 5 )
+top_radius = 0.8
+bottom_radius = 0.8
+height = 0.1
+radial_segments = 6
+rings = 2
+
+[sub_resource type="Animation" id=7]
+
+resource_name = "hrli"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.8, 3.4, 4.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -3.3, 0.931, -1 ), Vector3( -3.3, 1.625, -1 ), Vector3( -3.3, 1.516, -1 ), Vector3( -3.3, 1.547, -1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 2.5, 3.2, 4.5, 5.6, 6.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -111.292, 0 ), Vector3( -6.3, -111.292, 0 ), Vector3( -7.045, -105.372, 0 ), Vector3( 0.962, -94.455, 0 ), Vector3( 2.811, -101.198, 1.9 ), Vector3( 2.881, -106.073, 0 ), Vector3( 2.281, -104.12, -1.96 ) ]
+}
+
+[sub_resource type="CylinderMesh" id=8]
+
+material = ExtResource( 8 )
+top_radius = 0.025
+bottom_radius = 0.1
+height = 2.5
+
+[sub_resource type="CylinderMesh" id=1]
+
+material = ExtResource( 8 )
+top_radius = 0.025
+bottom_radius = 0.1
+height = 2.5
+
+[sub_resource type="PlaneMesh" id=2]
+
+material = ExtResource( 9 )
+size = Vector2( 1, 1 )
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="carrier" type="MeshInstance"]
+editor/display_folded = true
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.92551, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="camera_onboard" type="Camera" parent="."]
+transform = Transform( -0.484046, -0.315013, 0.816374, 0, 0.932954, 0.359997, -0.875043, 0.174255, -0.451593, 0.41, 1.83, -2.37 )
+visible = false
+fov = 90.0
+far = 1024.0
+
+[node name="camp" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.844, -0.941 )
+mesh = SubResource( 4 )
+material/0 = null
+script = ExtResource( 3 )
+
+[node name="camera_camp" type="Camera" parent="camp"]
+transform = Transform( 0.5, 0, 0, 0, 0.129409, 0.482963, 0, -0.482963, 0.129409, 0, 2.89, 1.19 )
+visible = false
+
+[node name="trees" type="Position3D" parent="camp"]
+editor/display_folded = true
+
+[node name="tree" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.29995, 0.005467, 2.17781e-12, -0.005467, 0.29995, 2.3897e-10, 2.1787e-12, -2.3897e-10, 0.3, -2.42537, 0.0168304, 0.460754 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree2" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.2, 1.3446e-09, -1.04022e-10, -1.3446e-09, 0.19762, -0.0307609, -1.04022e-10, 0.0307609, 0.19762, -2.61543, 0.0168304, 0.769176 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree12" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.173353, 0.0230116, 0.0985569, -1.3446e-09, 0.29643, -0.0307609, -0.0997437, 0.0399937, 0.17129, -2.42015, 0.0168304, 1.09491 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree3" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.43603, 0.0168304, -0.250441 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree4" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.2, 7.45278e-10, -3.18252e-11, -7.45278e-10, 0.199272, -0.01705, -3.18252e-11, 0.01705, 0.199272, -0.404301, 0.0168304, -0.440712 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree5" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.404301, 0.0168304, -0.440712 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree6" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.770964, 0.0168304, -1.01009 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree7" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.199353, 0.0160762, 2.82885e-11, -0.0160762, 0.199353, 7.02715e-10, 2.82876e-11, -7.02715e-10, 0.2, 0.603477, 0.0168304, 1.56227 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree11" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.0122398, 0.000987042, -0.199623, -0.0160762, 0.199353, 7.02715e-10, 0.198977, 0.0160459, 0.0122795, 0.386853, -0.0271797, 1.41108 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree9" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.247555, 0.0253773, 1.56285 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree10" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.3, -1.38381e-09, -7.32188e-11, 1.38381e-09, 0.298325, 0.0316578, -7.32188e-11, -0.0316578, 0.298325, -0.282763, -0.0316982, 1.66718 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="tree8" type="MeshInstance" parent="camp/trees"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.54222, 0.0168304, 0.295298 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+
+[node name="cursor" type="CSGMesh" parent="camp" instance=ExtResource( 5 )]
+transform = Transform( -0.338019, 0, -0.368433, 0, 0.5, 0, 0.368433, 0, -0.338019, 0, 0.340855, 0 )
+mesh = SubResource( 6 )
+
+[node name="heli" type="Spatial" parent="." instance=ExtResource( 6 )]
+transform = Transform( -0.072623, 0, -0.186349, 0, 0.2, 0, 0.186349, 0, -0.072623, -3.3, 0.931, -1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="heli"]
+autoplay = "hrli"
+anims/hrli = SubResource( 7 )
+
+[node name="maszt" type="MeshInstance" parent="." instance=ExtResource( 7 )]
+transform = Transform( -2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -4.54359, 1.2898, -0.962755 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="maszt2" type="MeshInstance" parent="."]
+editor/display_folded = true
+transform = Transform( -2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 3.76879, 1.2898, 0.468065 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="flag" type="MeshInstance" parent="maszt2"]
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.642338, 0.505863 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="maszt3" type="MeshInstance" parent="."]
+editor/display_folded = true
+transform = Transform( -2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 3.76879, 1.2898, -2.25419 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="flag" type="MeshInstance" parent="maszt3"]
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.642338, 0.505863 )
+mesh = SubResource( 2 )
+material/0 = null
+

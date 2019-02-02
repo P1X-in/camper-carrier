@@ -2,50 +2,59 @@
 
 [ext_resource path="res://assets/materials/main.theme" type="Theme" id=1]
 [ext_resource path="res://assets/scripts/intro.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/intro.jpg" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/sprites/logo_p1x.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/panel2_48x48x9.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=7]
+[ext_resource path="res://assets/scenes/logo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=4]
+[ext_resource path="res://assets/gui/menu_reveal.anim" type="Animation" id=5]
+[ext_resource path="res://assets/scenes/pimped-letniskowiec.tscn" type="PackedScene" id=6]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Gradient" id=1]
 
-size = 80
-outline_size = 6
-outline_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-use_mipmaps = true
-use_filter = true
-extra_spacing_char = -8
-extra_spacing_space = -9
-font_data = ExtResource( 4 )
+offsets = PoolRealArray( 0, 0.452, 0.836, 1 )
+colors = PoolColorArray( 0.427917, 0.445312, 0.435935, 1, 0.589844, 0.589844, 0.589844, 1, 0.862572, 0.878906, 0.580215, 1, 0.960938, 0.960938, 0.960938, 1 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="GradientTexture" id=2]
+
+gradient = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
 
 length = 8.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("info2:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4, 8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 599.348, 332.381 ), Vector2( 426.308, 332.381 ), Vector2( 599.348, 332.381 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("menu/buttons/info2:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8, 8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 900, 256 ), Vector2( 100, 256 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bg:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 4, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 20.0, 0.0, -15.0 ]
 }
 
 [node name="intro" type="Control"]
@@ -54,132 +63,91 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.290196, 0.278431, 0.0941176, 0.352941 )
-position = Vector2( 599.348, 332.381 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
+[node name="bg" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 900, 256 )
+scale = Vector2( 1, 1024 )
+texture = SubResource( 2 )
 
-[node name="Control" type="Control" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-
-[node name="Labellogo2" type="Label" parent="Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -223.5
-margin_top = -240.5
-margin_right = 223.5
-margin_bottom = -159.5
-rect_pivot_offset = Vector2( 223.04, 45.46 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 0.976471, 0.372549, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 12
-text = "Camper Carrier"
-
-[node name="Label2" type="Label" parent="Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -316.0
-margin_top = -158.0
-margin_right = 316.0
-margin_bottom = -141.0
-text = "Game made on ~ GLOBAL GAME JAM 2019 ~ at Poznan Game Jam site in less than 48h."
-align = 1
-valign = 1
-
-[node name="logo_p1x" type="Sprite" parent="."]
-position = Vector2( 512, 300 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 5 )
+[node name="logo" parent="." instance=ExtResource( 3 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
 playback_speed = 0.5
-anims/intro = SubResource( 2 )
+anims/intro = SubResource( 3 )
 
-[node name="menu" type="NinePatchRect" parent="."]
+[node name="info2" type="Label" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -172.0
-margin_top = -117.0
-margin_right = 173.0
-margin_bottom = 97.0
-texture = ExtResource( 6 )
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
-
-[node name="buttons" type="VBoxContainer" parent="menu"]
-anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 24.0
-margin_top = 24.0
-margin_right = -24.0
-margin_bottom = -24.0
-custom_constants/separation = 12
-
-[node name="current" type="Label" parent="menu/buttons"]
-margin_right = 297.0
-margin_bottom = 17.0
-text = "Current: LOW GRAPHICS (FAST)"
-
-[node name="low" type="Button" parent="menu/buttons"]
-margin_top = 29.0
-margin_right = 297.0
-margin_bottom = 50.0
-text = "START WITH LOW GRAPHICS"
-
-[node name="medium" type="Button" parent="menu/buttons"]
-margin_top = 62.0
-margin_right = 297.0
-margin_bottom = 83.0
-text = "START WITH MEDIUM GRAPHICS"
-
-[node name="hi" type="Button" parent="menu/buttons"]
-margin_top = 95.0
-margin_right = 297.0
-margin_bottom = 116.0
-text = "START WITH MAX GRAPHICS SETTINGS"
-
-[node name="info" type="Label" parent="menu/buttons"]
-margin_top = 128.0
-margin_right = 297.0
-margin_bottom = 165.0
-text = "Low is a good settings for integrated graphics cards. For PC set to hi."
-autowrap = true
-
-[node name="space" type="Container" parent="menu/buttons"]
-margin_top = 177.0
-margin_right = 297.0
-margin_bottom = 209.0
-rect_min_size = Vector2( 0, 32 )
-
-[node name="info2" type="Label" parent="menu/buttons"]
-margin_top = 221.0
-margin_right = 297.0
-margin_bottom = 238.0
+margin_left = -181.0
+margin_top = -67.0
+margin_right = 181.0
+margin_bottom = -50.0
 text = "PRESS      TO CONFIRM"
 align = 1
 
-[node name="Sprite" type="Sprite" parent="menu/buttons/info2"]
-position = Vector2( 128.88, 7.93341 )
-texture = ExtResource( 7 )
+[node name="a" type="Sprite" parent="info2"]
+position = Vector2( 158.88, 7.93341 )
+texture = ExtResource( 4 )
 vframes = 4
 hframes = 2
 frame = 2
 
+[node name="menu" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+
+[node name="buttons" type="VBoxContainer" parent="menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_right = -20.0
+margin_bottom = 84.0
+custom_constants/separation = 12
+
+[node name="low" type="Button" parent="menu/buttons"]
+margin_right = 280.0
+margin_bottom = 20.0
+text = "START WITH LOW GRAPHICS"
+align = 2
+
+[node name="medium" type="Button" parent="menu/buttons"]
+margin_top = 32.0
+margin_right = 280.0
+margin_bottom = 52.0
+text = "START WITH MEDIUM GRAPHICS"
+align = 2
+
+[node name="hi" type="Button" parent="menu/buttons"]
+margin_top = 64.0
+margin_right = 280.0
+margin_bottom = 84.0
+text = "START WITH MAX GRAPHICS SETTINGS"
+align = 2
+
+[node name="exit" type="Button" parent="menu/buttons"]
+margin_top = 96.0
+margin_right = 280.0
+margin_bottom = 116.0
+text = "EXIT GAME"
+align = 2
+
+[node name="menu_animation" type="AnimationPlayer" parent="menu"]
+autoplay = "INIT"
+anims/INIT = ExtResource( 5 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.90356, 0.428462, 0, -0.428462, 0.90356, 3.18, 9.28, -8.88 )
+current = true
+fov = 28.6
+far = 256.0
+
+[node name="pimped-letniskowiec" parent="." instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 2.441, -6.33, -32.202 )
+
 [connection signal="pressed" from="menu/buttons/low" to="." method="_on_low_pressed"]
 [connection signal="pressed" from="menu/buttons/medium" to="." method="_on_medium_pressed"]
 [connection signal="pressed" from="menu/buttons/hi" to="." method="_on_hi_pressed"]
+[connection signal="pressed" from="menu/buttons/exit" to="." method="_on_exit_pressed"]

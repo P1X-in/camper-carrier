@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/meshes/letniskowiec.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/scenes/flag_p1x.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/materials/wood.material" type="Material" id=3]
+
+[sub_resource type="CylinderMesh" id=1]
+
+material = ExtResource( 3 )
+top_radius = 0.025
+bottom_radius = 0.1
+height = 2.5
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=3]
+
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+params_cull_mode = 1
+albedo_color = Color( 0, 0, 0, 1 )
+
+[node name="pimped-letniskowiec" type="MeshInstance"]
+transform = Transform( 4, 0, 6.99382e-07, 0, 4, 0, -6.99382e-07, 0, 4, 2.441, 0, -32.202 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="maszt" type="MeshInstance" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.35288, 1.28767, -1.08983 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="maszt2" type="MeshInstance" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.26091, 1.28767, 0.265053 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="maszt3" type="MeshInstance" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.26091, 1.28767, -2.04742 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+playback_speed = 0.1
+anims/idle = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1.04, 0, 0, 0, 1, 0, 0, 0, 1.04, -1.19209e-07, 0, 0.0409489 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
