@@ -2,13 +2,13 @@
 
 [ext_resource path="res://assets/materials/main.theme" type="Theme" id=1]
 [ext_resource path="res://assets/scripts/shipyard.gd" type="Script" id=2]
-[ext_resource path="res://assets/gui/menu_reveal.anim" type="Animation" id=3]
-[ext_resource path="res://assets/sprites/panel2_48x48x9.png" type="Texture" id=4]
-[ext_resource path="res://assets/scenes/navigarion-bottom.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/scenes/logo.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/scenes/menu_world.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/scenes/pimped-letniskowiec.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/blender/Port1.dae" type="PackedScene" id=9]
+[ext_resource path="res://assets/scenes/audio.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/gui/menu_reveal.anim" type="Animation" id=4]
+[ext_resource path="res://assets/scenes/a_box.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scenes/navigarion-bottom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/logo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/menu_world.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/scenes/pimped-letniskowiec.tscn" type="PackedScene" id=9]
 
 [node name="shipyard" type="Control"]
 anchor_right = 1.0
@@ -19,7 +19,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="audio" parent="." instance=ExtResource( 3 )]
+
 [node name="menu" type="Control" parent="."]
+editor/display_folded = true
 anchor_top = 0.5
 anchor_bottom = 0.5
 
@@ -31,69 +34,125 @@ margin_right = -20.0
 margin_bottom = 116.0
 custom_constants/separation = 12
 
-[node name="next" type="Button" parent="menu/buttons"]
+[node name="select" type="Button" parent="menu/buttons"]
 margin_right = 280.0
-margin_bottom = 20.0
+margin_bottom = 16.0
+text = "SELECT AND DEPARTURE"
+align = 2
+
+[node name="Container2" type="Container" parent="menu/buttons"]
+margin_top = 28.0
+margin_right = 280.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="next" type="Button" parent="menu/buttons"]
+margin_top = 48.0
+margin_right = 280.0
+margin_bottom = 64.0
 text = "NEXT SHIP"
 align = 2
 
 [node name="prev" type="Button" parent="menu/buttons"]
-margin_top = 32.0
+margin_top = 76.0
 margin_right = 280.0
-margin_bottom = 52.0
+margin_bottom = 92.0
 text = "PREVIOUS SHIP"
 align = 2
 
-[node name="select" type="Button" parent="menu/buttons"]
-margin_top = 64.0
+[node name="Container" type="Container" parent="menu/buttons"]
+margin_top = 104.0
 margin_right = 280.0
-margin_bottom = 84.0
-text = "SELECT"
-align = 2
+margin_bottom = 112.0
+rect_min_size = Vector2( 0, 8 )
 
 [node name="back" type="Button" parent="menu/buttons"]
-margin_top = 96.0
+margin_top = 124.0
 margin_right = 280.0
-margin_bottom = 116.0
+margin_bottom = 140.0
 text = "BACK TO MENU"
 align = 2
 
 [node name="menu_animation" type="AnimationPlayer" parent="menu"]
 autoplay = "menu_reveal"
-anims/menu_reveal = ExtResource( 3 )
+anims/menu_reveal = ExtResource( 4 )
 
-[node name="infobox" type="NinePatchRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 132.155
-margin_top = 105.244
-margin_right = 477.155
-margin_bottom = 214.244
-texture = ExtResource( 4 )
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+[node name="a_box" parent="." instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -324.0
+margin_top = -199.0
+margin_right = -68.0
+margin_bottom = -140.0
 
-[node name="Label" type="Label" parent="infobox"]
-margin_left = 14.0
-margin_top = 7.0
-margin_right = 327.0
-margin_bottom = 24.0
+[node name="Label" type="Label" parent="a_box"]
+margin_right = 249.0
+margin_bottom = 34.0
+text = "CAPACITY"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="a_box"]
+margin_left = 20.0
+margin_top = 36.0
+margin_right = 238.0
+margin_bottom = 51.0
+text = "3x5 GRIG FOR CAMP"
+
+[node name="a_box3" parent="." instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -324.0
+margin_top = -137.0
+margin_right = -68.0
+margin_bottom = -78.0
+
+[node name="Label" type="Label" parent="a_box3"]
+margin_right = 249.0
+margin_bottom = 34.0
+text = "PRICE"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="a_box3"]
+margin_left = 20.0
+margin_top = 36.0
+margin_right = 238.0
+margin_bottom = 51.0
+text = "200x Fuel + 100x Coins"
+
+[node name="a_box2" parent="." instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -610.981
+margin_top = -200.578
+margin_right = -354.981
+margin_bottom = -72.5785
+
+[node name="Label" type="Label" parent="a_box2"]
+margin_right = 249.0
+margin_bottom = 34.0
 text = "LETNISKOWIEC MK-I"
 align = 1
 valign = 1
 
-[node name="Label2" type="Label" parent="infobox"]
-margin_left = 18.6616
-margin_top = 54.8185
-margin_right = 82.6616
-margin_bottom = 71.8185
-text = "STATS..."
+[node name="Label2" type="Label" parent="a_box2"]
+margin_left = 20.0
+margin_top = 36.0
+margin_right = 238.0
+margin_bottom = 114.0
+text = "STATS -------- 00000120
+AAA ---------- 33220024
+BCC ---------- 32200228
+DFF ---------- 00001101"
 
-[node name="navigarion-bottom" parent="." instance=ExtResource( 5 )]
+[node name="navigarion-bottom" parent="." instance=ExtResource( 6 )]
 
 [node name="Label" parent="navigarion-bottom" index="0"]
 editor/display_folded = true
@@ -101,14 +160,16 @@ editor/display_folded = true
 [node name="Label2" parent="navigarion-bottom" index="1"]
 editor/display_folded = true
 
-[node name="logo" parent="." instance=ExtResource( 6 )]
+[node name="logo" parent="." instance=ExtResource( 7 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 70.0
+margin_bottom = 70.0
 
-[node name="world" parent="." instance=ExtResource( 7 )]
+[node name="world" parent="." instance=ExtResource( 8 )]
 
-[node name="pimped-letniskowiec" parent="world" instance=ExtResource( 8 )]
-
-[node name="port" parent="world" instance=ExtResource( 9 )]
-transform = Transform( 3.98339, 0, -11.3196, 0, 12, 0, 11.3196, 0, 3.98339, 27.566, 0, -126.75 )
+[node name="pimped-letniskowiec" parent="world" instance=ExtResource( 9 )]
+transform = Transform( 4, 0, 6.99382e-07, 0, 4, 0, -6.99382e-07, 0, 4, 12.811, -5.31, -49.172 )
 
 [connection signal="pressed" from="menu/buttons/select" to="." method="_on_select_pressed"]
 [connection signal="pressed" from="menu/buttons/back" to="." method="_on_back_pressed"]

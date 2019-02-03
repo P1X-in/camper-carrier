@@ -11,8 +11,10 @@ func _ready():
     
 func _input(event):
     if Input.is_key_pressed(KEY_ESCAPE):
+        $audio/click.play()
         back_to_intro()
     if Input.is_action_pressed("game_b"):
+        $audio/click.play()
         back_to_intro()
         
 func departure_ship():
@@ -25,12 +27,15 @@ func back_to_intro():
     get_tree().change_scene("assets/scenes/intro.tscn")
    
 func _on_departure_pressed():
+    $audio/click.play()
     departure_ship()
 
 func _on_shipyard_pressed():
+    $audio/click.play()
     enter_shipyard()
  
 func _on_back_pressed():
+    $audio/click.play()
     back_to_intro()
 
 

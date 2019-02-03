@@ -2,17 +2,25 @@
 
 [ext_resource path="res://assets/materials/main.theme" type="Theme" id=1]
 [ext_resource path="res://assets/scripts/menu.gd" type="Script" id=2]
-[ext_resource path="res://assets/gui/menu_reveal.anim" type="Animation" id=3]
-[ext_resource path="res://assets/scenes/navigarion-bottom.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/scenes/menu_world.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/scenes/helicopter.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/scenes/logo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/audio.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scenes/logo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/gui/menu_reveal.anim" type="Animation" id=5]
+[ext_resource path="res://assets/scenes/navigarion-bottom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/scenes/menu_world.tscn" type="PackedScene" id=7]
 
 [node name="menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+
+[node name="audio" parent="." instance=ExtResource( 3 )]
+
+[node name="logo" parent="." instance=ExtResource( 4 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 70.0
+margin_bottom = 70.0
 
 [node name="box" type="Control" parent="."]
 anchor_top = 0.5
@@ -28,44 +36,59 @@ custom_constants/separation = 12
 
 [node name="departure" type="Button" parent="box/buttons"]
 margin_right = 280.0
-margin_bottom = 20.0
-text = "DEPATRURE"
+margin_bottom = 16.0
+text = "BREEFING ROOM"
 align = 2
 
 [node name="shipyard" type="Button" parent="box/buttons"]
-margin_top = 32.0
+margin_top = 28.0
 margin_right = 280.0
-margin_bottom = 52.0
+margin_bottom = 44.0
 text = "SHIPYARD"
 align = 2
 
-[node name="back" type="Button" parent="box/buttons"]
-margin_top = 64.0
+[node name="settings" type="Button" parent="box/buttons"]
+margin_top = 56.0
 margin_right = 280.0
-margin_bottom = 84.0
-text = "BACK"
+margin_bottom = 72.0
+text = "SETTINGS"
+align = 2
+
+[node name="creds" type="Button" parent="box/buttons"]
+margin_top = 84.0
+margin_right = 280.0
+margin_bottom = 100.0
+text = "CREDITS, LICENCES, SOURCES"
 align = 2
 
 [node name="ship" type="Label" parent="box/buttons"]
-margin_top = 96.0
+margin_top = 112.0
 margin_right = 280.0
-margin_bottom = 113.0
+margin_bottom = 125.0
 text = "Current ship: Letniskowiec #1"
 align = 1
 autowrap = true
 
+[node name="Container" type="Container" parent="box/buttons"]
+margin_top = 137.0
+margin_right = 280.0
+margin_bottom = 145.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="back" type="Button" parent="box/buttons"]
+margin_top = 157.0
+margin_right = 280.0
+margin_bottom = 173.0
+text = "BACK"
+align = 2
+
 [node name="AnimationTree" type="AnimationPlayer" parent="box"]
 autoplay = "menu_reveal"
-anims/menu_reveal = ExtResource( 3 )
+anims/menu_reveal = ExtResource( 5 )
 
-[node name="navigarion-bottom" parent="." instance=ExtResource( 4 )]
+[node name="navigarion-bottom" parent="." instance=ExtResource( 6 )]
 
-[node name="world" parent="." instance=ExtResource( 5 )]
-
-[node name="heli" parent="world" instance=ExtResource( 6 )]
-transform = Transform( -0.57482, -0.349311, 0.739976, 0, 0.904306, 0.426884, -0.81828, 0.245382, -0.519813, 3.49, 17.174, -9.222 )
-
-[node name="logo" parent="." instance=ExtResource( 7 )]
+[node name="world" parent="." instance=ExtResource( 7 )]
 
 [connection signal="pressed" from="box/buttons/departure" to="." method="_on_departure_pressed"]
 [connection signal="pressed" from="box/buttons/shipyard" to="." method="_on_shipyard_pressed"]

@@ -1,27 +1,22 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/materials/main.theme" type="Theme" id=1]
 [ext_resource path="res://assets/scripts/intro.gd" type="Script" id=2]
-[ext_resource path="res://assets/scenes/logo.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=4]
-[ext_resource path="res://assets/gui/menu_reveal.anim" type="Animation" id=5]
-[ext_resource path="res://assets/scenes/pimped-letniskowiec.tscn" type="PackedScene" id=6]
-
-[sub_resource type="Gradient" id=1]
-
-offsets = PoolRealArray( 0, 0.452, 0.836, 1 )
-colors = PoolColorArray( 0.427917, 0.445312, 0.435935, 1, 0.589844, 0.589844, 0.589844, 1, 0.862572, 0.878906, 0.580215, 1, 0.960938, 0.960938, 0.960938, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-
-gradient = SubResource( 1 )
+[ext_resource path="res://assets/scenes/audio.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scenes/logo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/buttons.png" type="Texture" id=5]
+[ext_resource path="res://assets/gui/menu_reveal.anim" type="Animation" id=6]
+[ext_resource path="res://assets/materials/environment_bw.tres" type="Environment" id=7]
+[ext_resource path="res://assets/scenes/pimped-letniskowiec.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/scenes/a_box.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sprites/splash_768x576.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=3]
 
 length = 8.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("info2:modulate")
+tracks/0/path = NodePath("press_a_to_confirm:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -32,30 +27,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("bg:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 900, 256 ), Vector2( 100, 256 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("bg:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 2, 4, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 20.0, 0.0, -15.0 ]
-}
 
 [node name="intro" type="Control"]
 anchor_right = 1.0
@@ -63,39 +34,40 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="bg" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.501961 )
-position = Vector2( 900, 256 )
-scale = Vector2( 1, 1024 )
-texture = SubResource( 2 )
+[node name="audio" parent="." instance=ExtResource( 3 )]
 
-[node name="logo" parent="." instance=ExtResource( 3 )]
+[node name="logo" parent="." instance=ExtResource( 4 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 70.0
+margin_bottom = 70.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
 playback_speed = 0.5
 anims/intro = SubResource( 3 )
 
-[node name="info2" type="Label" parent="."]
+[node name="press_a_to_confirm" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -181.0
-margin_top = -67.0
+margin_top = -57.0
 margin_right = 181.0
-margin_bottom = -50.0
-text = "PRESS      TO CONFIRM"
+margin_bottom = -40.0
+text = "PRESS        TO CONFIRM"
 align = 1
 
-[node name="a" type="Sprite" parent="info2"]
-position = Vector2( 158.88, 7.93341 )
-texture = ExtResource( 4 )
+[node name="a" type="Sprite" parent="press_a_to_confirm"]
+position = Vector2( 163.88, 7.93341 )
+texture = ExtResource( 5 )
 vframes = 4
 hframes = 2
 frame = 2
 
 [node name="menu" type="Control" parent="."]
+editor/display_folded = true
 anchor_top = 0.5
 anchor_bottom = 0.5
 
@@ -109,45 +81,128 @@ custom_constants/separation = 12
 
 [node name="low" type="Button" parent="menu/buttons"]
 margin_right = 280.0
-margin_bottom = 20.0
+margin_bottom = 16.0
 text = "START WITH LOW GRAPHICS"
 align = 2
 
 [node name="medium" type="Button" parent="menu/buttons"]
-margin_top = 32.0
+margin_top = 28.0
 margin_right = 280.0
-margin_bottom = 52.0
+margin_bottom = 44.0
 text = "START WITH MEDIUM GRAPHICS"
 align = 2
 
 [node name="hi" type="Button" parent="menu/buttons"]
-margin_top = 64.0
+margin_top = 56.0
 margin_right = 280.0
-margin_bottom = 84.0
+margin_bottom = 72.0
 text = "START WITH MAX GRAPHICS SETTINGS"
 align = 2
 
-[node name="exit" type="Button" parent="menu/buttons"]
-margin_top = 96.0
+[node name="Container" type="Container" parent="menu/buttons"]
+margin_top = 84.0
 margin_right = 280.0
-margin_bottom = 116.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 8 )
+
+[node name="exit" type="Button" parent="menu/buttons"]
+margin_top = 104.0
+margin_right = 280.0
+margin_bottom = 120.0
 text = "EXIT GAME"
 align = 2
 
 [node name="menu_animation" type="AnimationPlayer" parent="menu"]
 autoplay = "INIT"
-anims/INIT = ExtResource( 5 )
+anims/INIT = ExtResource( 6 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.90356, 0.428462, 0, -0.428462, 0.90356, 3.18, 9.28, -8.88 )
+environment = ExtResource( 7 )
 current = true
 fov = 28.6
 far = 256.0
 
-[node name="pimped-letniskowiec" parent="." instance=ExtResource( 6 )]
+[node name="pimped-letniskowiec" parent="." instance=ExtResource( 8 )]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 2.441, -6.33, -32.202 )
+
+[node name="hello" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+margin_left = -128.0
+margin_top = -120.5
+margin_right = 128.0
+margin_bottom = 120.5
+
+[node name="Label" type="Label" parent="hello"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 8.0
+margin_right = -12.0
+margin_bottom = -8.0
+text = "Welcome to the game. It was started on Global Game Jam 2019 at Poznan site. Core game made in less than 48h. 
+
+This is enchanced - after party version. It has bugs. It looks much better. It has menus! Use them.
+
+ - P1X Team"
+autowrap = true
+
+[node name="ver" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+margin_left = -126.377
+margin_top = 125.882
+margin_right = 128.623
+margin_bottom = 157.882
+
+[node name="Label" type="Label" parent="ver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "VERSION 0.3 ALPHA"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="creds" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+margin_left = 142.0
+margin_top = 29.0
+margin_right = 398.0
+margin_bottom = 157.0
+
+[node name="Label" type="Label" parent="creds"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 8.0
+margin_right = -12.0
+margin_bottom = -8.0
+text = "CREDITS:
+code: CzlowiekImadlo, WermooZ
+gfx: WermooZ
+models: MauRyc
+shaders, scenes: w84death"
+
+[node name="a_box" parent="." instance=ExtResource( 9 )]
+margin_left = 142.916
+margin_top = -120.462
+margin_right = 398.916
+margin_bottom = 7.53839
+
+[node name="Sprite" type="Sprite" parent="a_box"]
+visible = false
+position = Vector2( 30.505, 7.943 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 10 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="pressed" from="menu/buttons/low" to="." method="_on_low_pressed"]
 [connection signal="pressed" from="menu/buttons/medium" to="." method="_on_medium_pressed"]
 [connection signal="pressed" from="menu/buttons/hi" to="." method="_on_hi_pressed"]
 [connection signal="pressed" from="menu/buttons/exit" to="." method="_on_exit_pressed"]
+
+[editable path="audio"]

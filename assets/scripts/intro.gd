@@ -13,14 +13,17 @@ func _input(event):
         quit_game()
 
 func _on_low_pressed():
+    $audio/click.play()
     ProjectSettings.set_setting("PERFORMANCE", "PERF_LOW")
     start_game()
     
 func _on_medium_pressed():
+    $audio/click.play()
     ProjectSettings.set_setting("PERFORMANCE", "PERF_MEDIUM")
     start_game()
 
 func _on_hi_pressed():
+    $audio/click.play()
     ProjectSettings.set_setting("PERFORMANCE", "PERF_HI")
     start_game()
 
@@ -28,6 +31,7 @@ func start_game():
     get_tree().change_scene("assets/scenes/menu.tscn")
 
 func _on_exit_pressed():
+    $audio/click.play()
     quit_game()
     
 func quit_game():

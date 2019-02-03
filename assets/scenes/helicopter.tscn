@@ -4,8 +4,6 @@
 [ext_resource path="res://assets/materials/steel.material" type="Material" id=2]
 [ext_resource path="res://assets/materials/wood.material" type="Material" id=3]
 
-
-
 [sub_resource type="SpatialMaterial" id=1]
 
 flags_transparent = true
