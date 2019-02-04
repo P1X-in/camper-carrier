@@ -1,15 +1,17 @@
 [gd_resource type="Environment" load_steps=2 format=2]
 
-[sub_resource type="ProceduralSky" id=4]
+[sub_resource type="ProceduralSky" id=1]
 
 sky_top_color = Color( 1, 1, 1, 1 )
 
 [resource]
 
 background_mode = 2
-background_sky = SubResource( 4 )
+background_sky = SubResource( 1 )
+tonemap_mode = 1
+tonemap_white = 2.0
 adjustment_enabled = true
 adjustment_brightness = 2.0
-adjustment_contrast = 0.5
+adjustment_contrast = 0.2
 adjustment_saturation = 0.01
 

@@ -169,7 +169,10 @@ margin_bottom = 70.0
 [node name="world" parent="." instance=ExtResource( 8 )]
 
 [node name="pimped-letniskowiec" parent="world" instance=ExtResource( 9 )]
-transform = Transform( 4, 0, 6.99382e-07, 0, 4, 0, -6.99382e-07, 0, 4, 12.811, -5.31, -49.172 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 12.811, -5.31, -49.172 )
+
+[node name="anim" parent="world/pimped-letniskowiec" index="3"]
+playback_speed = 0.1
 
 [connection signal="pressed" from="menu/buttons/select" to="." method="_on_select_pressed"]
 [connection signal="pressed" from="menu/buttons/back" to="." method="_on_back_pressed"]
@@ -177,3 +180,5 @@ transform = Transform( 4, 0, 6.99382e-07, 0, 4, 0, -6.99382e-07, 0, 4, 12.811, -
 [editable path="navigarion-bottom"]
 
 [editable path="world"]
+
+[editable path="world/pimped-letniskowiec"]

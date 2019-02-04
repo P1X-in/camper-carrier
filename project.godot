@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Camper Carrier"
 run/main_scene="res://assets/scenes/intro.tscn"
-boot_splash/image="res://assets/sprites/splash_768x576.png"
+boot_splash/image="res://assets/sprites/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://assets/sprites/icon.png"
 
@@ -27,7 +27,8 @@ settings/fps/force_fps=60
 
 [display]
 
-window/size/fullscreen=true
+window/size/width=1280
+window/size/height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -111,5 +112,6 @@ select={
 threads/thread_model=2
 quality/shadows/filter_mode=2
 quality/voxel_cone_tracing/high_quality=false
+quality/reflections/atlas_size=4096
 quality/filters/msaa=2
 environment/default_environment="res://assets/materials/environment.tres"

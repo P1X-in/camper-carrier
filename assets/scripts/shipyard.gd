@@ -7,6 +7,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
     $menu/buttons/back.grab_focus()
+    $"world/pimped-letniskowiec/anim".play("rotate")
 
 func _input(event):
     if Input.is_key_pressed(KEY_ESCAPE):
